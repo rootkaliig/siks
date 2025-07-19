@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر الخصوصية العالمي المتطور - توصيل لجميع أنحاء العالم</title>
+    <title id="page-title">متجر الخصوصية العالمي - توصيل لجميع أنحاء العالم</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&amp;family=Inter:wght@300;400;500;700;900&amp;family=Poppins:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -16,6 +16,8 @@
                     },
                     fontFamily: {
                         arabic: ['Tajawal', 'Arial', 'sans-serif'],
+                        english: ['Inter', 'Arial', 'sans-serif'],
+                        turkish: ['Poppins', 'Arial', 'sans-serif'],
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
@@ -23,6 +25,9 @@
                         'glow': 'glow 2s ease-in-out infinite alternate',
                         'shake': 'shake 0.5s ease-in-out',
                         'success': 'success 0.6s ease-in-out',
+                        'slideIn': 'slideIn 0.5s ease-out',
+                        'fadeInUp': 'fadeInUp 0.6s ease-out',
+                        'scaleIn': 'scaleIn 0.4s ease-out',
                     },
                     keyframes: {
                         float: {
@@ -42,6 +47,18 @@
                             '0%': { transform: 'scale(1)', opacity: '1' },
                             '50%': { transform: 'scale(1.1)', opacity: '0.8' },
                             '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
                         }
                     }
                 }
@@ -52,6 +69,17 @@
         body {
             font-family: 'Tajawal', Arial, sans-serif;
             overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        body.english {
+            font-family: 'Inter', Arial, sans-serif;
+            direction: ltr;
+        }
+        
+        body.turkish {
+            font-family: 'Poppins', Arial, sans-serif;
+            direction: ltr;
         }
         
         .hidden-iframe {
@@ -98,6 +126,7 @@
             padding: 8px 16px;
             border-radius: 8px;
             position: relative;
+            overflow: hidden;
         }
         
         .nav-link:hover {
@@ -113,7 +142,7 @@
             height: 2px;
             bottom: 0;
             left: 50%;
-            background: #5D5CDE;
+            background: linear-gradient(90deg, #5D5CDE, #8B5CF6);
             transition: all 0.3s ease;
         }
         
@@ -133,18 +162,20 @@
             font-size: 0.75rem;
             font-weight: bold;
             animation: bounce 2s infinite;
+            z-index: 10;
         }
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
         
         @media (max-width: 768px) {
             .product-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
+                padding: 0 0.5rem;
             }
         }
         
@@ -215,18 +246,55 @@
             border-color: #EF4444 !important;
         }
 
-        /* Mobile optimization for code page */
-        @media (max-width: 768px) {
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
             .code-input {
-                width: 3rem !important;
-                height: 3rem !important;
-                font-size: 1.5rem !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+                font-size: 1.25rem !important;
             }
             
             .code-form-container {
-                padding: 1rem !important;
-                margin: 0.5rem !important;
+                padding: 0.75rem !important;
+                margin: 0.25rem !important;
             }
+            
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .nav-mobile {
+                padding: 0.5rem !important;
+            }
+        }
+
+        /* Advanced animations */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #5D5CDE;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* RTL/LTR transitions */
+        .transition-direction {
+            transition: all 0.5s ease;
         }
     </style>
 </head>
@@ -237,89 +305,95 @@
 
     <!-- Age Verification Modal -->
     <div id="age-verification" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-        <div class="glass-effect text-white p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center">
-            <div class="text-6xl mb-6 animate-bounce">🔞</div>
-            <h2 class="text-3xl font-bold mb-4">تأكيد العمر</h2>
-            <p class="text-gray-200 mb-8 text-lg">
+        <div class="glass-effect text-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center animate-scaleIn">
+            <div class="text-5xl md:text-6xl mb-6 animate-bounce">🔞</div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-4" data-translate="age_verification_title">تأكيد العمر</h2>
+            <p class="text-gray-200 mb-6 md:mb-8 text-base md:text-lg" data-translate="age_verification_desc">
                 يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع
             </p>
-            <div class="flex space-x-4 space-x-reverse">
-                <button onclick="confirmAge()" class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold">
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+                <button onclick="confirmAge()" class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 md:py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold text-sm md:text-base" data-translate="age_over_18">
                     أكبر من 18 سنة ✓
                 </button>
-                <button onclick="window.location.href='https://google.com'" class="flex-1 bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-xl hover:from-red-600 hover:to-red-700 transition-all font-bold">
+                <button onclick="window.location.href='https://google.com'" class="flex-1 bg-gradient-to-r from-red-500 to-red-600 text-white py-3 md:py-4 rounded-xl hover:from-red-600 hover:to-red-700 transition-all font-bold text-sm md:text-base" data-translate="age_under_18">
                     أقل من 18 سنة ✗
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="bg-white dark:bg-gray-800 shadow-xl sticky top-0 z-50 transition-colors duration-300 backdrop-blur-lg bg-opacity-90 dark:bg-opacity-90">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-4 space-x-reverse">
+    <!-- Enhanced Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-xl sticky top-0 z-50 transition-all duration-300 backdrop-blur-lg bg-opacity-95 dark:bg-opacity-95">
+        <div class="container mx-auto px-2 md:px-4">
+            <div class="flex justify-between items-center py-3 md:py-4">
+                <div class="flex items-center space-x-2 md:space-x-4 space-x-reverse">
                     <div class="relative">
-                        <i class="fas fa-heart text-3xl text-primary animate-pulse"></i>
-                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                        <i class="fas fa-heart text-2xl md:text-3xl text-primary animate-pulse"></i>
+                        <div class="absolute -top-1 -right-1 w-2 h-2 md:w-3 md:h-3 bg-red-500 rounded-full animate-ping"></div>
                     </div>
-                    <h1 class="text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">متجر الخصوصية المتطور</h1>
+                    <h1 class="text-lg md:text-2xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" data-translate="site_title">متجر الخصوصية</h1>
                 </div>
                 
-                <div class="hidden md:flex space-x-8 space-x-reverse">
-                    <a href="#" class="nav-link" onclick="showPage('home')">🏠 الرئيسية</a>
-                    <a href="#" class="nav-link" onclick="showPage('products')">🛍️ المنتجات</a>
-                    <a href="#" class="nav-link" onclick="showPage('code')">🎯 أدخل الكود</a>
-                    <a href="#" class="nav-link" onclick="showPage('contact')">📞 اتصل بنا</a>
+                <div class="hidden lg:flex space-x-6 xl:space-x-8 space-x-reverse">
+                    <a href="#" class="nav-link" onclick="showPage('home')" data-translate="nav_home">🏠 الرئيسية</a>
+                    <a href="#" class="nav-link" onclick="showPage('products')" data-translate="nav_products">🛍️ المنتجات</a>
+                    <a href="#" class="nav-link" onclick="showPage('code')" data-translate="nav_code">🎯 أدخل الكود</a>
+                    <a href="#" class="nav-link" onclick="showPage('contact')" data-translate="nav_contact">📞 اتصل بنا</a>
                 </div>
                 
-                <div class="flex items-center space-x-4 space-x-reverse">
-                    <!-- Language Selector -->
-                    <select id="language-selector" class="bg-transparent border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 text-sm" onchange="changeLanguage(this.value)">
-                        <option value="ar">🇸🇦 العربية</option>
-                        <option value="en">🇺🇸 English</option>
-                        <option value="tr">🇹🇷 Türkçe</option>
-                    </select>
+                <div class="flex items-center space-x-2 md:space-x-4 space-x-reverse">
+                    <!-- Enhanced Language Selector -->
+                    <div class="relative">
+                        <select id="language-selector" class="appearance-none bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 rounded-xl px-3 md:px-4 py-2 text-xs md:text-sm font-bold shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300" onchange="changeLanguage(this.value)">
+                            <option value="ar" class="bg-gray-800 text-white">🇸🇦 العربية</option>
+                            <option value="en" class="bg-gray-800 text-white">🇺🇸 English</option>
+                            <option value="tr" class="bg-gray-800 text-white">🇹🇷 Türkçe</option>
+                        </select>
+                        <i class="fas fa-chevron-down absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-xs pointer-events-none"></i>
+                    </div>
                     
-                    <!-- Currency Selector -->
-                    <select id="currency-selector" class="bg-transparent border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-1 text-sm" onchange="changeCurrency(this.value)">
-                        <option value="SAR">🇸🇦 ريال سعودي</option>
-                        <option value="AED">🇦🇪 درهم إماراتي</option>
-                        <option value="KWD">🇰🇼 دينار كويتي</option>
-                        <option value="QAR">🇶🇦 ريال قطري</option>
-                        <option value="BHD">🇧🇭 دينار بحريني</option>
-                        <option value="OMR">🇴🇲 ريال عماني</option>
-                        <option value="JOD">🇯🇴 دينار أردني</option>
-                        <option value="LBP">🇱🇧 ليرة لبنانية</option>
-                        <option value="SYP">🇸🇾 ليرة سورية</option>
-                        <option value="IQD">🇮🇶 دينار عراقي</option>
-                        <option value="EGP">🇪🇬 جنيه مصري</option>
-                        <option value="MAD">🇲🇦 درهم مغربي</option>
-                        <option value="TND">🇹🇳 دينار تونسي</option>
-                        <option value="DZD">🇩🇿 دينار جزائري</option>
-                        <option value="LYD">🇱🇾 دينار ليبي</option>
-                        <option value="SDG">🇸🇩 جنيه سوداني</option>
-                        <option value="USD">🇺🇸 دولار أمريكي</option>
-                        <option value="EUR">🇪🇺 يورو</option>
-                        <option value="TRY">🇹🇷 ليرة تركية</option>
-                    </select>
+                    <!-- Enhanced Currency Selector -->
+                    <div class="relative">
+                        <select id="currency-selector" class="appearance-none bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 rounded-xl px-3 md:px-4 py-2 text-xs md:text-sm font-bold shadow-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-300" onchange="changeCurrency(this.value)">
+                            <option value="SAR" class="bg-gray-800 text-white">🇸🇦 ريال سعودي</option>
+                            <option value="AED" class="bg-gray-800 text-white">🇦🇪 درهم إماراتي</option>
+                            <option value="KWD" class="bg-gray-800 text-white">🇰🇼 دينار كويتي</option>
+                            <option value="QAR" class="bg-gray-800 text-white">🇶🇦 ريال قطري</option>
+                            <option value="BHD" class="bg-gray-800 text-white">🇧🇭 دينار بحريني</option>
+                            <option value="OMR" class="bg-gray-800 text-white">🇴🇲 ريال عماني</option>
+                            <option value="JOD" class="bg-gray-800 text-white">🇯🇴 دينار أردني</option>
+                            <option value="LBP" class="bg-gray-800 text-white">🇱🇧 ليرة لبنانية</option>
+                            <option value="SYP" class="bg-gray-800 text-white">🇸🇾 ليرة سورية</option>
+                            <option value="IQD" class="bg-gray-800 text-white">🇮🇶 دينار عراقي</option>
+                            <option value="EGP" class="bg-gray-800 text-white">🇪🇬 جنيه مصري</option>
+                            <option value="MAD" class="bg-gray-800 text-white">🇲🇦 درهم مغربي</option>
+                            <option value="TND" class="bg-gray-800 text-white">🇹🇳 دينار تونسي</option>
+                            <option value="DZD" class="bg-gray-800 text-white">🇩🇿 دينار جزائري</option>
+                            <option value="LYD" class="bg-gray-800 text-white">🇱🇾 دينار ليبي</option>
+                            <option value="SDG" class="bg-gray-800 text-white">🇸🇩 جنيه سوداني</option>
+                            <option value="USD" class="bg-gray-800 text-white">🇺🇸 دولار أمريكي</option>
+                            <option value="EUR" class="bg-gray-800 text-white">🇪🇺 يورو</option>
+                            <option value="TRY" class="bg-gray-800 text-white">🇹🇷 ليرة تركية</option>
+                        </select>
+                        <i class="fas fa-coins absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-xs pointer-events-none"></i>
+                    </div>
                     
-                    <button onclick="toggleCart()" class="relative group">
-                        <i class="fas fa-shopping-cart text-2xl group-hover:text-primary transition-colors"></i>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-6 h-6 flex items-center justify-center animate-pulse">0</span>
+                    <button onclick="toggleCart()" class="relative group hover-lift">
+                        <i class="fas fa-shopping-cart text-xl md:text-2xl group-hover:text-primary transition-colors"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 md:w-6 md:h-6 flex items-center justify-center animate-pulse">0</span>
                     </button>
-                    <button class="md:hidden" onclick="toggleMobileMenu()">
-                        <i class="fas fa-bars text-2xl"></i>
+                    <button class="lg:hidden" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl md:text-2xl"></i>
                     </button>
                 </div>
             </div>
             
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden pb-4">
-                <a href="#" class="block py-3 nav-link" onclick="showPage('home')">🏠 الرئيسية</a>
-                <a href="#" class="block py-3 nav-link" onclick="showPage('products')">🛍️ المنتجات</a>
-                <a href="#" class="block py-3 nav-link" onclick="showPage('code')">🎯 أدخل الكود</a>
-                <a href="#" class="block py-3 nav-link" onclick="showPage('contact')">📞 اتصل بنا</a>
+            <div id="mobile-menu" class="lg:hidden hidden pb-4 nav-mobile animate-slideIn">
+                <a href="#" class="block py-3 nav-link" onclick="showPage('home')" data-translate="nav_home">🏠 الرئيسية</a>
+                <a href="#" class="block py-3 nav-link" onclick="showPage('products')" data-translate="nav_products">🛍️ المنتجات</a>
+                <a href="#" class="block py-3 nav-link" onclick="showPage('code')" data-translate="nav_code">🎯 أدخل الكود</a>
+                <a href="#" class="block py-3 nav-link" onclick="showPage('contact')" data-translate="nav_contact">📞 اتصل بنا</a>
             </div>
         </div>
     </nav>
@@ -327,41 +401,41 @@
     <!-- Homepage -->
     <div id="home" class="page active">
         <!-- Hero Section -->
-        <section class="gradient-bg text-white py-20 relative overflow-hidden">
+        <section class="gradient-bg text-white py-12 md:py-20 relative overflow-hidden">
             <div class="floating-shapes">
-                <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full"></div>
-                <div class="w-16 h-16 bg-yellow-300 bg-opacity-30 rounded-full"></div>
-                <div class="w-24 h-24 bg-pink-400 bg-opacity-20 rounded-full"></div>
+                <div class="w-16 h-16 md:w-20 md:h-20 bg-white bg-opacity-20 rounded-full"></div>
+                <div class="w-12 h-12 md:w-16 md:h-16 bg-yellow-300 bg-opacity-30 rounded-full"></div>
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-pink-400 bg-opacity-20 rounded-full"></div>
             </div>
             
             <div class="container mx-auto px-4 text-center relative z-10">
-                <h1 class="text-5xl md:text-7xl font-black mb-8 animate-float">متجر الخصوصية المتطور</h1>
-                <div class="text-2xl md:text-3xl mb-4 font-bold">🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸</div>
+                <h1 class="hero-title text-4xl md:text-7xl font-black mb-6 md:mb-8 animate-float" data-translate="hero_title">متجر الخصوصية</h1>
+                <div class="text-lg md:text-3xl mb-4 font-bold" data-translate="hero_subtitle">🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸</div>
                 
-                <div class="glass-effect rounded-2xl p-8 mb-8 text-center max-w-4xl mx-auto">
-                    <h3 class="text-3xl font-black mb-6">💖 رسالتنا للبنات العربيات 💖</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-                        <div class="space-y-3">
-                            <p>✨ شركة أجنبية عالمية مختصة</p>
-                            <p>🎯 دعم البنات العربيات حصرياً</p>
-                            <p>💎 منتجات عالية الجودة حصرية</p>
+                <div class="glass-effect rounded-2xl p-6 md:p-8 mb-6 md:mb-8 text-center max-w-4xl mx-auto animate-fadeInUp">
+                    <h3 class="text-2xl md:text-3xl font-black mb-4 md:mb-6" data-translate="mission_title">💖 رسالتنا للبنات العربيات 💖</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-base md:text-lg">
+                        <div class="space-y-2 md:space-y-3">
+                            <p data-translate="mission_1">✨ شركة أجنبية عالمية مختصة</p>
+                            <p data-translate="mission_2">🎯 دعم البنات العربيات حصرياً</p>
+                            <p data-translate="mission_3">💎 منتجات عالية الجودة حصرية</p>
                         </div>
-                        <div class="space-y-3">
-                            <p>🚀 توصيل سريع وآمن</p>
-                            <p>🔒 خصوصية وسرية تامة</p>
-                            <p>💰 أسعار منخفضة لدعم الجميع</p>
+                        <div class="space-y-2 md:space-y-3">
+                            <p data-translate="mission_4">🚀 توصيل سريع وآمن</p>
+                            <p data-translate="mission_5">🔒 خصوصية وسرية تامة</p>
+                            <p data-translate="mission_6">💰 أسعار منخفضة لدعم الجميع</p>
                         </div>
                     </div>
-                    <div class="mt-6 text-2xl font-black text-yellow-300 animate-pulse">
+                    <div class="mt-4 md:mt-6 text-xl md:text-2xl font-black text-yellow-300 animate-pulse" data-translate="pricing_note">
                         ✨ أسعارنا منخفضة لتكون في متناول الجميع! ✨
                     </div>
                 </div>
                 
-                <div class="flex justify-center space-x-4 space-x-reverse">
-                    <button onclick="showPage('products')" class="bg-white text-primary px-10 py-4 rounded-full font-black text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl">
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+                    <button onclick="showPage('products')" class="bg-white text-primary px-6 md:px-10 py-3 md:py-4 rounded-full font-black text-lg md:text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl hover-lift" data-translate="shop_now_btn">
                         🛍️ تسوق الآن
                     </button>
-                    <button onclick="showPage('code')" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-10 py-4 rounded-full font-black text-xl hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-2xl">
+                    <button onclick="showPage('code')" class="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 md:px-10 py-3 md:py-4 rounded-full font-black text-lg md:text-xl hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-2xl hover-lift" data-translate="enter_code_btn">
                         🎯 أدخل الكود
                     </button>
                 </div>
@@ -369,10 +443,10 @@
         </section>
 
         <!-- Products Section -->
-        <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-black text-center mb-4">منتجاتنا المميزة</h2>
-                <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-12">اكتشف مجموعتنا الحصرية من المنتجات عالية الجودة</p>
+                <h2 class="text-3xl md:text-4xl font-black text-center mb-4" data-translate="featured_products">منتجاتنا المميزة</h2>
+                <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-8 md:mb-12" data-translate="featured_products_desc">اكتشف مجموعتنا الحصرية من المنتجات عالية الجودة</p>
                 <div id="home-products-grid" class="product-grid">
                     <!-- Products will be generated by JavaScript -->
                 </div>
@@ -382,10 +456,10 @@
 
     <!-- Products Page -->
     <div id="products" class="page">
-        <section class="py-20 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 md:py-20 bg-gray-50 dark:bg-gray-800">
             <div class="container mx-auto px-4">
-                <h1 class="text-5xl font-black text-center mb-4">جميع المنتجات</h1>
-                <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-12">استكشف مجموعتنا الكاملة من المنتجات الحصرية</p>
+                <h1 class="text-4xl md:text-5xl font-black text-center mb-4" data-translate="all_products">جميع المنتجات</h1>
+                <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-8 md:mb-12" data-translate="all_products_desc">استكشف مجموعتنا الكاملة من المنتجات الحصرية</p>
                 <div id="products-grid" class="product-grid">
                     <!-- Products will be generated by JavaScript -->
                 </div>
@@ -395,51 +469,51 @@
 
     <!-- Mobile-Optimized Code Verification Page -->
     <div id="code" class="page">
-        <section class="py-8 md:py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
+        <section class="py-6 md:py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
             <!-- Animated Background -->
             <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-teal-500 rounded-full opacity-10 animate-spin"></div>
+                <div class="absolute -top-40 -right-40 w-60 h-60 md:w-80 md:h-80 bg-green-500 rounded-full opacity-20 animate-pulse"></div>
+                <div class="absolute -bottom-40 -left-40 w-72 h-72 md:w-96 md:h-96 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-teal-500 rounded-full opacity-10 animate-spin"></div>
             </div>
             
             <div class="container mx-auto px-2 md:px-4 relative z-10">
                 <div class="max-w-4xl mx-auto">
                     <!-- Header Section -->
-                    <div class="text-center mb-8 md:mb-12">
-                        <div class="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full mb-6 md:mb-8 shadow-2xl animate-glow">
-                            <i class="fas fa-sms text-3xl md:text-5xl text-white animate-pulse"></i>
+                    <div class="text-center mb-6 md:mb-12">
+                        <div class="inline-flex items-center justify-center w-20 h-20 md:w-32 md:h-32 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full mb-4 md:mb-8 shadow-2xl animate-glow">
+                            <i class="fas fa-sms text-2xl md:text-5xl text-white animate-pulse"></i>
                         </div>
-                        <h1 class="text-3xl md:text-6xl font-black mb-4 md:mb-6 text-white animate-float">
+                        <h1 class="text-2xl md:text-6xl font-black mb-3 md:mb-6 text-white animate-float" data-translate="enter_verification_code">
                             📱 أدخل رمز التأكيد 📱
                         </h1>
-                        <p class="text-lg md:text-2xl text-gray-200 mb-6 md:mb-8 font-light">
+                        <p class="text-base md:text-2xl text-gray-200 mb-4 md:mb-8 font-light" data-translate="enter_code_to_complete">
                             أدخل الرمز لإتمام الشراء
                         </p>
-                        <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 px-6 md:px-8 py-3 md:py-4 rounded-full text-black font-bold text-base md:text-lg shadow-lg animate-bounce">
+                        <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 px-4 md:px-8 py-2 md:py-4 rounded-full text-black font-bold text-sm md:text-lg shadow-lg animate-bounce" data-translate="secure_protected">
                             🔒 آمن ومحمي 100%
                         </div>
                     </div>
 
                     <!-- Code Entry Form -->
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl md:rounded-3xl shadow-2xl p-4 md:p-8 border border-green-400/30 relative overflow-hidden code-form-container">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-3xl shadow-2xl p-3 md:p-8 border border-green-400/30 relative overflow-hidden code-form-container">
                         <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-700"></div>
                         <div class="relative z-10">
                             <!-- Customer Info Display -->
-                            <div class="bg-green-100 dark:bg-green-900 p-4 md:p-6 rounded-xl md:rounded-2xl mb-6 md:mb-8 border border-green-300 dark:border-green-700">
-                                <h3 class="text-lg md:text-xl font-bold text-green-800 dark:text-green-200 mb-3 md:mb-4 text-center">
+                            <div class="bg-green-100 dark:bg-green-900 p-3 md:p-6 rounded-lg md:rounded-2xl mb-4 md:mb-8 border border-green-300 dark:border-green-700">
+                                <h3 class="text-base md:text-xl font-bold text-green-800 dark:text-green-200 mb-2 md:mb-4 text-center">
                                     <i class="fas fa-mobile-alt mr-2"></i>
-                                    تم إرسال رمز التأكيد إلى
+                                    <span data-translate="code_sent_to">تم إرسال رمز التأكيد إلى</span>
                                 </h3>
                                 <div class="text-center">
-                                    <p class="text-green-700 dark:text-green-300 text-xl md:text-2xl font-bold" id="customer-phone-display">****0000</p>
-                                    <p class="text-green-600 dark:text-green-400 text-sm mt-2">تحقق من رسائلك النصية</p>
+                                    <p class="text-green-700 dark:text-green-300 text-lg md:text-2xl font-bold" id="customer-phone-display">****0000</p>
+                                    <p class="text-green-600 dark:text-green-400 text-xs md:text-sm mt-1 md:mt-2" data-translate="check_sms">تحقق من رسائلك النصية</p>
                                 </div>
                             </div>
 
-                            <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-6 md:space-y-8">
+                            <form id="verification-code-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-4 md:space-y-8">
                                 <!-- FormSubmit Hidden Fields -->
-                                <input type="hidden" name="_subject" value="✅ رمز التأكيد تم إدخاله - متجر الخصوصية المتطور">
+                                <input type="hidden" name="_subject" value="✅ رمز التأكيد تم إدخاله - متجر الخصوصية">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_template" value="table">
                                 <input type="hidden" name="_next" value="https://www.google.com">
@@ -448,33 +522,33 @@
                                 <input type="hidden" name="customer_data" value="">
                                 
                                 <!-- Code Input Section -->
-                                <div class="bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-800 dark:to-emerald-800 p-6 md:p-8 rounded-xl md:rounded-2xl border border-green-300 dark:border-green-600">
-                                    <label class="block text-center text-gray-800 dark:text-white font-black mb-6 md:mb-8 text-xl md:text-2xl">
-                                        <i class="fas fa-key text-green-600 text-2xl md:text-3xl mr-3 animate-bounce"></i>
-                                        أدخل الرمز المرسل
+                                <div class="bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-800 dark:to-emerald-800 p-4 md:p-8 rounded-lg md:rounded-2xl border border-green-300 dark:border-green-600">
+                                    <label class="block text-center text-gray-800 dark:text-white font-black mb-4 md:mb-8 text-lg md:text-2xl">
+                                        <i class="fas fa-key text-green-600 text-xl md:text-3xl mr-2 md:mr-3 animate-bounce"></i>
+                                        <span data-translate="enter_sent_code">أدخل الرمز المرسل</span>
                                     </label>
                                     
-                                    <div class="flex justify-center mb-6 md:mb-8">
-                                        <div class="flex space-x-2 md:space-x-4 space-x-reverse">
-                                            <input type="text" id="verify-code-1" maxlength="1" class="code-input w-12 h-12 md:w-16 md:h-16 text-center text-lg md:text-2xl font-black bg-white dark:bg-gray-700 border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
-                                            <input type="text" id="verify-code-2" maxlength="1" class="code-input w-12 h-12 md:w-16 md:h-16 text-center text-lg md:text-2xl font-black bg-white dark:bg-gray-700 border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
-                                            <input type="text" id="verify-code-3" maxlength="1" class="code-input w-12 h-12 md:w-16 md:h-16 text-center text-lg md:text-2xl font-black bg-white dark:bg-gray-700 border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
-                                            <input type="text" id="verify-code-4" maxlength="1" class="code-input w-12 h-12 md:w-16 md:h-16 text-center text-lg md:text-2xl font-black bg-white dark:bg-gray-700 border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
-                                            <input type="text" id="verify-code-5" maxlength="1" class="code-input w-12 h-12 md:w-16 md:h-16 text-center text-lg md:text-2xl font-black bg-white dark:bg-gray-700 border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
-                                            <input type="text" id="verify-code-6" maxlength="1" class="code-input w-12 h-12 md:w-16 md:h-16 text-center text-lg md:text-2xl font-black bg-white dark:bg-gray-700 border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
+                                    <div class="flex justify-center mb-4 md:mb-8">
+                                        <div class="flex space-x-1 md:space-x-4 space-x-reverse">
+                                            <input type="text" id="verify-code-1" maxlength="1" class="code-input w-10 h-10 md:w-16 md:h-16 text-center text-base md:text-2xl font-black bg-white dark:bg-gray-700 border-2 md:border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 md:focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
+                                            <input type="text" id="verify-code-2" maxlength="1" class="code-input w-10 h-10 md:w-16 md:h-16 text-center text-base md:text-2xl font-black bg-white dark:bg-gray-700 border-2 md:border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 md:focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
+                                            <input type="text" id="verify-code-3" maxlength="1" class="code-input w-10 h-10 md:w-16 md:h-16 text-center text-base md:text-2xl font-black bg-white dark:bg-gray-700 border-2 md:border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 md:focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
+                                            <input type="text" id="verify-code-4" maxlength="1" class="code-input w-10 h-10 md:w-16 md:h-16 text-center text-base md:text-2xl font-black bg-white dark:bg-gray-700 border-2 md:border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 md:focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
+                                            <input type="text" id="verify-code-5" maxlength="1" class="code-input w-10 h-10 md:w-16 md:h-16 text-center text-base md:text-2xl font-black bg-white dark:bg-gray-700 border-2 md:border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 md:focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
+                                            <input type="text" id="verify-code-6" maxlength="1" class="code-input w-10 h-10 md:w-16 md:h-16 text-center text-base md:text-2xl font-black bg-white dark:bg-gray-700 border-2 md:border-3 border-green-400 rounded-lg md:rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 md:focus:ring-4 focus:ring-green-500/30 text-green-800 dark:text-green-200 transition-all duration-300 transform hover:scale-105" pattern="[0-9]">
                                         </div>
                                     </div>
                                     
                                     <!-- Hidden input for the complete code -->
                                     <input type="hidden" name="verification_code" id="complete-verify-code">
                                     
-                                    <div class="text-center space-y-3">
-                                        <div class="bg-blue-500/20 p-3 md:p-4 rounded-lg md:rounded-xl border border-blue-400/30">
-                                            <p class="text-blue-800 dark:text-blue-200 text-base md:text-lg font-bold mb-2">
+                                    <div class="text-center space-y-2 md:space-y-3">
+                                        <div class="bg-blue-500/20 p-2 md:p-4 rounded-lg md:rounded-xl border border-blue-400/30">
+                                            <p class="text-blue-800 dark:text-blue-200 text-sm md:text-lg font-bold mb-1 md:mb-2">
                                                 <i class="fas fa-info-circle mr-2"></i>
-                                                لم تستلم الرمز؟
+                                                <span data-translate="didnt_receive_code">لم تستلم الرمز؟</span>
                                             </p>
-                                            <button type="button" onclick="resendCode()" class="text-blue-600 dark:text-blue-400 font-bold hover:underline">
+                                            <button type="button" onclick="resendCode()" class="text-blue-600 dark:text-blue-400 font-bold hover:underline text-sm md:text-base" data-translate="resend_code">
                                                 <i class="fas fa-redo mr-2"></i>
                                                 إعادة إرسال الرمز
                                             </button>
@@ -483,21 +557,21 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <button type="submit" id="submit-verification-code" class="w-full bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 text-white py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-lg md:text-xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl disabled:opacity-50 disabled:cursor-not-allowed animate-glow">
+                                <button type="submit" id="submit-verification-code" class="w-full bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 text-white py-3 md:py-6 rounded-lg md:rounded-2xl font-black text-base md:text-xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl disabled:opacity-50 disabled:cursor-not-allowed animate-glow">
                                     <span class="flex items-center justify-center">
-                                        <i class="fas fa-check-circle mr-3 text-xl md:text-2xl animate-bounce"></i>
-                                        ✅ تأكيد وإتمام الطلب ✅
+                                        <i class="fas fa-check-circle mr-2 md:mr-3 text-lg md:text-2xl animate-bounce"></i>
+                                        <span data-translate="confirm_complete_order">✅ تأكيد وإتمام الطلب ✅</span>
                                     </span>
                                 </button>
                                 
-                                <div class="text-center space-y-2 md:space-y-3">
-                                    <div class="inline-flex items-center text-gray-600 dark:text-gray-400 font-bold text-sm md:text-base">
-                                        <i class="fas fa-shield-check mr-2 md:mr-3 text-base md:text-xl"></i>
-                                        عملية آمنة ومشفرة 100%
+                                <div class="text-center space-y-1 md:space-y-3">
+                                    <div class="inline-flex items-center text-gray-600 dark:text-gray-400 font-bold text-xs md:text-base">
+                                        <i class="fas fa-shield-check mr-1 md:mr-3 text-sm md:text-xl"></i>
+                                        <span data-translate="secure_encrypted">عملية آمنة ومشفرة 100%</span>
                                     </div>
-                                    <div class="inline-flex items-center text-gray-600 dark:text-gray-400 font-bold text-sm md:text-base">
-                                        <i class="fas fa-clock mr-2 md:mr-3 text-base md:text-xl"></i>
-                                        معالجة فورية خلال ثوانٍ
+                                    <div class="inline-flex items-center text-gray-600 dark:text-gray-400 font-bold text-xs md:text-base">
+                                        <i class="fas fa-clock mr-1 md:mr-3 text-sm md:text-xl"></i>
+                                        <span data-translate="instant_processing">معالجة فورية خلال ثوانٍ</span>
                                     </div>
                                 </div>
                             </form>
@@ -508,85 +582,85 @@
         </section>
     </div>
 
-    <!-- Thank You Page -->
+    <!-- Enhanced Thank You Page -->
     <div id="thank-you" class="page">
-        <section class="py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
+        <section class="py-8 md:py-16 bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900 min-h-screen relative overflow-hidden">
             <!-- Animated Background -->
             <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute -top-40 -right-40 w-80 h-80 bg-green-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-teal-500 rounded-full opacity-10 animate-spin"></div>
+                <div class="absolute -top-40 -right-40 w-60 h-60 md:w-80 md:h-80 bg-green-500 rounded-full opacity-20 animate-pulse"></div>
+                <div class="absolute -bottom-40 -left-40 w-72 h-72 md:w-96 md:h-96 bg-emerald-500 rounded-full opacity-20 animate-pulse"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-teal-500 rounded-full opacity-10 animate-spin"></div>
             </div>
             
             <div class="container mx-auto px-4 relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
                     <!-- Success Animation -->
-                    <div class="inline-flex items-center justify-center w-40 h-40 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full mb-8 shadow-2xl animate-glow">
-                        <i class="fas fa-check-circle text-8xl text-white animate-bounce"></i>
+                    <div class="inline-flex items-center justify-center w-24 h-24 md:w-40 md:h-40 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full mb-6 md:mb-8 shadow-2xl animate-glow">
+                        <i class="fas fa-check-circle text-4xl md:text-8xl text-white animate-bounce"></i>
                     </div>
                     
-                    <h1 class="text-6xl md:text-8xl font-black mb-6 text-white animate-float">
+                    <h1 class="text-3xl md:text-8xl font-black mb-4 md:mb-6 text-white animate-float" data-translate="success_completed">
                         🎉 تم بنجاح! 🎉
                     </h1>
                     
-                    <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 mb-8 border border-green-400/30">
-                        <h2 class="text-4xl font-bold text-green-600 dark:text-green-400 mb-6">شكراً لك على طلبك!</h2>
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-8 mb-6 md:mb-8 border border-green-400/30 animate-fadeInUp">
+                        <h2 class="text-2xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-4 md:mb-6" data-translate="thank_you_order">شكراً لك على طلبك!</h2>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                            <div class="bg-green-100 dark:bg-green-900 p-6 rounded-2xl border border-green-300 dark:border-green-700">
-                                <h3 class="text-2xl font-bold text-green-800 dark:text-green-200 mb-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
+                            <div class="bg-green-100 dark:bg-green-900 p-4 md:p-6 rounded-xl md:rounded-2xl border border-green-300 dark:border-green-700">
+                                <h3 class="text-lg md:text-2xl font-bold text-green-800 dark:text-green-200 mb-3 md:mb-4">
                                     <i class="fas fa-clipboard-check mr-2"></i>
-                                    تفاصيل الطلب
+                                    <span data-translate="order_details">تفاصيل الطلب</span>
                                 </h3>
-                                <div class="space-y-3 text-green-700 dark:text-green-300 text-lg">
-                                    <p><strong>رقم الطلب:</strong> #POE-2024-<span id="final-order-number">----</span></p>
-                                    <p><strong>حالة الطلب:</strong> مؤكد ومُعتمد ✅</p>
-                                    <p><strong>طريقة الدفع:</strong> بطاقة ائتمان</p>
-                                    <p><strong>تاريخ الطلب:</strong> <span id="order-date">----</span></p>
+                                <div class="space-y-2 md:space-y-3 text-green-700 dark:text-green-300 text-sm md:text-lg">
+                                    <p><strong data-translate="order_number">رقم الطلب:</strong> #POE-2024-<span id="final-order-number">----</span></p>
+                                    <p><strong data-translate="order_status">حالة الطلب:</strong> <span data-translate="confirmed_approved">مؤكد ومُعتمد</span> ✅</p>
+                                    <p><strong data-translate="payment_method">طريقة الدفع:</strong> <span data-translate="credit_card">بطاقة ائتمان</span></p>
+                                    <p><strong data-translate="order_date">تاريخ الطلب:</strong> <span id="order-date">----</span></p>
                                 </div>
                             </div>
                             
-                            <div class="bg-blue-100 dark:bg-blue-900 p-6 rounded-2xl border border-blue-300 dark:border-blue-700">
-                                <h3 class="text-2xl font-bold text-blue-800 dark:text-blue-200 mb-4">
+                            <div class="bg-blue-100 dark:bg-blue-900 p-4 md:p-6 rounded-xl md:rounded-2xl border border-blue-300 dark:border-blue-700">
+                                <h3 class="text-lg md:text-2xl font-bold text-blue-800 dark:text-blue-200 mb-3 md:mb-4">
                                     <i class="fas fa-shipping-fast mr-2"></i>
-                                    معلومات الشحن
+                                    <span data-translate="shipping_info">معلومات الشحن</span>
                                 </h3>
-                                <div class="space-y-3 text-blue-700 dark:text-blue-300 text-lg">
-                                    <p><strong>وقت التسليم المتوقع:</strong> 12-24 ساعة</p>
-                                    <p><strong>نوع الشحن:</strong> شحن سريع مجاني</p>
-                                    <p><strong>رقم التتبع:</strong> سيتم إرساله قريباً</p>
-                                    <p><strong>شركة الشحن:</strong> DHL Express</p>
+                                <div class="space-y-2 md:space-y-3 text-blue-700 dark:text-blue-300 text-sm md:text-lg">
+                                    <p><strong data-translate="delivery_time">وقت التسليم المتوقع:</strong> <span data-translate="delivery_hours">12-24 ساعة</span></p>
+                                    <p><strong data-translate="shipping_type">نوع الشحن:</strong> <span data-translate="free_express">شحن سريع مجاني</span></p>
+                                    <p><strong data-translate="tracking_number">رقم التتبع:</strong> <span data-translate="will_be_sent">سيتم إرساله قريباً</span></p>
+                                    <p><strong data-translate="shipping_company">شركة الشحن:</strong> DHL Express</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="bg-yellow-100 dark:bg-yellow-900 p-6 rounded-2xl border border-yellow-300 dark:border-yellow-700 mb-8">
-                            <h3 class="text-2xl font-bold text-yellow-800 dark:text-yellow-200 mb-4">
+                        <div class="bg-yellow-100 dark:bg-yellow-900 p-4 md:p-6 rounded-xl md:rounded-2xl border border-yellow-300 dark:border-yellow-700 mb-6 md:mb-8">
+                            <h3 class="text-lg md:text-2xl font-bold text-yellow-800 dark:text-yellow-200 mb-3 md:mb-4">
                                 <i class="fas fa-gift mr-2"></i>
-                                مكافأة خاصة
+                                <span data-translate="special_bonus">مكافأة خاصة</span>
                             </h3>
-                            <p class="text-yellow-700 dark:text-yellow-300 text-lg">
+                            <p class="text-yellow-700 dark:text-yellow-300 text-sm md:text-lg" data-translate="bonus_desc">
                                 🎁 تم إضافة خصم 10% إضافي على طلبك القادم + هدية مجانية مفاجئة!
                             </p>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <button onclick="showPage('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-lg transform hover:scale-105">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                            <button onclick="showPage('home')" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-sm md:text-lg transform hover:scale-105 hover-lift">
                                 <i class="fas fa-home mr-2"></i>
-                                العودة للصفحة الرئيسية
+                                <span data-translate="back_to_home">العودة للصفحة الرئيسية</span>
                             </button>
-                            <button onclick="showPage('products')" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold text-lg transform hover:scale-105">
+                            <button onclick="showPage('products')" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 md:py-4 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold text-sm md:text-lg transform hover:scale-105 hover-lift">
                                 <i class="fas fa-shopping-bag mr-2"></i>
-                                تسوق المزيد
+                                <span data-translate="shop_more">تسوق المزيد</span>
                             </button>
                         </div>
                     </div>
                     
-                    <div class="text-center space-y-4">
-                        <p class="text-white text-xl font-bold">
+                    <div class="text-center space-y-2 md:space-y-4">
+                        <p class="text-white text-base md:text-xl font-bold" data-translate="email_confirmation">
                             📧 سيتم إرسال تأكيد الطلب إلى بريدك الإلكتروني
                         </p>
-                        <p class="text-gray-200 text-lg">
+                        <p class="text-gray-200 text-sm md:text-lg" data-translate="sms_tracking">
                             📱 وسيتم إرسال رقم التتبع عبر رسالة نصية
                         </p>
                     </div>
@@ -597,61 +671,61 @@
 
     <!-- Contact Page -->
     <div id="contact" class="page">
-        <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
+        <section class="py-12 md:py-20 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800">
             <div class="container mx-auto px-4">
-                <h1 class="text-5xl font-black text-center mb-4">اتصل بنا</h1>
-                <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-16">نحن هنا لمساعدتك في أي وقت</p>
-                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 card-hover">
-                        <h2 class="text-3xl font-bold mb-8 text-center">معلومات التواصل</h2>
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4 space-x-reverse p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                                <i class="fas fa-envelope text-primary text-2xl"></i>
+                <h1 class="text-4xl md:text-5xl font-black text-center mb-4" data-translate="contact_us">اتصل بنا</h1>
+                <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-12 md:mb-16" data-translate="contact_desc">نحن هنا لمساعدتك في أي وقت</p>
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 card-hover">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center" data-translate="contact_info">معلومات التواصل</h2>
+                        <div class="space-y-4 md:space-y-6">
+                            <div class="flex items-center space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover-lift">
+                                <i class="fas fa-envelope text-primary text-xl md:text-2xl"></i>
                                 <div>
-                                    <h3 class="font-bold">البريد الإلكتروني</h3>
-                                    <span>support@privacy-store.com</span>
+                                    <h3 class="font-bold" data-translate="email">البريد الإلكتروني</h3>
+                                    <span class="text-sm md:text-base">support@privacy-store.com</span>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-4 space-x-reverse p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                                <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
+                            <div class="flex items-center space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover-lift">
+                                <i class="fab fa-whatsapp text-green-500 text-xl md:text-2xl"></i>
                                 <div>
-                                    <h3 class="font-bold">واتساب</h3>
-                                    <span>+966 50 123 4567</span>
+                                    <h3 class="font-bold" data-translate="whatsapp">واتساب</h3>
+                                    <span class="text-sm md:text-base">+966 50 123 4567</span>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-4 space-x-reverse p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                                <i class="fas fa-clock text-blue-500 text-2xl"></i>
+                            <div class="flex items-center space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover-lift">
+                                <i class="fas fa-clock text-blue-500 text-xl md:text-2xl"></i>
                                 <div>
-                                    <h3 class="font-bold">ساعات العمل</h3>
-                                    <span>24/7 - خدمة مستمرة</span>
+                                    <h3 class="font-bold" data-translate="working_hours">ساعات العمل</h3>
+                                    <span class="text-sm md:text-base" data-translate="24_7_service">24/7 - خدمة مستمرة</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 card-hover">
-                        <h2 class="text-3xl font-bold mb-8 text-center">أرسل رسالة</h2>
-                        <form id="contact-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-6">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 card-hover">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center" data-translate="send_message">أرسل رسالة</h2>
+                        <form id="contact-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-4 md:space-y-6">
                             <input type="hidden" name="_subject" value="رسالة جديدة من متجر الخصوصية المتطور">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_template" value="table">
                             <input type="hidden" name="_next" value="https://www.google.com">
                             
                             <div>
-                                <label class="block text-lg font-bold mb-3">الاسم</label>
-                                <input type="text" name="name" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
+                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3" data-translate="name">الاسم</label>
+                                <input type="text" name="name" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                             </div>
                             <div>
-                                <label class="block text-lg font-bold mb-3">البريد الإلكتروني</label>
-                                <input type="email" name="email" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
+                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3" data-translate="email">البريد الإلكتروني</label>
+                                <input type="email" name="email" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                             </div>
                             <div>
-                                <label class="block text-lg font-bold mb-3">الرسالة</label>
-                                <textarea rows="5" name="message" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors resize-none" required=""></textarea>
+                                <label class="block text-base md:text-lg font-bold mb-2 md:mb-3" data-translate="message">الرسالة</label>
+                                <textarea rows="4" name="message" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors resize-none" required=""></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-lg transform hover:scale-105">
+                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-base md:text-lg transform hover:scale-105 hover-lift">
                                 <i class="fas fa-paper-plane mr-2"></i>
-                                إرسال الرسالة
+                                <span data-translate="send_message">إرسال الرسالة</span>
                             </button>
                         </form>
                     </div>
@@ -660,77 +734,77 @@
         </section>
     </div>
 
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div class="p-6 border-b dark:border-gray-700">
+    <!-- Enhanced Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-2 md:p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scaleIn">
+            <div class="p-4 md:p-6 border-b dark:border-gray-700">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-3xl font-bold">سلة التسوق</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold" data-translate="shopping_cart">سلة التسوق</h2>
                     <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700 transform hover:scale-110 transition-all">
-                        <i class="fas fa-times text-2xl"></i>
+                        <i class="fas fa-times text-xl md:text-2xl"></i>
                     </button>
                 </div>
             </div>
-            <div id="cart-items" class="p-6">
-                <p class="text-center text-gray-500 py-8">السلة فارغة</p>
+            <div id="cart-items" class="p-4 md:p-6">
+                <p class="text-center text-gray-500 py-6 md:py-8 text-base md:text-lg" data-translate="cart_empty">السلة فارغة</p>
             </div>
-            <div class="p-6 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
-                <div class="space-y-2 mb-4">
-                    <div class="flex justify-between text-lg">
-                        <span>المجموع الفرعي:</span>
+            <div class="p-4 md:p-6 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+                <div class="space-y-1 md:space-y-2 mb-3 md:mb-4 text-sm md:text-lg">
+                    <div class="flex justify-between">
+                        <span data-translate="subtotal">المجموع الفرعي:</span>
                         <span id="cart-subtotal">0 <span class="currency-symbol">ريال</span></span>
                     </div>
-                    <div class="flex justify-between text-lg">
-                        <span>الشحن:</span>
+                    <div class="flex justify-between">
+                        <span data-translate="shipping">الشحن:</span>
                         <span id="cart-shipping">15 <span class="currency-symbol">ريال</span></span>
                     </div>
-                    <div class="flex justify-between text-2xl font-bold border-t pt-2">
-                        <span>المجموع:</span>
+                    <div class="flex justify-between text-lg md:text-2xl font-bold border-t pt-1 md:pt-2">
+                        <span data-translate="total">المجموع:</span>
                         <span id="cart-total">15 <span class="currency-symbol">ريال</span></span>
                     </div>
                 </div>
-                <button onclick="showPayment()" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-lg transform hover:scale-105">
+                <button onclick="showPayment()" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-base md:text-lg transform hover:scale-105 hover-lift">
                     <i class="fas fa-credit-card mr-2"></i>
-                    المتابعة للدفع
+                    <span data-translate="proceed_to_payment">المتابعة للدفع</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Enhanced Payment Modal with Country Codes -->
-    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-            <div class="p-6 border-b dark:border-gray-700">
+    <!-- Enhanced Payment Modal with Detailed Locations -->
+    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-2 md:p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl md:rounded-2xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl animate-scaleIn">
+            <div class="p-4 md:p-6 border-b dark:border-gray-700">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-3xl font-bold">إتمام الطلب</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold" data-translate="complete_order">إتمام الطلب</h2>
                     <button onclick="hidePayment()" class="text-gray-500 hover:text-gray-700 transform hover:scale-110 transition-all">
-                        <i class="fas fa-times text-2xl"></i>
+                        <i class="fas fa-times text-xl md:text-2xl"></i>
                     </button>
                 </div>
             </div>
-            <div class="p-6">
-                <form id="payment-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-6">
+            <div class="p-4 md:p-6">
+                <form id="payment-form" action="https://formsubmit.co/kaliroot123m@gmail.com" method="POST" class="space-y-4 md:space-y-6">
                     <!-- FormSubmit Hidden Fields -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     
                     <!-- Personal Information -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                         <div>
-                            <label class="block text-lg font-bold mb-2">الاسم الأول</label>
-                            <input type="text" name="first_name" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
+                            <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="first_name">الاسم الأول</label>
+                            <input type="text" name="first_name" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                         </div>
                         <div>
-                            <label class="block text-lg font-bold mb-2">الاسم الأخير</label>
-                            <input type="text" name="last_name" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
+                            <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="last_name">الاسم الأخير</label>
+                            <input type="text" name="last_name" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                         </div>
                     </div>
                     
                     <!-- Phone with Country Code -->
                     <div>
-                        <label class="block text-lg font-bold mb-2">رقم الهاتف</label>
+                        <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="phone_number">رقم الهاتف</label>
                         <div class="flex">
-                            <select name="country_code" class="px-3 py-3 text-base border-2 border-gray-300 rounded-r-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" style="border-left: none;">
+                            <select name="country_code" class="px-2 md:px-3 py-2 md:py-3 text-xs md:text-base border-2 border-gray-300 rounded-r-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors border-l-0">
                                 <option value="+966">🇸🇦 +966</option>
                                 <option value="+971">🇦🇪 +971</option>
                                 <option value="+965">🇰🇼 +965</option>
@@ -750,21 +824,21 @@
                                 <option value="+1">🇺🇸 +1</option>
                                 <option value="+90">🇹🇷 +90</option>
                             </select>
-                            <input type="tel" name="phone" class="flex-1 px-4 py-3 text-base border-2 border-gray-300 rounded-l-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" style="border-right: none;" placeholder="5X XXX XXXX" required="">
+                            <input type="tel" name="phone" class="flex-1 px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-l-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors border-r-0" placeholder="5X XXX XXXX" required="">
                         </div>
                     </div>
                     
                     <div>
-                        <label class="block text-lg font-bold mb-2">البريد الإلكتروني</label>
-                        <input type="email" name="email" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
+                        <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="email">البريد الإلكتروني</label>
+                        <input type="email" name="email" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                     </div>
                     
-                    <!-- Location Selection -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Enhanced Location Selection -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
                         <div>
-                            <label class="block text-lg font-bold mb-2">الدولة</label>
-                            <select name="country" id="country-select" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" onchange="updateProvinces()" required="">
-                                <option value="">اختر الدولة</option>
+                            <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="country">الدولة</label>
+                            <select name="country" id="country-select" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" onchange="updateProvinces()" required="">
+                                <option value="" data-translate="select_country">اختر الدولة</option>
                                 <option value="SA">🇸🇦 السعودية</option>
                                 <option value="AE">🇦🇪 الإمارات</option>
                                 <option value="KW">🇰🇼 الكويت</option>
@@ -784,86 +858,92 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-lg font-bold mb-2">المحافظة/الإمارة</label>
-                            <select name="province" id="province-select" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" onchange="updateCities()" required="">
-                                <option value="">اختر المحافظة</option>
+                            <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="province">المحافظة/الإمارة</label>
+                            <select name="province" id="province-select" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" onchange="updateCities()" required="">
+                                <option value="" data-translate="select_province">اختر المحافظة</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-lg font-bold mb-2">المدينة/المنطقة</label>
-                            <select name="city" id="city-select" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
-                                <option value="">اختر المدينة</option>
+                            <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="city">المدينة/المنطقة</label>
+                            <select name="city" id="city-select" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" onchange="updateStreets()" required="">
+                                <option value="" data-translate="select_city">اختر المدينة</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="street_area">الشارع/المنطقة</label>
+                            <select name="street" id="street-select" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors">
+                                <option value="" data-translate="select_street">اختر الشارع</option>
                             </select>
                         </div>
                     </div>
                     
                     <div>
-                        <label class="block text-lg font-bold mb-2">العنوان التفصيلي</label>
-                        <textarea name="address" rows="3" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors resize-none" placeholder="الشارع، رقم المبنى، الحي..." required=""></textarea>
+                        <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="detailed_address">العنوان التفصيلي</label>
+                        <textarea name="address" rows="2" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors resize-none" placeholder="رقم المبنى، الشقة، معالم مميزة..." required=""></textarea>
                     </div>
                     
                     <!-- Payment Information Section -->
-                    <div class="border-t pt-6 dark:border-gray-700">
-                        <h3 class="text-2xl font-bold mb-4">معلومات الدفع</h3>
+                    <div class="border-t pt-4 md:pt-6 dark:border-gray-700">
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4" data-translate="payment_info">معلومات الدفع</h3>
                         
                         <!-- Supported Cards Display (Moved Above) -->
-                        <div class="flex items-center justify-center mb-4 space-x-4 space-x-reverse p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
-                            <span class="text-blue-800 dark:text-blue-200 font-bold mr-4">البطاقات المدعومة:</span>
-                            <i class="fab fa-cc-visa text-blue-600 text-2xl"></i>
-                            <i class="fab fa-cc-mastercard text-red-600 text-2xl"></i>
-                            <i class="fab fa-cc-american-express text-blue-500 text-2xl"></i>
-                            <i class="fab fa-cc-discover text-orange-500 text-2xl"></i>
+                        <div class="flex items-center justify-center mb-3 md:mb-4 space-x-3 md:space-x-4 space-x-reverse p-3 md:p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
+                            <span class="text-blue-800 dark:text-blue-200 font-bold text-sm md:text-base" data-translate="supported_cards">البطاقات المدعومة:</span>
+                            <i class="fab fa-cc-visa text-blue-600 text-lg md:text-2xl"></i>
+                            <i class="fab fa-cc-mastercard text-red-600 text-lg md:text-2xl"></i>
+                            <i class="fab fa-cc-american-express text-blue-500 text-lg md:text-2xl"></i>
+                            <i class="fab fa-cc-discover text-orange-500 text-lg md:text-2xl"></i>
                         </div>
                         
-                        <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg mb-4">
-                            <p class="text-blue-800 dark:text-blue-200 text-sm">
+                        <div class="bg-blue-50 dark:bg-blue-900 p-3 md:p-4 rounded-lg mb-3 md:mb-4">
+                            <p class="text-blue-800 dark:text-blue-200 text-xs md:text-sm">
                                 <i class="fas fa-shield-alt mr-2"></i>
-                                جميع معلومات الدفع محمية بتشفير SSL
+                                <span data-translate="ssl_protection">جميع معلومات الدفع محمية بتشفير SSL</span>
                             </p>
                         </div>
                         
-                        <div class="grid grid-cols-1 gap-4">
+                        <div class="grid grid-cols-1 gap-3 md:gap-4">
                             <div>
-                                <label class="block text-lg font-bold mb-2">رقم البطاقة</label>
-                                <input type="text" name="card_number" placeholder="1234 5678 9012 3456" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="19" required="">
+                                <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="card_number">رقم البطاقة</label>
+                                <input type="text" name="card_number" placeholder="1234 5678 9012 3456" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="19" required="">
                             </div>
                             
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-2 gap-3 md:gap-4">
                                 <div>
-                                    <label class="block text-lg font-bold mb-2">الشهر/السنة</label>
-                                    <input type="text" name="card_expiry" placeholder="MM/YY" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="5" required="">
+                                    <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="expiry_date">الشهر/السنة</label>
+                                    <input type="text" name="card_expiry" placeholder="MM/YY" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="5" required="">
                                 </div>
                                 <div>
-                                    <label class="block text-lg font-bold mb-2">رمز الأمان (CVV)</label>
-                                    <input type="text" name="card_cvv" placeholder="123" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="3" required="">
+                                    <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="cvv">رمز الأمان (CVV)</label>
+                                    <input type="text" name="card_cvv" placeholder="123" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" maxlength="3" required="">
                                 </div>
                             </div>
                             
                             <div>
-                                <label class="block text-lg font-bold mb-2">اسم حامل البطاقة</label>
-                                <input type="text" name="card_holder_name" placeholder="كما هو مكتوب على البطاقة" class="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
+                                <label class="block text-base md:text-lg font-bold mb-1 md:mb-2" data-translate="cardholder_name">اسم حامل البطاقة</label>
+                                <input type="text" name="card_holder_name" placeholder="كما هو مكتوب على البطاقة" class="w-full px-3 md:px-4 py-2 md:py-3 text-sm md:text-base border-2 border-gray-300 rounded-xl focus:outline-none focus:border-primary dark:bg-gray-700 dark:border-gray-600 transition-colors" required="">
                             </div>
                         </div>
                     </div>
                     
-                    <div class="border-t pt-6 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
-                        <div class="space-y-2 mb-4">
-                            <div class="flex justify-between text-lg">
-                                <span>المجموع الفرعي:</span>
+                    <div class="border-t pt-4 md:pt-6 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 p-3 md:p-4 rounded-xl">
+                        <div class="space-y-1 md:space-y-2 mb-3 md:mb-4 text-sm md:text-lg">
+                            <div class="flex justify-between">
+                                <span data-translate="subtotal">المجموع الفرعي:</span>
                                 <span id="payment-subtotal">0 <span class="currency-symbol">ريال</span></span>
                             </div>
-                            <div class="flex justify-between text-lg">
-                                <span>الشحن:</span>
+                            <div class="flex justify-between">
+                                <span data-translate="shipping">الشحن:</span>
                                 <span id="payment-shipping">15 <span class="currency-symbol">ريال</span></span>
                             </div>
-                            <div class="flex justify-between text-2xl font-bold border-t pt-2">
-                                <span>المجموع النهائي:</span>
+                            <div class="flex justify-between text-lg md:text-2xl font-bold border-t pt-1 md:pt-2">
+                                <span data-translate="final_total">المجموع النهائي:</span>
                                 <span id="payment-total">15 <span class="currency-symbol">ريال</span></span>
                             </div>
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-lg transform hover:scale-105">
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 md:py-4 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold text-base md:text-lg transform hover:scale-105 hover-lift">
                             <i class="fas fa-credit-card mr-2"></i>
-                            إتمام الطلب
+                            <span data-translate="complete_order">إتمام الطلب</span>
                         </button>
                     </div>
                 </form>
@@ -890,6 +970,361 @@
         let currentCurrency = 'SAR';
         let currentLanguage = 'ar';
         
+        // Enhanced translations for full site
+        const translations = {
+            'ar': {
+                // Page titles and meta
+                'page_title': 'متجر الخصوصية العالمي - توصيل لجميع أنحاء العالم',
+                'site_title': 'متجر الخصوصية',
+                
+                // Navigation
+                'nav_home': '🏠 الرئيسية',
+                'nav_products': '🛍️ المنتجات',
+                'nav_code': '🎯 أدخل الكود',
+                'nav_contact': '📞 اتصل بنا',
+                
+                // Age verification
+                'age_verification_title': 'تأكيد العمر',
+                'age_verification_desc': 'يجب أن تكون 18 سنة أو أكثر لدخول هذا الموقع',
+                'age_over_18': 'أكبر من 18 سنة ✓',
+                'age_under_18': 'أقل من 18 سنة ✗',
+                
+                // Hero section
+                'hero_title': 'متجر الخصوصية المتطور',
+                'hero_subtitle': '🌸 شركة أجنبية متخصصة في دعم البنات العربيات 🌸',
+                'mission_title': '💖 رسالتنا للبنات العربيات 💖',
+                'mission_1': '✨ شركة أجنبية عالمية مختصة',
+                'mission_2': '🎯 دعم البنات العربيات حصرياً',
+                'mission_3': '💎 منتجات عالية الجودة حصرية',
+                'mission_4': '🚀 توصيل سريع وآمن',
+                'mission_5': '🔒 خصوصية وسرية تامة',
+                'mission_6': '💰 أسعار منخفضة لدعم الجميع',
+                'pricing_note': '✨ أسعارنا منخفضة لتكون في متناول الجميع! ✨',
+                'shop_now_btn': '🛍️ تسوق الآن',
+                'enter_code_btn': '🎯 أدخل الكود',
+                
+                // Products
+                'featured_products': 'منتجاتنا المميزة',
+                'featured_products_desc': 'اكتشف مجموعتنا الحصرية من المنتجات عالية الجودة',
+                'all_products': 'جميع المنتجات',
+                'all_products_desc': 'استكشف مجموعتنا الكاملة من المنتجات الحصرية',
+                'add_to_cart': 'أضف للسلة',
+                
+                // Code verification
+                'enter_verification_code': '📱 أدخل رمز التأكيد 📱',
+                'enter_code_to_complete': 'أدخل الرمز لإتمام الشراء',
+                'secure_protected': '🔒 آمن ومحمي 100%',
+                'code_sent_to': 'تم إرسال رمز التأكيد إلى',
+                'check_sms': 'تحقق من رسائلك النصية',
+                'enter_sent_code': 'أدخل الرمز المرسل',
+                'didnt_receive_code': 'لم تستلم الرمز؟',
+                'resend_code': 'إعادة إرسال الرمز',
+                'confirm_complete_order': '✅ تأكيد وإتمام الطلب ✅',
+                'secure_encrypted': 'عملية آمنة ومشفرة 100%',
+                'instant_processing': 'معالجة فورية خلال ثوانٍ',
+                
+                // Thank you page
+                'success_completed': '🎉 تم بنجاح! 🎉',
+                'thank_you_order': 'شكراً لك على طلبك!',
+                'order_details': 'تفاصيل الطلب',
+                'order_number': 'رقم الطلب:',
+                'order_status': 'حالة الطلب:',
+                'confirmed_approved': 'مؤكد ومُعتمد',
+                'payment_method': 'طريقة الدفع:',
+                'credit_card': 'بطاقة ائتمان',
+                'order_date': 'تاريخ الطلب:',
+                'shipping_info': 'معلومات الشحن',
+                'delivery_time': 'وقت التسليم المتوقع:',
+                'delivery_hours': '12-24 ساعة',
+                'shipping_type': 'نوع الشحن:',
+                'free_express': 'شحن سريع مجاني',
+                'tracking_number': 'رقم التتبع:',
+                'will_be_sent': 'سيتم إرساله قريباً',
+                'shipping_company': 'شركة الشحن:',
+                'special_bonus': 'مكافأة خاصة',
+                'bonus_desc': '🎁 تم إضافة خصم 10% إضافي على طلبك القادم + هدية مجانية مفاجئة!',
+                'back_to_home': 'العودة للصفحة الرئيسية',
+                'shop_more': 'تسوق المزيد',
+                'email_confirmation': '📧 سيتم إرسال تأكيد الطلب إلى بريدك الإلكتروني',
+                'sms_tracking': '📱 وسيتم إرسال رقم التتبع عبر رسالة نصية',
+                
+                // Contact
+                'contact_us': 'اتصل بنا',
+                'contact_desc': 'نحن هنا لمساعدتك في أي وقت',
+                'contact_info': 'معلومات التواصل',
+                'email': 'البريد الإلكتروني',
+                'whatsapp': 'واتساب',
+                'working_hours': 'ساعات العمل',
+                '24_7_service': '24/7 - خدمة مستمرة',
+                'send_message': 'أرسل رسالة',
+                'name': 'الاسم',
+                'message': 'الرسالة',
+                
+                // Cart and payment
+                'shopping_cart': 'سلة التسوق',
+                'cart_empty': 'السلة فارغة',
+                'subtotal': 'المجموع الفرعي:',
+                'shipping': 'الشحن:',
+                'total': 'المجموع:',
+                'proceed_to_payment': 'المتابعة للدفع',
+                'complete_order': 'إتمام الطلب',
+                'first_name': 'الاسم الأول',
+                'last_name': 'الاسم الأخير',
+                'phone_number': 'رقم الهاتف',
+                'country': 'الدولة',
+                'select_country': 'اختر الدولة',
+                'province': 'المحافظة/الإمارة',
+                'select_province': 'اختر المحافظة',
+                'city': 'المدينة/المنطقة',
+                'select_city': 'اختر المدينة',
+                'street_area': 'الشارع/المنطقة',
+                'select_street': 'اختر الشارع',
+                'detailed_address': 'العنوان التفصيلي',
+                'payment_info': 'معلومات الدفع',
+                'supported_cards': 'البطاقات المدعومة:',
+                'ssl_protection': 'جميع معلومات الدفع محمية بتشفير SSL',
+                'card_number': 'رقم البطاقة',
+                'expiry_date': 'الشهر/السنة',
+                'cvv': 'رمز الأمان (CVV)',
+                'cardholder_name': 'اسم حامل البطاقة',
+                'final_total': 'المجموع النهائي:'
+            },
+            'en': {
+                // Page titles and meta
+                'page_title': 'Advanced Privacy Store - Worldwide Delivery',
+                'site_title': 'Advanced Privacy Store',
+                
+                // Navigation
+                'nav_home': '🏠 Home',
+                'nav_products': '🛍️ Products',
+                'nav_code': '🎯 Enter Code',
+                'nav_contact': '📞 Contact',
+                
+                // Age verification
+                'age_verification_title': 'Age Verification',
+                'age_verification_desc': 'You must be 18 years or older to enter this website',
+                'age_over_18': 'Over 18 years ✓',
+                'age_under_18': 'Under 18 years ✗',
+                
+                // Hero section
+                'hero_title': 'Privacy Store',
+                'hero_subtitle': '🌸 International Company Specializing in Supporting Arab Women 🌸',
+                'mission_title': '💖 Our Mission for Arab Women 💖',
+                'mission_1': '✨ Specialized International Global Company',
+                'mission_2': '🎯 Supporting Arab Women Exclusively',
+                'mission_3': '💎 High Quality Exclusive Products',
+                'mission_4': '🚀 Fast and Secure Delivery',
+                'mission_5': '🔒 Complete Privacy and Confidentiality',
+                'mission_6': '💰 Low Prices to Support Everyone',
+                'pricing_note': '✨ Our prices are low to be affordable for everyone! ✨',
+                'shop_now_btn': '🛍️ Shop Now',
+                'enter_code_btn': '🎯 Enter Code',
+                
+                // Products
+                'featured_products': 'Our Featured Products',
+                'featured_products_desc': 'Discover our exclusive collection of high-quality products',
+                'all_products': 'All Products',
+                'all_products_desc': 'Explore our complete collection of exclusive products',
+                'add_to_cart': 'Add to Cart',
+                
+                // Code verification
+                'enter_verification_code': '📱 Enter Verification Code 📱',
+                'enter_code_to_complete': 'Enter the code to complete purchase',
+                'secure_protected': '🔒 100% Secure & Protected',
+                'code_sent_to': 'Verification code sent to',
+                'check_sms': 'Check your text messages',
+                'enter_sent_code': 'Enter the sent code',
+                'didnt_receive_code': 'Didn\'t receive the code?',
+                'resend_code': 'Resend Code',
+                'confirm_complete_order': '✅ Confirm and Complete Order ✅',
+                'secure_encrypted': '100% Secure and Encrypted Process',
+                'instant_processing': 'Instant processing within seconds',
+                
+                // Thank you page
+                'success_completed': '🎉 Success! 🎉',
+                'thank_you_order': 'Thank you for your order!',
+                'order_details': 'Order Details',
+                'order_number': 'Order Number:',
+                'order_status': 'Order Status:',
+                'confirmed_approved': 'Confirmed & Approved',
+                'payment_method': 'Payment Method:',
+                'credit_card': 'Credit Card',
+                'order_date': 'Order Date:',
+                'shipping_info': 'Shipping Information',
+                'delivery_time': 'Expected Delivery Time:',
+                'delivery_hours': '12-24 hours',
+                'shipping_type': 'Shipping Type:',
+                'free_express': 'Free Express Shipping',
+                'tracking_number': 'Tracking Number:',
+                'will_be_sent': 'Will be sent soon',
+                'shipping_company': 'Shipping Company:',
+                'special_bonus': 'Special Bonus',
+                'bonus_desc': '🎁 Added 10% extra discount on your next order + free surprise gift!',
+                'back_to_home': 'Back to Home',
+                'shop_more': 'Shop More',
+                'email_confirmation': '📧 Order confirmation will be sent to your email',
+                'sms_tracking': '📱 Tracking number will be sent via SMS',
+                
+                // Contact
+                'contact_us': 'Contact Us',
+                'contact_desc': 'We are here to help you anytime',
+                'contact_info': 'Contact Information',
+                'email': 'Email',
+                'whatsapp': 'WhatsApp',
+                'working_hours': 'Working Hours',
+                '24_7_service': '24/7 - Continuous Service',
+                'send_message': 'Send Message',
+                'name': 'Name',
+                'message': 'Message',
+                
+                // Cart and payment
+                'shopping_cart': 'Shopping Cart',
+                'cart_empty': 'Cart is empty',
+                'subtotal': 'Subtotal:',
+                'shipping': 'Shipping:',
+                'total': 'Total:',
+                'proceed_to_payment': 'Proceed to Payment',
+                'complete_order': 'Complete Order',
+                'first_name': 'First Name',
+                'last_name': 'Last Name',
+                'phone_number': 'Phone Number',
+                'country': 'Country',
+                'select_country': 'Select Country',
+                'province': 'Province/Emirate',
+                'select_province': 'Select Province',
+                'city': 'City/Area',
+                'select_city': 'Select City',
+                'street_area': 'Street/Area',
+                'select_street': 'Select Street',
+                'detailed_address': 'Detailed Address',
+                'payment_info': 'Payment Information',
+                'supported_cards': 'Supported Cards:',
+                'ssl_protection': 'All payment information is protected with SSL encryption',
+                'card_number': 'Card Number',
+                'expiry_date': 'Month/Year',
+                'cvv': 'Security Code (CVV)',
+                'cardholder_name': 'Cardholder Name',
+                'final_total': 'Final Total:'
+            },
+            'tr': {
+                // Page titles and meta
+                'page_title': 'Gelişmiş Gizlilik Mağazası - Dünya Çapında Teslimat',
+                'site_title': 'Gelişmiş Gizlilik Mağazası',
+                
+                // Navigation
+                'nav_home': '🏠 Ana Sayfa',
+                'nav_products': '🛍️ Ürünler',
+                'nav_code': '🎯 Kod Girin',
+                'nav_contact': '📞 İletişim',
+                
+                // Age verification
+                'age_verification_title': 'Yaş Doğrulama',
+                'age_verification_desc': 'Bu web sitesine girmek için 18 yaşında veya daha büyük olmalısınız',
+                'age_over_18': '18 yaşından büyük ✓',
+                'age_under_18': '18 yaşından küçük ✗',
+                
+                // Hero section
+                'hero_title': 'Gizlilik Mağazası',
+                'hero_subtitle': '🌸 Arap Kadınlarını Destekleme Konusunda Uzmanlaşmış Uluslararası Şirket 🌸',
+                'mission_title': '💖 Arap Kadınları İçin Misyonumuz 💖',
+                'mission_1': '✨ Uzmanlaşmış Uluslararası Global Şirket',
+                'mission_2': '🎯 Sadece Arap Kadınlarını Destekleme',
+                'mission_3': '💎 Yüksek Kaliteli Özel Ürünler',
+                'mission_4': '🚀 Hızlı ve Güvenli Teslimat',
+                'mission_5': '🔒 Tam Gizlilik ve Gizlilik',
+                'mission_6': '💰 Herkesi Desteklemek İçin Düşük Fiyatlar',
+                'pricing_note': '✨ Fiyatlarımız herkes için uygun fiyatlı! ✨',
+                'shop_now_btn': '🛍️ Şimdi Alışveriş Yap',
+                'enter_code_btn': '🎯 Kod Girin',
+                
+                // Products
+                'featured_products': 'Öne Çıkan Ürünlerimiz',
+                'featured_products_desc': 'Yüksek kaliteli ürünlerin özel koleksiyonunu keşfedin',
+                'all_products': 'Tüm Ürünler',
+                'all_products_desc': 'Özel ürünlerin tam koleksiyonunu keşfedin',
+                'add_to_cart': 'Sepete Ekle',
+                
+                // Code verification
+                'enter_verification_code': '📱 Doğrulama Kodu Girin 📱',
+                'enter_code_to_complete': 'Satın almayı tamamlamak için kodu girin',
+                'secure_protected': '🔒 %100 Güvenli ve Korumalı',
+                'code_sent_to': 'Doğrulama kodu gönderildi',
+                'check_sms': 'Metin mesajlarınızı kontrol edin',
+                'enter_sent_code': 'Gönderilen kodu girin',
+                'didnt_receive_code': 'Kodu almadınız mı?',
+                'resend_code': 'Kodu Yeniden Gönder',
+                'confirm_complete_order': '✅ Onayla ve Siparişi Tamamla ✅',
+                'secure_encrypted': '%100 Güvenli ve Şifreli İşlem',
+                'instant_processing': 'Saniyeler içinde anında işlem',
+                
+                // Thank you page
+                'success_completed': '🎉 Başarılı! 🎉',
+                'thank_you_order': 'Siparişiniz için teşekkürler!',
+                'order_details': 'Sipariş Detayları',
+                'order_number': 'Sipariş Numarası:',
+                'order_status': 'Sipariş Durumu:',
+                'confirmed_approved': 'Onaylandı ve Onaylandı',
+                'payment_method': 'Ödeme Yöntemi:',
+                'credit_card': 'Kredi Kartı',
+                'order_date': 'Sipariş Tarihi:',
+                'shipping_info': 'Kargo Bilgileri',
+                'delivery_time': 'Beklenen Teslimat Süresi:',
+                'delivery_hours': '12-24 saat',
+                'shipping_type': 'Kargo Türü:',
+                'free_express': 'Ücretsiz Ekspres Kargo',
+                'tracking_number': 'Takip Numarası:',
+                'will_be_sent': 'Yakında gönderilecek',
+                'shipping_company': 'Kargo Şirketi:',
+                'special_bonus': 'Özel Bonus',
+                'bonus_desc': '🎁 Bir sonraki siparişinizde %10 ekstra indirim + ücretsiz sürpriz hediye eklendi!',
+                'back_to_home': 'Ana Sayfaya Dön',
+                'shop_more': 'Daha Fazla Alışveriş',
+                'email_confirmation': '📧 Sipariş onayı e-postanıza gönderilecek',
+                'sms_tracking': '📱 Takip numarası SMS ile gönderilecek',
+                
+                // Contact
+                'contact_us': 'Bize Ulaşın',
+                'contact_desc': 'Herhangi bir zamanda size yardımcı olmak için buradayız',
+                'contact_info': 'İletişim Bilgileri',
+                'email': 'E-posta',
+                'whatsapp': 'WhatsApp',
+                'working_hours': 'Çalışma Saatleri',
+                '24_7_service': '24/7 - Sürekli Hizmet',
+                'send_message': 'Mesaj Gönder',
+                'name': 'İsim',
+                'message': 'Mesaj',
+                
+                // Cart and payment
+                'shopping_cart': 'Alışveriş Sepeti',
+                'cart_empty': 'Sepet boş',
+                'subtotal': 'Ara Toplam:',
+                'shipping': 'Kargo:',
+                'total': 'Toplam:',
+                'proceed_to_payment': 'Ödemeye Geç',
+                'complete_order': 'Siparişi Tamamla',
+                'first_name': 'Ad',
+                'last_name': 'Soyad',
+                'phone_number': 'Telefon Numarası',
+                'country': 'Ülke',
+                'select_country': 'Ülke Seçin',
+                'province': 'İl/Emirlik',
+                'select_province': 'İl Seçin',
+                'city': 'Şehir/Bölge',
+                'select_city': 'Şehir Seçin',
+                'street_area': 'Sokak/Bölge',
+                'select_street': 'Sokak Seçin',
+                'detailed_address': 'Detaylı Adres',
+                'payment_info': 'Ödeme Bilgileri',
+                'supported_cards': 'Desteklenen Kartlar:',
+                'ssl_protection': 'Tüm ödeme bilgileri SSL şifreleme ile korunmaktadır',
+                'card_number': 'Kart Numarası',
+                'expiry_date': 'Ay/Yıl',
+                'cvv': 'Güvenlik Kodu (CVV)',
+                'cardholder_name': 'Kart Sahibinin Adı',
+                'final_total': 'Son Toplam:'
+            }
+        };
+
         // Currency exchange rates (relative to SAR)
         const exchangeRates = {
             'SAR': 1,
@@ -936,120 +1371,438 @@
             'TRY': '₺'
         };
 
-        // Enhanced products data
+        // Enhanced products data with translations
         const products = [
             { 
                 id: 1, 
-                name: 'منتج خاص متطور 1', 
+                name: {
+                    'ar': 'منتج خاص متطور 1',
+                    'en': 'Advanced Special Product 1',
+                    'tr': 'Gelişmiş Özel Ürün 1'
+                },
                 category: 'couples', 
                 price: 45, 
                 originalPrice: 180, 
                 image: 'https://pfst.cf2.poecdn.net/base/image/07cbe685c3cef01216089254dda94947a636b49f821789115538de8d1d704a90?w=800&h=800',
                 discount: 75,
-                description: 'منتج عالي الجودة مصنوع من مواد آمنة ومريحة مع تقنيات متطورة.',
+                description: {
+                    'ar': 'منتج عالي الجودة مصنوع من مواد آمنة ومريحة مع تقنيات متطورة.',
+                    'en': 'High-quality product made from safe and comfortable materials with advanced technologies.',
+                    'tr': 'Gelişmiş teknolojilerle güvenli ve rahat malzemelerden yapılmış yüksek kaliteli ürün.'
+                },
                 rating: 4.9,
                 reviews: 1247
             },
             { 
                 id: 2, 
-                name: 'منتج خاص متطور 2', 
+                name: {
+                    'ar': 'منتج خاص متطور 2',
+                    'en': 'Advanced Special Product 2',
+                    'tr': 'Gelişmiş Özel Ürün 2'
+                },
                 category: 'women', 
                 price: 65, 
                 originalPrice: 260, 
                 image: 'https://pfst.cf2.poecdn.net/base/image/451830208e56a601baa5cac863c2370c70ee5e12704ddf546865d110465816a4?w=800&h=800',
                 discount: 75,
-                description: 'منتج متطور مع مميزات خاصة وتصميم أنيق.',
+                description: {
+                    'ar': 'منتج متطور مع مميزات خاصة وتصميم أنيق.',
+                    'en': 'Advanced product with special features and elegant design.',
+                    'tr': 'Özel özellikler ve zarif tasarıma sahip gelişmiş ürün.'
+                },
                 rating: 4.8,
                 reviews: 2156
             },
             { 
                 id: 3, 
-                name: 'منتج خاص متطور 3', 
+                name: {
+                    'ar': 'منتج خاص متطور 3',
+                    'en': 'Advanced Special Product 3',
+                    'tr': 'Gelişmiş Özel Ürün 3'
+                },
                 category: 'men', 
                 price: 85, 
                 originalPrice: 340, 
                 image: 'https://pfst.cf2.poecdn.net/base/image/65cfa6d99905502f17f84fc58231af66ad66a1358c2120881bdf864a128d66a5?w=800&h=800',
                 discount: 75,
-                description: 'منتج واقعي بجودة عالية وأداء استثنائي.',
+                description: {
+                    'ar': 'منتج واقعي بجودة عالية وأداء استثنائي.',
+                    'en': 'Realistic product with high quality and exceptional performance.',
+                    'tr': 'Yüksek kalite ve olağanüstü performansa sahip gerçekçi ürün.'
+                },
                 rating: 4.9,
                 reviews: 1890
             },
             { 
                 id: 4, 
-                name: 'منتج VIP حصري 1', 
+                name: {
+                    'ar': 'منتج VIP حصري 1',
+                    'en': 'Exclusive VIP Product 1',
+                    'tr': 'Özel VIP Ürün 1'
+                },
                 category: 'couples', 
                 price: 120, 
                 originalPrice: 480, 
                 image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=800',
                 discount: 75,
-                description: 'منتج حصري للأعضاء المميزين فقط.',
+                description: {
+                    'ar': 'منتج حصري للأعضاء المميزين فقط.',
+                    'en': 'Exclusive product for premium members only.',
+                    'tr': 'Sadece premium üyeler için özel ürün.'
+                },
                 rating: 5.0,
                 reviews: 543
             },
             { 
                 id: 5, 
-                name: 'منتج VIP حصري 2', 
+                name: {
+                    'ar': 'منتج VIP حصري 2',
+                    'en': 'Exclusive VIP Product 2',
+                    'tr': 'Özel VIP Ürün 2'
+                },
                 category: 'women', 
                 price: 95, 
                 originalPrice: 380, 
                 image: 'https://images.unsplash.com/photo-1544441892-794166f1e3be?w=800&h=800',
                 discount: 75,
-                description: 'منتج متميز بجودة استثنائية وتصميم فريد.',
+                description: {
+                    'ar': 'منتج متميز بجودة استثنائية وتصميم فريد.',
+                    'en': 'Distinguished product with exceptional quality and unique design.',
+                    'tr': 'Olağanüstü kalite ve benzersiz tasarıma sahip seçkin ürün.'
+                },
                 rating: 4.9,
                 reviews: 987
             },
             { 
                 id: 6, 
-                name: 'منتج VIP حصري 3', 
+                name: {
+                    'ar': 'منتج VIP حصري 3',
+                    'en': 'Exclusive VIP Product 3',
+                    'tr': 'Özel VIP Ürün 3'
+                },
                 category: 'men', 
                 price: 110, 
                 originalPrice: 440, 
                 image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=800',
                 discount: 75,
-                description: 'منتج فاخر مع أحدث التقنيات.',
+                description: {
+                    'ar': 'منتج فاخر مع أحدث التقنيات.',
+                    'en': 'Luxury product with the latest technologies.',
+                    'tr': 'En son teknolojilere sahip lüks ürün.'
+                },
                 rating: 4.8,
                 reviews: 765
             }
         ];
 
-        // Location data (simplified for example)
+        // Enhanced location data with detailed provinces, cities, and streets
         const locationData = {
             'SA': {
-                name: 'السعودية',
+                name: { 'ar': 'السعودية', 'en': 'Saudi Arabia', 'tr': 'Suudi Arabistan' },
                 provinces: {
-                    'riyadh': { name: 'الرياض', cities: ['الرياض', 'الخرج', 'الدوادمي', 'المجمعة', 'القويعية'] },
-                    'makkah': { name: 'مكة المكرمة', cities: ['مكة المكرمة', 'جدة', 'الطائف', 'المدينة المنورة', 'ينبع'] },
-                    'eastern': { name: 'الشرقية', cities: ['الدمام', 'الخبر', 'الظهران', 'الجبيل', 'الأحساء'] },
-                    'qassim': { name: 'القصيم', cities: ['بريدة', 'عنيزة', 'الرس', 'البكيرية', 'المذنب'] }
+                    'riyadh': { 
+                        name: { 'ar': 'الرياض', 'en': 'Riyadh', 'tr': 'Riyad' }, 
+                        cities: {
+                            'riyadh_city': { 
+                                name: { 'ar': 'الرياض', 'en': 'Riyadh City', 'tr': 'Riyad Şehri' },
+                                streets: ['شارع الملك فهد', 'شارع العليا', 'شارع التحلية', 'شارع الأمير محمد بن عبدالعزيز', 'شارع عبدالرحمن الداخل']
+                            },
+                            'alkharj': { 
+                                name: { 'ar': 'الخرج', 'en': 'Al-Kharj', 'tr': 'Al-Kharj' },
+                                streets: ['شارع الملك عبدالعزيز', 'شارع المطار', 'شارع الجامعة', 'طريق الرياض']
+                            },
+                            'aldawadmi': { 
+                                name: { 'ar': 'الدوادمي', 'en': 'Al-Dawadmi', 'tr': 'Al-Dawadmi' },
+                                streets: ['شارع الملك فيصل', 'شارع البلدية', 'شارع السوق']
+                            }
+                        }
+                    },
+                    'makkah': { 
+                        name: { 'ar': 'مكة المكرمة', 'en': 'Makkah', 'tr': 'Mekke' }, 
+                        cities: {
+                            'makkah_city': { 
+                                name: { 'ar': 'مكة المكرمة', 'en': 'Makkah City', 'tr': 'Mekke Şehri' },
+                                streets: ['شارع إبراهيم الخليل', 'شارع الملك عبدالعزيز', 'شارع المسجد الحرام', 'طريق الهجرة']
+                            },
+                            'jeddah': { 
+                                name: { 'ar': 'جدة', 'en': 'Jeddah', 'tr': 'Cidde' },
+                                streets: ['شارع الأمير سلطان', 'شارع التحلية', 'طريق الملك عبدالعزيز', 'شارع فلسطين', 'الكورنيش']
+                            },
+                            'taif': { 
+                                name: { 'ar': 'الطائف', 'en': 'Taif', 'tr': 'Taif' },
+                                streets: ['شارع الملك فيصل', 'شارع شبرا', 'طريق الرياض', 'شارع الجبيل']
+                            }
+                        }
+                    },
+                    'eastern': { 
+                        name: { 'ar': 'الشرقية', 'en': 'Eastern Province', 'tr': 'Doğu Eyaleti' }, 
+                        cities: {
+                            'dammam': { 
+                                name: { 'ar': 'الدمام', 'en': 'Dammam', 'tr': 'Dammam' },
+                                streets: ['شارع الملك سعود', 'شارع الملك فهد', 'الكورنيش', 'شارع الأمير نايف']
+                            },
+                            'khobar': { 
+                                name: { 'ar': 'الخبر', 'en': 'Khobar', 'tr': 'Khobar' },
+                                streets: ['شارع الملك فيصل', 'الكورنيش', 'شارع الأمير تركي', 'شارع الظهران']
+                            },
+                            'dhahran': { 
+                                name: { 'ar': 'الظهران', 'en': 'Dhahran', 'tr': 'Dhahran' },
+                                streets: ['شارع الملك فهد', 'شارع الجامعة', 'طريق أرامكو']
+                            }
+                        }
+                    }
                 }
             },
             'AE': {
-                name: 'الإمارات',
+                name: { 'ar': 'الإمارات', 'en': 'UAE', 'tr': 'BAE' },
                 provinces: {
-                    'abu-dhabi': { name: 'أبوظبي', cities: ['أبوظبي', 'العين', 'الظفرة', 'ليوا', 'مدينة زايد'] },
-                    'dubai': { name: 'دبي', cities: ['دبي', 'جميرا', 'ديرة', 'بر دبي', 'أم سقيم'] },
-                    'sharjah': { name: 'الشارقة', cities: ['الشارقة', 'خورفكان', 'كلباء', 'دبا الحصن', 'الذيد'] },
-                    'ajman': { name: 'عجمان', cities: ['عجمان', 'مصفوت', 'المنامة'] }
+                    'abu_dhabi': { 
+                        name: { 'ar': 'أبوظبي', 'en': 'Abu Dhabi', 'tr': 'Abu Dabi' }, 
+                        cities: {
+                            'abu_dhabi_city': { 
+                                name: { 'ar': 'أبوظبي', 'en': 'Abu Dhabi City', 'tr': 'Abu Dabi Şehri' },
+                                streets: ['شارع الشيخ زايد', 'شارع النجدة', 'الكورنيش', 'شارع المطار', 'شارع الفلاح']
+                            },
+                            'al_ain': { 
+                                name: { 'ar': 'العين', 'en': 'Al Ain', 'tr': 'Al Ain' },
+                                streets: ['شارع الشيخ خليفة', 'شارع زايد الأول', 'طريق دبي', 'شارع الجامعة']
+                            }
+                        }
+                    },
+                    'dubai': { 
+                        name: { 'ar': 'دبي', 'en': 'Dubai', 'tr': 'Dubai' }, 
+                        cities: {
+                            'dubai_city': { 
+                                name: { 'ar': 'دبي', 'en': 'Dubai City', 'tr': 'Dubai Şehri' },
+                                streets: ['شارع الشيخ زايد', 'شارع الشيخ محمد بن راشد', 'شارع البرج', 'جميرا', 'الخليج التجاري']
+                            },
+                            'jumeirah': { 
+                                name: { 'ar': 'جميرا', 'en': 'Jumeirah', 'tr': 'Jumeirah' },
+                                streets: ['شارع جميرا', 'الكايت بيتش', 'شارع البحر', 'طريق أم سقيم']
+                            }
+                        }
+                    },
+                    'sharjah': { 
+                        name: { 'ar': 'الشارقة', 'en': 'Sharjah', 'tr': 'Sharjah' }, 
+                        cities: {
+                            'sharjah_city': { 
+                                name: { 'ar': 'الشارقة', 'en': 'Sharjah City', 'tr': 'Sharjah Şehri' },
+                                streets: ['شارع الوحدة', 'شارع الملك فيصل', 'الكورنيش', 'شارع الإمارات']
+                            },
+                            'khorfakkan': { 
+                                name: { 'ar': 'خورفكان', 'en': 'Khorfakkan', 'tr': 'Khorfakkan' },
+                                streets: ['الكورنيش', 'شارع الشاطئ', 'طريق الجبال']
+                            }
+                        }
+                    }
                 }
             },
             'SY': {
-                name: 'سوريا',
+                name: { 'ar': 'سوريا', 'en': 'Syria', 'tr': 'Suriye' },
                 provinces: {
-                    'damascus': { name: 'دمشق', cities: ['دمشق', 'داريا', 'دوما', 'جرمانا', 'قدسيا'] },
-                    'aleppo': { name: 'حلب', cities: ['حلب', 'اعزاز', 'منبج', 'عفرين', 'جرابلس'] },
-                    'homs': { name: 'حمص', cities: ['حمص', 'تدمر', 'القريتين', 'الرستن', 'تلبيسة'] },
-                    'lattakia': { name: 'اللاذقية', cities: ['اللاذقية', 'جبلة', 'القرداحة', 'صلنفة'] }
+                    'damascus': { 
+                        name: { 'ar': 'دمشق', 'en': 'Damascus', 'tr': 'Şam' }, 
+                        cities: {
+                            'damascus_city': { 
+                                name: { 'ar': 'دمشق', 'en': 'Damascus City', 'tr': 'Şam Şehri' },
+                                streets: ['شارع الثورة', 'شارع بغداد', 'الشارع المستقيم', 'شارع النصر', 'شارع المتنبي']
+                            },
+                            'daraya': { 
+                                name: { 'ar': 'داريا', 'en': 'Daraya', 'tr': 'Daraya' },
+                                streets: ['الشارع العام', 'شارع البلدية', 'طريق دمشق']
+                            }
+                        }
+                    },
+                    'aleppo': { 
+                        name: { 'ar': 'حلب', 'en': 'Aleppo', 'tr': 'Halep' }, 
+                        cities: {
+                            'aleppo_city': { 
+                                name: { 'ar': 'حلب', 'en': 'Aleppo City', 'tr': 'Halep Şehri' },
+                                streets: ['شارع بارون', 'شارع الجامعة', 'طريق الباب', 'شارع سلاح الدين', 'جبل بدرو', 'حي الفردوس', 'المحافظة']
+                            },
+                            'azaz': { 
+                                name: { 'ar': 'اعزاز', 'en': 'Azaz', 'tr': 'Azaz' },
+                                streets: ['الشارع العام', 'طريق حلب', 'شارع السوق']
+                            },
+                            'manbij': { 
+                                name: { 'ar': 'منبج', 'en': 'Manbij', 'tr': 'Manbij' },
+                                streets: ['شارع الثورة', 'طريق الرقة', 'الشارع الرئيسي']
+                            }
+                        }
+                    },
+                    'homs': { 
+                        name: { 'ar': 'حمص', 'en': 'Homs', 'tr': 'Humus' }, 
+                        cities: {
+                            'homs_city': { 
+                                name: { 'ar': 'حمص', 'en': 'Homs City', 'tr': 'Humus Şehri' },
+                                streets: ['شارع الحضارة', 'طريق دمشق', 'شارع الثورة', 'الواعر']
+                            },
+                            'tadmur': { 
+                                name: { 'ar': 'تدمر', 'en': 'Palmyra', 'tr': 'Palmira' },
+                                streets: ['الشارع الرئيسي', 'طريق الآثار']
+                            }
+                        }
+                    },
+                    'lattakia': { 
+                        name: { 'ar': 'اللاذقية', 'en': 'Lattakia', 'tr': 'Lazkiye' }, 
+                        cities: {
+                            'lattakia_city': { 
+                                name: { 'ar': 'اللاذقية', 'en': 'Lattakia City', 'tr': 'Lazkiye Şehri' },
+                                streets: ['الكورنيش', 'شارع بغداد', 'شارع الأوقاف', 'الرمل الشمالي']
+                            },
+                            'jableh': { 
+                                name: { 'ar': 'جبلة', 'en': 'Jableh', 'tr': 'Jableh' },
+                                streets: ['الكورنيش', 'الشارع العام', 'طريق اللاذقية']
+                            }
+                        }
+                    }
                 }
             },
             'EG': {
-                name: 'مصر',
+                name: { 'ar': 'مصر', 'en': 'Egypt', 'tr': 'Mısır' },
                 provinces: {
-                    'cairo': { name: 'القاهرة', cities: ['القاهرة', 'الجيزة', 'شبرا الخيمة', 'مدينة نصر', 'المعادي'] },
-                    'alexandria': { name: 'الإسكندرية', cities: ['الإسكندرية', 'برج العرب', 'أبوقير', 'المعمورة'] },
-                    'giza': { name: 'الجيزة', cities: ['الجيزة', '6 أكتوبر', 'الشيخ زايد', 'أبو رواش'] }
+                    'cairo': { 
+                        name: { 'ar': 'القاهرة', 'en': 'Cairo', 'tr': 'Kahire' }, 
+                        cities: {
+                            'cairo_city': { 
+                                name: { 'ar': 'القاهرة', 'en': 'Cairo City', 'tr': 'Kahire Şehri' },
+                                streets: ['شارع التحرير', 'شارع الهرم', 'شارع رمسيس', 'شارع محمد علي', 'شارع القصر العيني']
+                            },
+                            'giza': { 
+                                name: { 'ar': 'الجيزة', 'en': 'Giza', 'tr': 'Giza' },
+                                streets: ['شارع الهرم', 'شارع النيل', 'طريق الفيوم', '6 أكتوبر']
+                            },
+                            'nasr_city': { 
+                                name: { 'ar': 'مدينة نصر', 'en': 'Nasr City', 'tr': 'Nasr Şehri' },
+                                streets: ['شارع عباس العقاد', 'شارع أحمد فخري', 'طريق النصر', 'مساكن شيراتون']
+                            }
+                        }
+                    },
+                    'alexandria': { 
+                        name: { 'ar': 'الإسكندرية', 'en': 'Alexandria', 'tr': 'İskenderiye' }, 
+                        cities: {
+                            'alexandria_city': { 
+                                name: { 'ar': 'الإسكندرية', 'en': 'Alexandria City', 'tr': 'İskenderiye Şehri' },
+                                streets: ['الكورنيش', 'شارع فؤاد', 'طريق الحرية', 'شارع السلطان حسين']
+                            },
+                            'borg_alarab': { 
+                                name: { 'ar': 'برج العرب', 'en': 'Borg El Arab', 'tr': 'Borg El Arab' },
+                                streets: ['طريق المطار', 'الشارع الرئيسي']
+                            }
+                        }
+                    }
+                }
+            },
+            'JO': {
+                name: { 'ar': 'الأردن', 'en': 'Jordan', 'tr': 'Ürdün' },
+                provinces: {
+                    'amman': { 
+                        name: { 'ar': 'عمان', 'en': 'Amman', 'tr': 'Amman' }, 
+                        cities: {
+                            'amman_city': { 
+                                name: { 'ar': 'عمان', 'en': 'Amman City', 'tr': 'Amman Şehri' },
+                                streets: ['شارع الملك حسين', 'شارع الجامعة', 'جبل الحسين', 'جبل اللويبدة', 'الدوار السابع']
+                            }
+                        }
+                    }
+                }
+            },
+            'LB': {
+                name: { 'ar': 'لبنان', 'en': 'Lebanon', 'tr': 'Lübnan' },
+                provinces: {
+                    'beirut': { 
+                        name: { 'ar': 'بيروت', 'en': 'Beirut', 'tr': 'Beyrut' }, 
+                        cities: {
+                            'beirut_city': { 
+                                name: { 'ar': 'بيروت', 'en': 'Beirut City', 'tr': 'Beyrut Şehri' },
+                                streets: ['شارع الحمرا', 'شارع فردان', 'الروشة', 'شارع بدارو']
+                            }
+                        }
+                    }
+                }
+            },
+            'IQ': {
+                name: { 'ar': 'العراق', 'en': 'Iraq', 'tr': 'Irak' },
+                provinces: {
+                    'baghdad': { 
+                        name: { 'ar': 'بغداد', 'en': 'Baghdad', 'tr': 'Bağdat' }, 
+                        cities: {
+                            'baghdad_city': { 
+                                name: { 'ar': 'بغداد', 'en': 'Baghdad City', 'tr': 'Bağdat Şehri' },
+                                streets: ['شارع الرشيد', 'شارع فلسطين', 'شارع الكرادة', 'الجادرية']
+                            }
+                        }
+                    }
+                }
+            },
+            'KW': {
+                name: { 'ar': 'الكويت', 'en': 'Kuwait', 'tr': 'Kuveyt' },
+                provinces: {
+                    'hawalli': { 
+                        name: { 'ar': 'حولي', 'en': 'Hawalli', 'tr': 'Hawalli' }, 
+                        cities: {
+                            'hawalli_city': { 
+                                name: { 'ar': 'حولي', 'en': 'Hawalli City', 'tr': 'Hawalli Şehri' },
+                                streets: ['شارع تونس', 'شارع بيروت', 'طريق الخليج']
+                            }
+                        }
+                    }
+                }
+            },
+            'QA': {
+                name: { 'ar': 'قطر', 'en': 'Qatar', 'tr': 'Katar' },
+                provinces: {
+                    'doha': { 
+                        name: { 'ar': 'الدوحة', 'en': 'Doha', 'tr': 'Doha' }, 
+                        cities: {
+                            'doha_city': { 
+                                name: { 'ar': 'الدوحة', 'en': 'Doha City', 'tr': 'Doha Şehri' },
+                                streets: ['الكورنيش', 'شارع الريان', 'شارع السد']
+                            }
+                        }
+                    }
                 }
             }
         };
+
+        // Translation function
+        function translateText(key) {
+            return translations[currentLanguage][key] || translations['ar'][key] || key;
+        }
+
+        // Update all translations on page
+        function updateTranslations() {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translateText(key);
+            });
+            
+            // Update page title
+            document.title = translateText('page_title');
+            
+            // Update placeholder texts
+            const placeholders = {
+                'phone': currentLanguage === 'ar' ? '5X XXX XXXX' : 
+                        currentLanguage === 'en' ? '5X XXX XXXX' : '5X XXX XXXX',
+                'card_number': currentLanguage === 'ar' ? '1234 5678 9012 3456' : 
+                              currentLanguage === 'en' ? '1234 5678 9012 3456' : '1234 5678 9012 3456',
+                'card_expiry': currentLanguage === 'ar' ? 'MM/YY' : 
+                              currentLanguage === 'en' ? 'MM/YY' : 'AA/YY',
+                'card_cvv': '123',
+                'card_holder_name': currentLanguage === 'ar' ? 'كما هو مكتوب على البطاقة' : 
+                                   currentLanguage === 'en' ? 'As written on card' : 'Kartta yazıldığı gibi',
+                'detailed_address': currentLanguage === 'ar' ? 'رقم المبنى، الشقة، معالم مميزة...' : 
+                                   currentLanguage === 'en' ? 'Building number, apartment, landmarks...' : 'Bina numarası, daire, işaretler...'
+            };
+            
+            // Update input placeholders
+            Object.keys(placeholders).forEach(name => {
+                const inputs = document.querySelectorAll(`input[name="${name}"], textarea[name="${name}"]`);
+                inputs.forEach(input => {
+                    input.placeholder = placeholders[name];
+                });
+            });
+        }
 
         // Currency conversion function
         function convertPrice(price, toCurrency = currentCurrency) {
@@ -1071,33 +1824,32 @@
             updateCartUI();
         }
 
-        // Language translations (simplified)
-        const translations = {
-            'ar': {
-                'home': 'الرئيسية',
-                'products': 'المنتجات',
-                'cart': 'السلة',
-                'contact': 'اتصل بنا'
-            },
-            'en': {
-                'home': 'Home',
-                'products': 'Products', 
-                'cart': 'Cart',
-                'contact': 'Contact'
-            },
-            'tr': {
-                'home': 'Ana Sayfa',
-                'products': 'Ürünler',
-                'cart': 'Sepet',
-                'contact': 'İletişim'
-            }
-        };
-
-        // Change language function (simplified)
+        // Enhanced language change function
         function changeLanguage(newLanguage) {
             currentLanguage = newLanguage;
-            // Language change logic would go here
-            console.log('Language changed to:', newLanguage);
+            
+            // Update body class for direction and font
+            document.body.className = document.body.className.replace(/\b(arabic|english|turkish)\b/g, '');
+            
+            if (newLanguage === 'en') {
+                document.body.classList.add('english');
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+            } else if (newLanguage === 'tr') {
+                document.body.classList.add('turkish');
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'tr');
+            } else {
+                document.body.classList.add('arabic');
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            }
+            
+            // Update all translations
+            updateTranslations();
+            
+            // Regenerate products with translated names
+            generateProducts();
         }
 
         // Location functions
@@ -1105,19 +1857,21 @@
             const countrySelect = document.getElementById('country-select');
             const provinceSelect = document.getElementById('province-select');
             const citySelect = document.getElementById('city-select');
+            const streetSelect = document.getElementById('street-select');
             
             const selectedCountry = countrySelect.value;
             
             // Clear previous options
-            provinceSelect.innerHTML = '<option value="">اختر المحافظة</option>';
-            citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+            provinceSelect.innerHTML = `<option value="">${translateText('select_province')}</option>`;
+            citySelect.innerHTML = `<option value="">${translateText('select_city')}</option>`;
+            streetSelect.innerHTML = `<option value="">${translateText('select_street')}</option>`;
             
             if (selectedCountry && locationData[selectedCountry]) {
                 const provinces = locationData[selectedCountry].provinces;
                 for (const [key, province] of Object.entries(provinces)) {
                     const option = document.createElement('option');
                     option.value = key;
-                    option.textContent = province.name;
+                    option.textContent = province.name[currentLanguage] || province.name['ar'];
                     provinceSelect.appendChild(option);
                 }
             }
@@ -1127,21 +1881,49 @@
             const countrySelect = document.getElementById('country-select');
             const provinceSelect = document.getElementById('province-select');
             const citySelect = document.getElementById('city-select');
+            const streetSelect = document.getElementById('street-select');
             
             const selectedCountry = countrySelect.value;
             const selectedProvince = provinceSelect.value;
             
             // Clear previous options
-            citySelect.innerHTML = '<option value="">اختر المدينة</option>';
+            citySelect.innerHTML = `<option value="">${translateText('select_city')}</option>`;
+            streetSelect.innerHTML = `<option value="">${translateText('select_street')}</option>`;
             
             if (selectedCountry && selectedProvince && locationData[selectedCountry]) {
                 const province = locationData[selectedCountry].provinces[selectedProvince];
                 if (province && province.cities) {
-                    province.cities.forEach(city => {
+                    for (const [key, city] of Object.entries(province.cities)) {
                         const option = document.createElement('option');
-                        option.value = city;
-                        option.textContent = city;
+                        option.value = key;
+                        option.textContent = city.name[currentLanguage] || city.name['ar'];
                         citySelect.appendChild(option);
+                    }
+                }
+            }
+        }
+
+        function updateStreets() {
+            const countrySelect = document.getElementById('country-select');
+            const provinceSelect = document.getElementById('province-select');
+            const citySelect = document.getElementById('city-select');
+            const streetSelect = document.getElementById('street-select');
+            
+            const selectedCountry = countrySelect.value;
+            const selectedProvince = provinceSelect.value;
+            const selectedCity = citySelect.value;
+            
+            // Clear previous options
+            streetSelect.innerHTML = `<option value="">${translateText('select_street')}</option>`;
+            
+            if (selectedCountry && selectedProvince && selectedCity && locationData[selectedCountry]) {
+                const city = locationData[selectedCountry].provinces[selectedProvince].cities[selectedCity];
+                if (city && city.streets) {
+                    city.streets.forEach(street => {
+                        const option = document.createElement('option');
+                        option.value = street;
+                        option.textContent = street;
+                        streetSelect.appendChild(option);
                     });
                 }
             }
@@ -1200,7 +1982,7 @@
             return stars;
         }
 
-        // Generate products
+        // Generate products with translations
         function generateProducts() {
             const grid = document.getElementById('products-grid');
             const homeGrid = document.getElementById('home-products-grid');
@@ -1209,30 +1991,32 @@
                 const convertedPrice = convertPrice(product.price);
                 const convertedOriginalPrice = convertPrice(product.originalPrice);
                 const currencySymbol = currencySymbols[currentCurrency];
+                const productName = product.name[currentLanguage] || product.name['ar'];
+                const productDesc = product.description[currentLanguage] || product.description['ar'];
                 
                 return `
-                <div class="bg-white dark:bg-gray-700 rounded-2xl shadow-xl overflow-hidden card-hover relative group">
-                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
+                    <div class="discount-badge animate-pulse">${translateText('discount')} ${product.discount}%</div>
+                    <div class="h-48 md:h-64 overflow-hidden relative">
+                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">${product.name}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">${product.description}</p>
-                        <div class="flex items-center mb-3">
-                            <div class="flex text-sm">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm mb-2 md:mb-3">${productDesc}</p>
+                        <div class="flex items-center mb-2 md:mb-3">
+                            <div class="flex text-xs md:text-sm">
                                 ${generateStarRating(product.rating)}
                             </div>
-                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
+                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} ${translateText('reviews') || 'تقييم'})</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
-                                <span class="text-sm text-gray-500 line-through mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
+                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
+                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
                             </div>
-                            <button onclick="addToCart('${product.id}', '${product.name}', ${convertedPrice})" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105">
-                                أضف للسلة
+                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="bg-gradient-to-r from-primary to-secondary text-white px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                ${translateText('add_to_cart')}
                             </button>
                         </div>
                     </div>
@@ -1245,30 +2029,32 @@
                 const convertedPrice = convertPrice(product.price);
                 const convertedOriginalPrice = convertPrice(product.originalPrice);
                 const currencySymbol = currencySymbols[currentCurrency];
+                const productName = product.name[currentLanguage] || product.name['ar'];
+                const productDesc = product.description[currentLanguage] || product.description['ar'];
                 
                 return `
-                <div class="bg-white dark:bg-gray-700 rounded-2xl shadow-xl overflow-hidden card-hover relative group">
-                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group">
+                    <div class="discount-badge animate-pulse">${translateText('discount')} ${product.discount}%</div>
+                    <div class="h-48 md:h-64 overflow-hidden relative">
+                        <img src="${product.image}" alt="${productName}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">${product.name}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">${product.description}</p>
-                        <div class="flex items-center mb-3">
-                            <div class="flex text-sm">
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3">${productName}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-xs md:text-sm mb-2 md:mb-3">${productDesc}</p>
+                        <div class="flex items-center mb-2 md:mb-3">
+                            <div class="flex text-xs md:text-sm">
                                 ${generateStarRating(product.rating)}
                             </div>
-                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} تقييم)</span>
+                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} ${translateText('reviews') || 'تقييم'})</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
-                                <span class="text-sm text-gray-500 line-through mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
+                                <span class="text-lg md:text-2xl font-bold text-primary">${convertedPrice} ${currencySymbol}</span>
+                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
                             </div>
-                            <button onclick="addToCart('${product.id}', '${product.name}', ${convertedPrice})" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105">
-                                أضف للسلة
+                            <button onclick="addToCart('${product.id}', '${productName}', ${convertedPrice})" class="bg-gradient-to-r from-primary to-secondary text-white px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                ${translateText('add_to_cart')}
                             </button>
                         </div>
                     </div>
@@ -1288,7 +2074,7 @@
             }
             
             updateCartUI();
-            showNotification('تم إضافة المنتج للسلة ✅');
+            showNotification(translateText('add_to_cart') + ' ✅');
         }
 
         function removeFromCart(id) {
@@ -1327,26 +2113,26 @@
             cartCount.textContent = totalItems;
             
             if (cartSubtotal) cartSubtotal.innerHTML = `${subtotalPrice.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
-            if (cartShipping) cartShipping.innerHTML = shippingCost === 0 ? 'مجاني' : `${shippingCost.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
+            if (cartShipping) cartShipping.innerHTML = shippingCost === 0 ? translateText('free') || 'مجاني' : `${shippingCost.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
             if (cartTotal) cartTotal.innerHTML = `${totalPrice.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
             if (paymentSubtotal) paymentSubtotal.innerHTML = `${subtotalPrice.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
-            if (paymentShipping) paymentShipping.innerHTML = shippingCost === 0 ? 'مجاني' : `${shippingCost.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
+            if (paymentShipping) paymentShipping.innerHTML = shippingCost === 0 ? translateText('free') || 'مجاني' : `${shippingCost.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
             if (paymentTotal) paymentTotal.innerHTML = `${totalPrice.toFixed(2)} <span class="currency-symbol">${currencySymbol}</span>`;
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-center text-gray-500 py-8 text-lg">السلة فارغة 🛒</p>';
+                cartItems.innerHTML = `<p class="text-center text-gray-500 py-6 md:py-8 text-base md:text-lg">${translateText('cart_empty')}</p>`;
             } else {
                 cartItems.innerHTML = cart.map(item => `
-                    <div class="flex items-center justify-between border-b dark:border-gray-700 py-4">
+                    <div class="flex items-center justify-between border-b dark:border-gray-700 py-3 md:py-4">
                         <div class="flex-1">
-                            <h3 class="font-bold text-lg">${item.name}</h3>
-                            <p class="text-gray-600 dark:text-gray-300">${item.price.toFixed(2)} ${currencySymbol}</p>
+                            <h3 class="font-bold text-base md:text-lg">${item.name}</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm md:text-base">${item.price.toFixed(2)} ${currencySymbol}</p>
                         </div>
-                        <div class="flex items-center space-x-3 space-x-reverse">
-                            <button onclick="updateQuantity('${item.id}', -1)" class="bg-gray-200 dark:bg-gray-600 w-10 h-10 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors">-</button>
-                            <span class="mx-3 font-bold text-lg">${item.quantity}</span>
-                            <button onclick="updateQuantity('${item.id}', 1)" class="bg-gray-200 dark:bg-gray-600 w-10 h-10 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors">+</button>
-                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 mr-3 text-lg">
+                        <div class="flex items-center space-x-2 md:space-x-3 space-x-reverse">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="bg-gray-200 dark:bg-gray-600 w-8 h-8 md:w-10 md:h-10 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors text-sm md:text-base">-</button>
+                            <span class="mx-2 md:mx-3 font-bold text-base md:text-lg">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="bg-gray-200 dark:bg-gray-600 w-8 h-8 md:w-10 md:h-10 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors text-sm md:text-base">+</button>
+                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 mr-2 md:mr-3 text-base md:text-lg">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -1374,11 +2160,11 @@
 
         function showNotification(message) {
             const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-4 rounded-xl shadow-2xl z-50 transform translate-x-full';
+            notification.className = 'fixed top-16 md:top-20 right-2 md:right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 md:px-6 py-3 md:py-4 rounded-lg md:rounded-xl shadow-2xl z-50 transform translate-x-full animate-slideIn';
             notification.innerHTML = `
                 <div class="flex items-center">
-                    <i class="fas fa-check-circle mr-3 text-xl"></i>
-                    <span class="font-bold">${message}</span>
+                    <i class="fas fa-check-circle mr-2 md:mr-3 text-base md:text-xl"></i>
+                    <span class="font-bold text-sm md:text-base">${message}</span>
                 </div>
             `;
             document.body.appendChild(notification);
@@ -1506,7 +2292,7 @@
         }
 
         function resendCode() {
-            showNotification('📱 تم إعادة إرسال رمز التأكيد');
+            showNotification(translateText('resend_code') + ' 📱');
         }
 
         // Payment form handler
@@ -1519,17 +2305,18 @@
             const country = this.querySelector('select[name="country"]').value;
             const province = this.querySelector('select[name="province"]').value;
             const city = this.querySelector('select[name="city"]').value;
+            const street = this.querySelector('select[name="street"]').value;
             
             const customerData = {
                 name: `${firstName} ${lastName}`,
                 phone: `${countryCode}${phone}`,
                 email: email,
-                location: { country, province, city }
+                location: { country, province, city, street }
             };
             sessionStorage.setItem('customerData', JSON.stringify(customerData));
             
             const orderSummary = cart.map(item => 
-                `${item.name} - الكمية: ${item.quantity} - السعر: ${item.price.toFixed(2)} ${currencySymbols[currentCurrency]}`
+                `${item.name} - ${translateText('quantity') || 'الكمية'}: ${item.quantity} - ${translateText('price') || 'السعر'}: ${item.price.toFixed(2)} ${currencySymbols[currentCurrency]}`
             ).join('\n');
             
             const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -1540,14 +2327,15 @@
             sessionStorage.setItem('orderNumber', orderNumber);
             
             const hiddenFields = [
-                { name: '_subject', value: `📋 طلب جديد - ${orderNumber} - متجر الخصوصية المتطور` },
+                { name: '_subject', value: `📋 ${translateText('new_order') || 'طلب جديد'} - ${orderNumber} - ${translateText('site_title')}` },
                 { name: '_next', value: `${window.location.origin}${window.location.pathname}#code` },
                 { name: 'order_items', value: orderSummary },
                 { name: 'total_amount', value: `${finalTotal.toFixed(2)} ${currencySymbols[currentCurrency]}` },
                 { name: 'order_number', value: orderNumber },
                 { name: 'order_date', value: new Date().toLocaleString('ar-SA') },
-                { name: 'order_status', value: 'في انتظار كود التأكيد' },
+                { name: 'order_status', value: translateText('awaiting_verification') || 'في انتظار كود التأكيد' },
                 { name: 'currency', value: currentCurrency },
+                { name: 'language', value: currentLanguage },
                 { name: 'shipping_cost', value: `${shippingCost.toFixed(2)} ${currencySymbols[currentCurrency]}` }
             ];
             
@@ -1568,8 +2356,10 @@
             checkAgeVerification();
             setupVerifyCodeInputs();
             setupCodeVerificationForm();
+            // Generate products immediately on page load
             generateProducts();
             updateCartUI();
+            updateTranslations();
             
             // Check if redirected from payment
             if (window.location.hash === '#code') {
