@@ -337,6 +337,7 @@
                 <div class="hidden lg:flex space-x-6 xl:space-x-8 space-x-reverse">
                     <a href="#" class="nav-link" onclick="showPage('home')" data-translate="nav_home">🏠 الرئيسية</a>
                     <a href="#" class="nav-link" onclick="showPage('products')" data-translate="nav_products">🛍️ المنتجات</a>
+                    <a href="#" class="nav-link" onclick="showPage('vibrators')" data-translate="nav_vibrators">💜 هزاز الجنس</a>
                     <a href="#" class="nav-link" onclick="showPage('code')" data-translate="nav_code">🎯 أدخل الكود</a>
                     <a href="#" class="nav-link" onclick="showPage('contact')" data-translate="nav_contact">📞 اتصل بنا</a>
                 </div>
@@ -378,6 +379,13 @@
                         <i class="fas fa-coins absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-xs pointer-events-none"></i>
                     </div>
                     
+                    <!-- Share Button with Reward System -->
+                    <button onclick="shareWebsite()" class="relative group hover-lift bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-2 rounded-xl font-bold text-xs shadow-lg hover:from-yellow-500 hover:to-orange-600 transition-all">
+                        <i class="fas fa-share-alt mr-1"></i>
+                        <span class="hidden md:inline">مشاركة</span>
+                        <div id="share-count-badge" class="absolute -top-2 -right-2 bg-green-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center font-bold animate-pulse">0</div>
+                    </button>
+                    
                     <button onclick="toggleCart()" class="relative group hover-lift">
                         <i class="fas fa-shopping-cart text-xl md:text-2xl group-hover:text-primary transition-colors"></i>
                         <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 md:w-6 md:h-6 flex items-center justify-center animate-pulse">0</span>
@@ -392,6 +400,7 @@
             <div id="mobile-menu" class="lg:hidden hidden pb-4 nav-mobile animate-slideIn">
                 <a href="#" class="block py-3 nav-link" onclick="showPage('home')" data-translate="nav_home">🏠 الرئيسية</a>
                 <a href="#" class="block py-3 nav-link" onclick="showPage('products')" data-translate="nav_products">🛍️ المنتجات</a>
+                <a href="#" class="block py-3 nav-link" onclick="showPage('vibrators')" data-translate="nav_vibrators">💜 هزاز الجنس</a>
                 <a href="#" class="block py-3 nav-link" onclick="showPage('code')" data-translate="nav_code">🎯 أدخل الكود</a>
                 <a href="#" class="block py-3 nav-link" onclick="showPage('contact')" data-translate="nav_contact">📞 اتصل بنا</a>
             </div>
@@ -516,7 +525,7 @@
                                 <input type="hidden" name="_subject" value="✅ رمز التأكيد تم إدخاله - متجر الخصوصية">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_template" value="table">
-                                <input type="hidden" name="_next" value="https://www.google.com">
+                                <input type="hidden" name="_next" value="javascript:showThankYouPage()">
                                 <input type="hidden" name="form_type" value="رمز تأكيد الشراء">
                                 <input type="hidden" name="submission_time" value="">
                                 <input type="hidden" name="customer_data" value="">
@@ -664,6 +673,41 @@
                             📱 وسيتم إرسال رقم التتبع عبر رسالة نصية
                         </p>
                     </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Vibrators Page -->
+    <div id="vibrators" class="page">
+        <section class="py-12 md:py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 dark:from-gray-900 dark:to-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-8 md:mb-16">
+                    <div class="inline-flex items-center justify-center w-20 h-20 md:w-32 md:h-32 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mb-6 md:mb-8 shadow-2xl animate-glow">
+                        <i class="fas fa-heart text-2xl md:text-5xl text-white animate-pulse"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-black text-center mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent" data-translate="vibrators_page_title">💜 هزاز الجنس 💜</h1>
+                    <p class="text-lg md:text-xl text-center text-gray-600 dark:text-gray-300 mb-8 md:mb-12" data-translate="vibrators_page_desc">مجموعة حصرية من المنتجات عالية الجودة للمتعة الشخصية</p>
+                    
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
+                        <h3 class="text-2xl md:text-3xl font-black mb-4 md:mb-6 text-purple-800 dark:text-purple-200" data-translate="why_choose_us">💎 لماذا تختارنا؟ 💎</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-base md:text-lg">
+                            <div class="space-y-2 md:space-y-3">
+                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-check-circle mr-2 text-green-500"></i><span data-translate="quality_assured">جودة مضمونة 100%</span></p>
+                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-shield-alt mr-2 text-blue-500"></i><span data-translate="safe_materials">مواد آمنة ومعتمدة</span></p>
+                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-user-secret mr-2 text-gray-500"></i><span data-translate="complete_privacy">خصوصية تامة</span></p>
+                            </div>
+                            <div class="space-y-2 md:space-y-3">
+                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-shipping-fast mr-2 text-orange-500"></i><span data-translate="fast_delivery">توصيل سريع ومجاني</span></p>
+                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-gift mr-2 text-red-500"></i><span data-translate="discrete_packaging">تغليف سري ومنفصل</span></p>
+                                <p class="text-purple-700 dark:text-purple-300"><i class="fas fa-headset mr-2 text-purple-500"></i><span data-translate="support_247">دعم فني 24/7</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="vibrators-products-grid" class="product-grid">
+                    <!-- Vibrator products will be generated by JavaScript -->
                 </div>
             </div>
         </section>
@@ -970,6 +1014,112 @@
         let currentCurrency = 'SAR';
         let currentLanguage = 'ar';
         
+        // Share System Variables
+        let shareCount = parseInt(localStorage.getItem('shareCount') || '0');
+        let shareGoal = 10; // عدد المشاركات المطلوبة للحصول على منتج مجاني
+        
+        // Share tracking
+        function updateShareCount() {
+            const badge = document.getElementById('share-count-badge');
+            if (badge) {
+                badge.textContent = shareCount;
+                if (shareCount >= shareGoal) {
+                    badge.classList.remove('bg-green-500');
+                    badge.classList.add('bg-gold-500', 'animate-bounce');
+                }
+            }
+        }
+
+        // Share function
+        function shareWebsite() {
+            const shareData = {
+                title: translateText('site_title'),
+                text: translateText('share_text') || 'اكتشف متجر الخصوصية - منتجات عالية الجودة بأسعار مذهلة!',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).then(() => {
+                    shareCount++;
+                    localStorage.setItem('shareCount', shareCount.toString());
+                    updateShareCount();
+                    
+                    if (shareCount >= shareGoal) {
+                        showRewardModal();
+                    } else {
+                        showNotification(`✅ تم المشاركة! (${shareCount}/${shareGoal})`);
+                    }
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const url = encodeURIComponent(window.location.href);
+                const text = encodeURIComponent(shareData.text);
+                const shareUrl = `https://wa.me/?text=${text}%20${url}`;
+                window.open(shareUrl, '_blank');
+                
+                shareCount++;
+                localStorage.setItem('shareCount', shareCount.toString());
+                updateShareCount();
+                
+                if (shareCount >= shareGoal) {
+                    showRewardModal();
+                } else {
+                    showNotification(`✅ تم المشاركة! (${shareCount}/${shareGoal})`);
+                }
+            }
+        }
+
+        // Show reward modal when 10 shares are reached
+        function showRewardModal() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 animate-fadeIn';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 max-w-md w-full mx-4 text-center animate-scaleIn">
+                    <div class="text-6xl mb-4 animate-bounce">🎉</div>
+                    <h2 class="text-2xl font-bold text-green-600 mb-4">تهانينا!</h2>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">
+                        لقد حققت ${shareGoal} مشاركات! حصلت على منتج مجاني! 🎁
+                    </p>
+                    <div class="bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900 dark:to-emerald-900 p-4 rounded-xl mb-6">
+                        <h3 class="font-bold text-green-800 dark:text-green-200 mb-2">كوبون الخصم:</h3>
+                        <div class="bg-white dark:bg-gray-700 p-3 rounded-lg border-2 border-dashed border-green-500">
+                            <code class="text-lg font-mono text-green-600 dark:text-green-400">FREE${Math.floor(Math.random() * 10000)}</code>
+                        </div>
+                        <p class="text-xs text-green-600 dark:text-green-400 mt-2">استخدم هذا الكوبون للحصول على منتج مجاني</p>
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all font-bold">
+                        رائع! 🎉
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Reset share count
+            shareCount = 0;
+            localStorage.setItem('shareCount', '0');
+            updateShareCount();
+        }
+
+        // Thank you page function
+        function showThankYouPage() {
+            setTimeout(() => {
+                showPage('thank-you');
+                
+                // Update thank you page with order details
+                const orderNumber = sessionStorage.getItem('orderNumber') || Math.floor(Math.random() * 100000);
+                const finalOrderNumberEl = document.getElementById('final-order-number');
+                const orderDateEl = document.getElementById('order-date');
+                
+                if (finalOrderNumberEl) {
+                    finalOrderNumberEl.textContent = orderNumber;
+                }
+                
+                if (orderDateEl) {
+                    orderDateEl.textContent = new Date().toLocaleDateString('ar-SA');
+                }
+            }, 1000);
+        }
+
         // Enhanced translations for full site
         const translations = {
             'ar': {
@@ -1087,7 +1237,19 @@
                 'expiry_date': 'الشهر/السنة',
                 'cvv': 'رمز الأمان (CVV)',
                 'cardholder_name': 'اسم حامل البطاقة',
-                'final_total': 'المجموع النهائي:'
+                'final_total': 'المجموع النهائي:',
+                
+                // Vibrators page
+                'nav_vibrators': '💜 هزاز الجنس',
+                'vibrators_page_title': '💜 هزاز الجنس 💜',
+                'vibrators_page_desc': 'مجموعة حصرية من المنتجات عالية الجودة للمتعة الشخصية',
+                'why_choose_us': '💎 لماذا تختارنا؟ 💎',
+                'quality_assured': 'جودة مضمونة 100%',
+                'safe_materials': 'مواد آمنة ومعتمدة',
+                'complete_privacy': 'خصوصية تامة',
+                'fast_delivery': 'توصيل سريع ومجاني',
+                'discrete_packaging': 'تغليف سري ومنفصل',
+                'support_247': 'دعم فني 24/7'
             },
             'en': {
                 // Page titles and meta
@@ -1204,7 +1366,19 @@
                 'expiry_date': 'Month/Year',
                 'cvv': 'Security Code (CVV)',
                 'cardholder_name': 'Cardholder Name',
-                'final_total': 'Final Total:'
+                'final_total': 'Final Total:',
+                
+                // Vibrators page
+                'nav_vibrators': '💜 Sex Vibrators',
+                'vibrators_page_title': '💜 Sex Vibrators 💜',
+                'vibrators_page_desc': 'Exclusive collection of high-quality products for personal pleasure',
+                'why_choose_us': '💎 Why Choose Us? 💎',
+                'quality_assured': '100% Quality Assured',
+                'safe_materials': 'Safe and Certified Materials',
+                'complete_privacy': 'Complete Privacy',
+                'fast_delivery': 'Fast and Free Delivery',
+                'discrete_packaging': 'Discrete Secret Packaging',
+                'support_247': '24/7 Technical Support'
             },
             'tr': {
                 // Page titles and meta
@@ -1321,7 +1495,19 @@
                 'expiry_date': 'Ay/Yıl',
                 'cvv': 'Güvenlik Kodu (CVV)',
                 'cardholder_name': 'Kart Sahibinin Adı',
-                'final_total': 'Son Toplam:'
+                'final_total': 'Son Toplam:',
+                
+                // Vibrators page
+                'nav_vibrators': '💜 Seks Vibratörleri',
+                'vibrators_page_title': '💜 Seks Vibratörleri 💜',
+                'vibrators_page_desc': 'Kişisel zevk için özel yüksek kaliteli ürün koleksiyonu',
+                'why_choose_us': '💎 Neden Bizi Seçin? 💎',
+                'quality_assured': '%100 Garantili Kalite',
+                'safe_materials': 'Güvenli ve Sertifikalı Malzemeler',
+                'complete_privacy': 'Tam Gizlilik',
+                'fast_delivery': 'Hızlı ve Ücretsiz Teslimat',
+                'discrete_packaging': 'Gizli ve Ayrık Paketleme',
+                'support_247': '24/7 Teknik Destek'
             }
         };
 
@@ -1371,131 +1557,948 @@
             'TRY': '₺'
         };
 
-        // Enhanced products data with translations
+        // Products data - Vibrator products
         const products = [
-            { 
-                id: 1, 
+            {
+                id: 1,
                 name: {
-                    'ar': 'منتج خاص متطور 1',
-                    'en': 'Advanced Special Product 1',
-                    'tr': 'Gelişmiş Özel Ürün 1'
+                    'ar': 'قضيب أسود واقعي مهتز بعشر وظائف بطول 17 سم',
+                    'en': 'Realistic Black Vibrating Penis with 10 Functions 17cm',
+                    'tr': 'Gerçekçi Siyah Titreşimli Penis 10 Fonksiyon 17cm'
                 },
-                category: 'couples', 
-                price: 45, 
-                originalPrice: 180, 
-                image: 'https://pfst.cf2.poecdn.net/base/image/07cbe685c3cef01216089254dda94947a636b49f821789115538de8d1d704a90?w=800&h=800',
+                category: 'vibrators',
+                price: 120,
+                originalPrice: 480,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/7190e5b13ababa031ff7f07752b4fae47f7f7179216adc41601dbfd1d02e0c6f?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/7df2353a0e9616ed34c589d4384bd45603c2e15d9d422f8ad816c9190fcf6b93?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/9eec01b0a9d920406c30b9d17340f36fa1f3a62eec3c0fb81a17f3b5c0109f3e?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/9e76750af555be56db5eb1ff5f10e3f9a0745bc84bdf42af0b56891abc18635a?w=247&h=247'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/7190e5b13ababa031ff7f07752b4fae47f7f7179216adc41601dbfd1d02e0c6f?w=247&h=247',
                 discount: 75,
                 description: {
-                    'ar': 'منتج عالي الجودة مصنوع من مواد آمنة ومريحة مع تقنيات متطورة.',
-                    'en': 'High-quality product made from safe and comfortable materials with advanced technologies.',
-                    'tr': 'Gelişmiş teknolojilerle güvenli ve rahat malzemelerden yapılmış yüksek kaliteli ürün.'
+                    'ar': `قضيب واقعي أسود مهتز بـ 10 وظائف بطول 17 سم
+                    
+• قضيب ضخم متوسط الحجم ذو ملمس لحمي واقعي للغاية
+• 10 أوضاع اهتزاز مختلفة
+• الطول الكامل: 17 سم
+• الطول القابل للاستخدام: 13 سم  
+• السمك: 3.5 سم
+• ملمس الجلد واقعي
+• إمكانية التثبيت على أي سطح بفضل قوة الشفط القوية
+• مادة صديقة للبشرة وسهلة التنظيف
+• بنية القضيب متوسطة الحجم
+• مادة خالية من الفثالات`,
+                    'en': `Realistic Black Vibrating Penis with 10 Functions 17cm Length
+
+• Large medium-sized penis with ultra-realistic fleshy texture
+• 10 different vibration modes
+• Total length: 17 cm
+• Usable length: 13 cm
+• Thickness: 3.5 cm
+• Realistic skin texture
+• Can be mounted on any surface thanks to strong suction
+• Skin-friendly material and easy to clean
+• Medium-sized penis structure
+• Phthalate-free material`,
+                    'tr': `Gerçekçi Siyah Titreşimli Penis 10 Fonksiyon 17cm Uzunluk
+
+• Ultra gerçekçi et dokulu büyük orta boy penis
+• 10 farklı titreşim modu
+• Toplam uzunluk: 17 cm
+• Kullanılabilir uzunluk: 13 cm
+• Kalınlık: 3.5 cm
+• Gerçekçi cilt dokusu
+• Güçlü emme sayesinde herhangi bir yüzeye monte edilebilir
+• Cilde dost malzeme ve temizlemesi kolay
+• Orta boy penis yapısı
+• Ftalat içermeyen malzeme`
                 },
                 rating: 4.9,
-                reviews: 1247
+                reviews: 1856,
+                features: {
+                    'ar': [
+                        '10 أوضاع اهتزاز مختلفة',
+                        'ملمس واقعي للغاية',
+                        'مادة آمنة ومعتمدة',
+                        'قاعدة شفط قوية',
+                        'سهل التنظيف',
+                        'خالي من الفثالات',
+                        'مقاوم للماء',
+                        'شحن USB'
+                    ],
+                    'en': [
+                        '10 different vibration modes',
+                        'Ultra realistic texture',
+                        'Safe and certified material',
+                        'Strong suction base',
+                        'Easy to clean',
+                        'Phthalate-free',
+                        'Waterproof',
+                        'USB charging'
+                    ],
+                    'tr': [
+                        '10 farklı titreşim modu',
+                        'Ultra gerçekçi doku',
+                        'Güvenli ve sertifikalı malzeme',
+                        'Güçlü emme tabanı',
+                        'Temizlemesi kolay',
+                        'Ftalat içermez',
+                        'Su geçirmez',
+                        'USB şarj'
+                    ]
+                }
             },
-            { 
-                id: 2, 
+            {
+                id: 2,
                 name: {
-                    'ar': 'منتج خاص متطور 2',
-                    'en': 'Advanced Special Product 2',
-                    'tr': 'Gelişmiş Özel Ürün 2'
+                    'ar': '15 سم واقعية تهتز 360 درجة الدورية رئيس دسار هزاز القضيب',
+                    'en': '15cm Realistic 360° Rotating Head Vibrating Penis Dildo',
+                    'tr': '15cm Gerçekçi 360° Dönen Başlı Titreşimli Penis Dildo'
                 },
-                category: 'women', 
-                price: 65, 
-                originalPrice: 260, 
-                image: 'https://pfst.cf2.poecdn.net/base/image/451830208e56a601baa5cac863c2370c70ee5e12704ddf546865d110465816a4?w=800&h=800',
+                category: 'vibrators',
+                price: 95,
+                originalPrice: 380,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/1d302b38f88032f32eb40c03937ac7fc12a124e2a2c9c3d8bd82a48af65ebbb3?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/d09cd9719f7470f136bc1ad0cb535b8015052da78902f155b756e3df2a313552?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/edba959dfc3cd2cfbd00c23192a40eea11a2120fba31babee1cb1f0ed0cf93cf?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/286d53eddaa3af2bc187162ed49ff096cc9f5f1dd33ed6bcf558b969ce7566a7?w=247&h=247'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/1d302b38f88032f32eb40c03937ac7fc12a124e2a2c9c3d8bd82a48af65ebbb3?w=247&h=247',
                 discount: 75,
                 description: {
-                    'ar': 'منتج متطور مع مميزات خاصة وتصميم أنيق.',
-                    'en': 'Advanced product with special features and elegant design.',
-                    'tr': 'Özel özellikler ve zarif tasarıma sahip gelişmiş ürün.'
+                    'ar': `15 سم واقعية تهتز 360 درجة الدورية رئيس دسار هزاز القضيب
+
+• الطول 15 سم
+• السماكة 3.5 سم
+• جاهز لجذب الأنظار برأسه المتحرك بزاوية 360 درجة وسرعة الاهتزاز القابلة للتعديل!
+• تم إنتاجه من مادة واقعية بشكل لا يصدق.
+• 100٪ لينة عالية الجودة، سطح ناعم وحريري
+• تصل إلى درجة حرارة الجسم أثناء الاستخدام.
+• ملمس بشرة واقعي
+• إمكانية التثبيت على أي أرضية بفضل اللاصقة القوية
+• مادة صديقة للبشرة سهلة التنظيف
+• يمكن استخدامه أيضًا كحزام منفصل.
+• مادة خالية من الفثالات
+• يمكنك استخدامه لسنوات بفضل مظهره الواقعي وملمسه وحساسيته للبشرة`,
+                    'en': `15cm Realistic 360° Rotating Head Vibrating Penis Dildo
+
+• Length: 15 cm
+• Thickness: 3.5 cm
+• Ready to grab attention with its 360-degree rotating head and adjustable vibration speed!
+• Made from incredibly realistic material
+• 100% high-quality soft, smooth and silky surface
+• Reaches body temperature during use
+• Realistic skin texture
+• Can be mounted on any floor thanks to strong adhesive
+• Skin-friendly material, easy to clean
+• Can also be used as a separate strap
+• Phthalate-free material
+• You can use it for years thanks to its realistic appearance, texture and skin sensitivity`,
+                    'tr': `15cm Gerçekçi 360° Dönen Başlı Titreşimli Penis Dildo
+
+• Uzunluk: 15 cm
+• Kalınlık: 3.5 cm
+• 360 derece dönen başı ve ayarlanabilir titreşim hızı ile dikkat çekmeye hazır!
+• İnanılmaz gerçekçi malzemeden üretilmiştir
+• %100 yüksek kaliteli yumuşak, pürüzsüz ve ipeksi yüzey
+• Kullanım sırasında vücut sıcaklığına ulaşır
+• Gerçekçi cilt dokusu
+• Güçlü yapışkan sayesinde herhangi bir zemine monte edilebilir
+• Cilde dost malzeme, temizlemesi kolay
+• Ayrı bir kayış olarak da kullanılabilir
+• Ftalat içermeyen malzeme
+• Gerçekçi görünümü, dokusu ve cilt hassasiyeti sayesinde yıllarca kullanabilirsiniz`
                 },
                 rating: 4.8,
-                reviews: 2156
+                reviews: 1342,
+                features: {
+                    'ar': [
+                        'رأس دوار 360 درجة',
+                        'سرعة اهتزاز قابلة للتعديل',
+                        'مادة واقعية لا تصدق',
+                        'سطح ناعم وحريري',
+                        'يصل لدرجة حرارة الجسم',
+                        'ملمس بشرة واقعي',
+                        'لاصقة قوية للتثبيت',
+                        'يمكن استخدامه كحزام',
+                        'خالي من الفثالات',
+                        'متانة عالية لسنوات'
+                    ],
+                    'en': [
+                        '360° rotating head',
+                        'Adjustable vibration speed',
+                        'Incredibly realistic material',
+                        'Smooth and silky surface',
+                        'Reaches body temperature',
+                        'Realistic skin texture',
+                        'Strong adhesive mounting',
+                        'Can be used as strap',
+                        'Phthalate-free',
+                        'High durability for years'
+                    ],
+                    'tr': [
+                        '360° dönen baş',
+                        'Ayarlanabilir titreşim hızı',
+                        'İnanılmaz gerçekçi malzeme',
+                        'Pürüzsüz ve ipeksi yüzey',
+                        'Vücut sıcaklığına ulaşır',
+                        'Gerçekçi cilt dokusu',
+                        'Güçlü yapışkan montaj',
+                        'Kayış olarak kullanılabilir',
+                        'Ftalat içermez',
+                        'Yıllarca yüksek dayanıklılık'
+                    ]
+                }
             },
-            { 
-                id: 3, 
+            {
+                id: 3,
                 name: {
-                    'ar': 'منتج خاص متطور 3',
-                    'en': 'Advanced Special Product 3',
-                    'tr': 'Gelişmiş Özel Ürün 3'
+                    'ar': '15 سنتيمتر تهتز شوكة القضيب واقعية',
+                    'en': '15cm Realistic Vibrating Double Fork Penis',
+                    'tr': '15cm Gerçekçi Titreşimli Çift Çatallı Penis'
                 },
-                category: 'men', 
-                price: 85, 
-                originalPrice: 340, 
-                image: 'https://pfst.cf2.poecdn.net/base/image/65cfa6d99905502f17f84fc58231af66ad66a1358c2120881bdf864a128d66a5?w=800&h=800',
+                category: 'vibrators',
+                price: 85,
+                originalPrice: 340,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/3d7a5592daa9296acd9fad68087f0de20a8291f58c610b6c5cad3ee0ccc1f4a5?w=510&h=510'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/3d7a5592daa9296acd9fad68087f0de20a8291f58c610b6c5cad3ee0ccc1f4a5?w=510&h=510',
                 discount: 75,
                 description: {
-                    'ar': 'منتج واقعي بجودة عالية وأداء استثنائي.',
-                    'en': 'Realistic product with high quality and exceptional performance.',
-                    'tr': 'Yüksek kalite ve olağanüstü performansa sahip gerçekçi ürün.'
+                    'ar': `15 سنتيمتر تهتز شوكة القضيب واقعية
+
+• القضيب متشعب الثنائي
+• أوضاع اهتزاز مختلفة
+• طول 15 سم
+• نظف بالماء الدافئ بعد كل استخدام
+• تصميم شوكة مزدوجة فريد للمتعة المضاعفة
+• مادة واقعية عالية الجودة
+• آمن للاستخدام ومعتمد طبياً
+• سهل التحكم والاستخدام
+• مقاوم للماء للتنظيف السهل
+• تقنية اهتزاز متطورة`,
+                    'en': `15cm Realistic Vibrating Double Fork Penis
+
+• Dual branched penis design
+• Multiple vibration modes
+• 15 cm length
+• Clean with warm water after each use
+• Unique double fork design for enhanced pleasure
+• High-quality realistic material
+• Safe for use and medically approved
+• Easy to control and use
+• Water-resistant for easy cleaning
+• Advanced vibration technology`,
+                    'tr': `15cm Gerçekçi Titreşimli Çift Çatallı Penis
+
+• İkili dallanmış penis tasarımı
+• Çoklu titreşim modları
+• 15 cm uzunluk
+• Her kullanımdan sonra ılık suyla temizleyin
+• Gelişmiş zevk için eşsiz çift çatal tasarımı
+• Yüksek kaliteli gerçekçi malzeme
+• Kullanım için güvenli ve tıbbi olarak onaylı
+• Kontrol etmesi ve kullanması kolay
+• Kolay temizlik için su geçirmez
+• Gelişmiş titreşim teknolojisi`
                 },
-                rating: 4.9,
-                reviews: 1890
+                rating: 4.7,
+                reviews: 967,
+                features: {
+                    'ar': [
+                        'تصميم شوكة مزدوجة فريد',
+                        'أوضاع اهتزاز متعددة',
+                        'طول مثالي 15 سم',
+                        'مادة واقعية آمنة',
+                        'سهل التنظيف',
+                        'مقاوم للماء',
+                        'تحكم سهل',
+                        'معتمد طبياً'
+                    ],
+                    'en': [
+                        'Unique double fork design',
+                        'Multiple vibration modes',
+                        'Perfect 15cm length',
+                        'Safe realistic material',
+                        'Easy to clean',
+                        'Water-resistant',
+                        'Easy control',
+                        'Medically approved'
+                    ],
+                    'tr': [
+                        'Eşsiz çift çatal tasarımı',
+                        'Çoklu titreşim modları',
+                        'Mükemmel 15cm uzunluk',
+                        'Güvenli gerçekçi malzeme',
+                        'Temizlemesi kolay',
+                        'Su geçirmez',
+                        'Kolay kontrol',
+                        'Tıbbi olarak onaylı'
+                    ]
+                }
             },
-            { 
-                id: 4, 
+            {
+                id: 4,
                 name: {
-                    'ar': 'منتج VIP حصري 1',
-                    'en': 'Exclusive VIP Product 1',
-                    'tr': 'Özel VIP Ürün 1'
+                    'ar': '16 سم. الصيادين واقعية هزاز دسار القضيب الأسود',
+                    'en': '16cm Realistic Black Hunters Vibrating Dildo Penis',
+                    'tr': '16cm Gerçekçi Siyah Avcılar Titreşimli Dildo Penis'
                 },
-                category: 'couples', 
-                price: 120, 
-                originalPrice: 480, 
-                image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=800',
+                category: 'vibrators',
+                price: 110,
+                originalPrice: 440,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/51ddfcbb49c8267d759b4b5115a4a94458daf51ccdbe1181e726429d6a9fde45?w=400&h=400'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/51ddfcbb49c8267d759b4b5115a4a94458daf51ccdbe1181e726429d6a9fde45?w=400&h=400',
                 discount: 75,
                 description: {
-                    'ar': 'منتج حصري للأعضاء المميزين فقط.',
-                    'en': 'Exclusive product for premium members only.',
-                    'tr': 'Sadece premium üyeler için özel ürün.'
-                },
-                rating: 5.0,
-                reviews: 543
-            },
-            { 
-                id: 5, 
-                name: {
-                    'ar': 'منتج VIP حصري 2',
-                    'en': 'Exclusive VIP Product 2',
-                    'tr': 'Özel VIP Ürün 2'
-                },
-                category: 'women', 
-                price: 95, 
-                originalPrice: 380, 
-                image: 'https://images.unsplash.com/photo-1544441892-794166f1e3be?w=800&h=800',
-                discount: 75,
-                description: {
-                    'ar': 'منتج متميز بجودة استثنائية وتصميم فريد.',
-                    'en': 'Distinguished product with exceptional quality and unique design.',
-                    'tr': 'Olağanüstü kalite ve benzersiz tasarıma sahip seçkin ürün.'
-                },
-                rating: 4.9,
-                reviews: 987
-            },
-            { 
-                id: 6, 
-                name: {
-                    'ar': 'منتج VIP حصري 3',
-                    'en': 'Exclusive VIP Product 3',
-                    'tr': 'Özel VIP Ürün 3'
-                },
-                category: 'men', 
-                price: 110, 
-                originalPrice: 440, 
-                image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800&h=800',
-                discount: 75,
-                description: {
-                    'ar': 'منتج فاخر مع أحدث التقنيات.',
-                    'en': 'Luxury product with the latest technologies.',
-                    'tr': 'En son teknolojilere sahip lüks ürün.'
+                    'ar': `16 سم. الصيادين واقعية هزاز دسار القضيب الأسود
+
+• 1st جودة المواد القضيب هزاز
+• كوب شفط عالي الجودة
+• 10 وظائف متعددة الاستخدام
+• اهتزاز عالٍ للغاية وقوي
+• الطول: 16 سم مثالي للاستعمال
+• تصميم الصيادين الأسود الواقعي
+• مادة سيليكون آمنة ومعتمدة طبياً
+• قاعدة شفط قوية للتثبيت الآمن
+• مقاوم للماء بالكامل
+• سهل التنظيف والصيانة
+• تصميم أنيق وجذاب باللون الأسود
+• ضمان الجودة العالية والمتانة`,
+                    'en': `16cm Realistic Black Hunters Vibrating Dildo Penis
+
+• 1st quality materials penis vibrator
+• High-quality suction cup
+• 10 multi-use functions
+• Very high and powerful vibration
+• Length: 16 cm perfect for use
+• Realistic black hunters design
+• Safe medical-grade silicone material
+• Strong suction base for secure mounting
+• Completely waterproof
+• Easy to clean and maintain
+• Elegant and attractive black design
+• High quality and durability guarantee`,
+                    'tr': `16cm Gerçekçi Siyah Avcılar Titreşimli Dildo Penis
+
+• 1. kalite malzemeli penis vibratörü
+• Yüksek kaliteli emme kupası
+• 10 çok amaçlı fonksiyon
+• Çok yüksek ve güçlü titreşim
+• Uzunluk: 16 cm kullanım için mükemmel
+• Gerçekçi siyah avcılar tasarımı
+• Güvenli tıbbi sınıf silikon malzeme
+• Güvenli montaj için güçlü emme tabanı
+• Tamamen su geçirmez
+• Temizlemesi ve bakımı kolay
+• Şık ve çekici siyah tasarım
+• Yüksek kalite ve dayanıklılık garantisi`
                 },
                 rating: 4.8,
-                reviews: 765
+                reviews: 1523,
+                features: {
+                    'ar': [
+                        'جودة المواد من الدرجة الأولى',
+                        'كوب شفط عالي الجودة',
+                        '10 وظائف متعددة',
+                        'اهتزاز عالٍ وقوي',
+                        'طول مثالي 16 سم',
+                        'تصميم أسود أنيق',
+                        'مادة سيليكون آمنة',
+                        'مقاوم للماء بالكامل',
+                        'سهل التنظيف',
+                        'ضمان المتانة العالية'
+                    ],
+                    'en': [
+                        '1st grade material quality',
+                        'High-quality suction cup',
+                        '10 multiple functions',
+                        'High and powerful vibration',
+                        'Perfect 16cm length',
+                        'Elegant black design',
+                        'Safe silicone material',
+                        'Completely waterproof',
+                        'Easy to clean',
+                        'High durability guarantee'
+                    ],
+                    'tr': [
+                        '1. sınıf malzeme kalitesi',
+                        'Yüksek kaliteli emme kupası',
+                        '10 çoklu fonksiyon',
+                        'Yüksek ve güçlü titreşim',
+                        'Mükemmel 16cm uzunluk',
+                        'Şık siyah tasarım',
+                        'Güvenli silikon malzeme',
+                        'Tamamen su geçirmez',
+                        'Temizlemesi kolay',
+                        'Yüksek dayanıklılık garantisi'
+                    ]
+                }
+            },
+            {
+                id: 5,
+                name: {
+                    'ar': '16.5 سم هزاز واقعي',
+                    'en': '16.5cm Realistic Vibrator',
+                    'tr': '16.5cm Gerçekçi Vibratör'
+                },
+                category: 'vibrators',
+                price: 80,
+                originalPrice: 320,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/781763697ec767284936d0460e1b192fab421b731abcf34ec7b22dba3a01965d?w=247&h=247'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/781763697ec767284936d0460e1b192fab421b731abcf34ec7b22dba3a01965d?w=247&h=247',
+                discount: 75,
+                description: {
+                    'ar': `16.5 سم هزاز واقعي
+
+• الحب استنساخ القضيب واقعية مذهل
+• الطول: 16.5 سم مثالي للاستخدام
+• السماكة: 3 سم مريحة ومناسبة
+• وضع الاهتزاز On-off سهل التحكم
+• ملمس بشرة واقعي فائق النعومة
+• تصميم كلاسيكي أنيق وبسيط
+• مادة آمنة ومعتمدة طبياً
+• سهل الاستخدام والتنظيف
+• مقاوم للماء للعناية السهلة
+• مناسب للمبتدئين والخبراء
+• جودة ممتازة بسعر اقتصادي
+• ضمان الرضا والجودة العالية`,
+                    'en': `16.5cm Realistic Vibrator
+
+• Amazing love clone realistic penis
+• Length: 16.5 cm perfect for use
+• Thickness: 3 cm comfortable and suitable
+• On-off vibration mode easy to control
+• Ultra-smooth realistic skin texture
+• Elegant and simple classic design
+• Safe and medically approved material
+• Easy to use and clean
+• Water-resistant for easy care
+• Suitable for beginners and experts
+• Excellent quality at economical price
+• Satisfaction and high quality guarantee`,
+                    'tr': `16.5cm Gerçekçi Vibratör
+
+• Muhteşem aşk klonu gerçekçi penis
+• Uzunluk: 16.5 cm kullanım için mükemmel
+• Kalınlık: 3 cm rahat ve uygun
+• Açık-kapalı titreşim modu kolay kontrol
+• Ultra pürüzsüz gerçekçi cilt dokusu
+• Şık ve basit klasik tasarım
+• Güvenli ve tıbbi olarak onaylı malzeme
+• Kullanımı ve temizlemesi kolay
+• Kolay bakım için su geçirmez
+• Yeni başlayanlar ve uzmanlar için uygun
+• Ekonomik fiyata mükemmel kalite
+• Memnuniyet ve yüksek kalite garantisi`
+                },
+                rating: 4.6,
+                reviews: 892,
+                features: {
+                    'ar': [
+                        'الحب استنساخ واقعي',
+                        'طول مثالي 16.5 سم',
+                        'سماكة مريحة 3 سم',
+                        'تحكم سهل On-off',
+                        'ملمس بشرة ناعم',
+                        'تصميم كلاسيكي أنيق',
+                        'مادة آمنة طبياً',
+                        'مقاوم للماء',
+                        'سعر اقتصادي ممتاز',
+                        'مناسب للجميع'
+                    ],
+                    'en': [
+                        'Realistic love clone',
+                        'Perfect 16.5cm length',
+                        'Comfortable 3cm thickness',
+                        'Easy On-off control',
+                        'Smooth skin texture',
+                        'Elegant classic design',
+                        'Medically safe material',
+                        'Water-resistant',
+                        'Excellent economical price',
+                        'Suitable for everyone'
+                    ],
+                    'tr': [
+                        'Gerçekçi aşk klonu',
+                        'Mükemmel 16.5cm uzunluk',
+                        'Rahat 3cm kalınlık',
+                        'Kolay açık-kapalı kontrol',
+                        'Pürüzsüz cilt dokusu',
+                        'Şık klasik tasarım',
+                        'Tıbbi güvenli malzeme',
+                        'Su geçirmez',
+                        'Mükemmel ekonomik fiyat',
+                        'Herkes için uygun'
+                    ]
+                }
+            },
+            {
+                id: 6,
+                name: {
+                    'ar': '17 سم واقعية تهتز دسار هزاز القضيب- Adonis',
+                    'en': '17cm Realistic Vibrating Dildo Penis - Adonis',
+                    'tr': '17cm Gerçekçi Titreşimli Dildo Penis - Adonis'
+                },
+                category: 'vibrators',
+                price: 125,
+                originalPrice: 500,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/437d8ac3545597fd3657724051c33aed812ecde787614d73b84dc07a54e4ee5f?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/166e710b6e7cf6b9e6639cd966be6573cfde2c9b4c4e36254c29b77ee3c8c1d5?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/f785a61d532b0fc72dc5dfd52da406f5d39a234a90643d0c0b0564dbcab9fade?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/0afc91525369ee11bfbce2bfeeb9178e806539097f490730b385ecc1f19ba584?w=247&h=247'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/437d8ac3545597fd3657724051c33aed812ecde787614d73b84dc07a54e4ee5f?w=247&h=247',
+                discount: 75,
+                description: {
+                    'ar': `17 سم واقعية تهتز دسار هزاز القضيب- Adonis
+
+• تهتز هزاز القضيب الأنسجة سوبر واقعية دسار
+• 20 أوضاع اهتزاز مختلفة للمتعة القصوى
+• الطول الكامل: 17 سم مثالي للاستخدام
+• الطول القابل للاستخدام: 13 سم
+• السماكة: 3.5 سم مناسبة ومريحة
+• ملمس بشرة واقعي وهيكل الأوعية الدموية
+• إمكانية التثبيت على أي أرضية بفضل اللاصقة القوية
+• مادة صديقة للبشرة سهلة التنظيف
+• قوام اللحم الطري فائق الواقعية
+• مادة خالية من الفثالات آمنة تماماً
+• تصميم Adonis الأنيق والجذاب
+• جودة عالية بتقنية متطورة`,
+                    'en': `17cm Realistic Vibrating Dildo Penis - Adonis
+
+• Super realistic tissue vibrating penis dildo
+• 20 different vibration modes for maximum pleasure
+• Total length: 17 cm perfect for use
+• Usable length: 13 cm
+• Thickness: 3.5 cm suitable and comfortable
+• Realistic skin texture and blood vessel structure
+• Can be mounted on any floor with strong adhesive
+• Skin-friendly material easy to clean
+• Ultra-realistic soft flesh texture
+• Completely safe phthalate-free material
+• Elegant and attractive Adonis design
+• High quality with advanced technology`,
+                    'tr': `17cm Gerçekçi Titreşimli Dildo Penis - Adonis
+
+• Süper gerçekçi doku titreşimli penis dildo
+• Maksimum zevk için 20 farklı titreşim modu
+• Toplam uzunluk: 17 cm kullanım için mükemmel
+• Kullanılabilir uzunluk: 13 cm
+• Kalınlık: 3.5 cm uygun ve rahat
+• Gerçekçi cilt dokusu ve kan damarı yapısı
+• Güçlü yapışkan ile herhangi bir zemine monte edilebilir
+• Cilde dost malzeme temizlemesi kolay
+• Ultra gerçekçi yumuşak et dokusu
+• Tamamen güvenli ftalat içermeyen malzeme
+• Şık ve çekici Adonis tasarımı
+• Gelişmiş teknoloji ile yüksek kalite`
+                },
+                rating: 4.9,
+                reviews: 2156,
+                features: {
+                    'ar': [
+                        '20 أوضاع اهتزاز مختلفة',
+                        'أنسجة سوبر واقعية',
+                        'طول مثالي 17 سم',
+                        'ملمس بشرة واقعي',
+                        'هيكل أوعية دموية',
+                        'لاصقة قوية للتثبيت',
+                        'قوام لحم طري',
+                        'خالي من الفثالات',
+                        'تصميم Adonis أنيق',
+                        'جودة عالية متطورة'
+                    ],
+                    'en': [
+                        '20 different vibration modes',
+                        'Super realistic tissues',
+                        'Perfect 17cm length',
+                        'Realistic skin texture',
+                        'Blood vessel structure',
+                        'Strong adhesive mounting',
+                        'Soft flesh texture',
+                        'Phthalate-free',
+                        'Elegant Adonis design',
+                        'High advanced quality'
+                    ],
+                    'tr': [
+                        '20 farklı titreşim modu',
+                        'Süper gerçekçi dokular',
+                        'Mükemmel 17cm uzunluk',
+                        'Gerçekçi cilt dokusu',
+                        'Kan damarı yapısı',
+                        'Güçlü yapışkan montaj',
+                        'Yumuşak et dokusu',
+                        'Ftalat içermez',
+                        'Şık Adonis tasarımı',
+                        'Yüksek gelişmiş kalite'
+                    ]
+                }
+            },
+            {
+                id: 7,
+                name: {
+                    'ar': '17.5 سنتيمتر واقعية تهتز دسار هزاز القضيب-التنين الحديدي',
+                    'en': '17.5cm Realistic Vibrating Dildo Penis - Iron Dragon',
+                    'tr': '17.5cm Gerçekçi Titreşimli Dildo Penis - Demir Ejder'
+                },
+                category: 'vibrators',
+                price: 130,
+                originalPrice: 520,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/eac58a8133c5b34d764c0a9f5fe5c1a03783a8ac53bdca12989557382dd2d596?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/a486c73937c16dd79133e2f4815075c16a6e79d740fb84cca86a35fcce7430c9?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/28460d6d8cbe99ed8480259085ff4d124a51cfd1473d3fe74a6f7f0b29861b4a?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/25ca7fa15ea987d4e3220fed686f9c9961d5f89c8535277e37e776cd01050025?w=247&h=247'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/eac58a8133c5b34d764c0a9f5fe5c1a03783a8ac53bdca12989557382dd2d596?w=247&h=247',
+                discount: 75,
+                description: {
+                    'ar': `17.5 سم واقعية تهتز دسار هزاز القضيب -- التنين الحديدي
+
+• الطول الكامل: 17.5 سم للاستمتاع الأمثل
+• الطول القابل للاستخدام: 13 سم مثالي
+• السماكة: 4 سم للامتلاء الكامل
+• 10 وظائف مختلفة جاهزة لجذب الأنظار مع 10 أوضاع مختلفة!
+• تم إنتاجه من مادة واقعية بشكل لا يصدق
+• 100٪ لينة عالية الجودة، سطح ناعم وحريري
+• تصل إلى درجة حرارة الجسم أثناء الاستخدام
+• ملمس بشرة واقعي فائق النعومة
+• إمكانية التثبيت على أي أرضية بفضل اللاصقة القوية
+• مادة صديقة للبشرة سهلة التنظيف
+• يمكن استخدامه أيضًا كحزام منفصل
+• مادة خالية من الفثالات آمنة تماماً
+• يمكنك استخدامه لسنوات بفضل مظهره الواقعي وملمسه وحساسيته للبشرة`,
+                    'en': `17.5cm Realistic Vibrating Dildo Penis -- Iron Dragon
+
+• Total length: 17.5 cm for optimal enjoyment
+• Usable length: 13 cm perfect
+• Thickness: 4 cm for complete fullness
+• 10 different functions ready to grab attention with 10 different modes!
+• Made from incredibly realistic material
+• 100% high-quality soft, smooth and silky surface
+• Reaches body temperature during use
+• Ultra-smooth realistic skin texture
+• Can be mounted on any floor with strong adhesive
+• Skin-friendly material easy to clean
+• Can also be used as a separate strap
+• Completely safe phthalate-free material
+• You can use it for years thanks to its realistic appearance, texture and skin sensitivity`,
+                    'tr': `17.5cm Gerçekçi Titreşimli Dildo Penis -- Demir Ejder
+
+• Toplam uzunluk: 17.5 cm optimal keyif için
+• Kullanılabilir uzunluk: 13 cm mükemmel
+• Kalınlık: 4 cm tam dolgunluk için
+• 10 farklı fonksiyon 10 farklı mod ile dikkat çekmeye hazır!
+• İnanılmaz gerçekçi malzemeden üretilmiştir
+• %100 yüksek kaliteli yumuşak, pürüzsüz ve ipeksi yüzey
+• Kullanım sırasında vücut sıcaklığına ulaşır
+• Ultra pürüzsüz gerçekçi cilt dokusu
+• Güçlü yapışkan ile herhangi bir zemine monte edilebilir
+• Cilde dost malzeme temizlemesi kolay
+• Ayrı bir kayış olarak da kullanılabilir
+• Tamamen güvenli ftalat içermeyen malzeme
+• Gerçekçi görünümü, dokusu ve cilt hassasiyeti sayesinde yıllarca kullanabilirsiniz`
+                },
+                rating: 4.8,
+                reviews: 1847,
+                features: {
+                    'ar': [
+                        '10 وظائف مختلفة',
+                        'طول ممتاز 17.5 سم',
+                        'سماكة مثالية 4 سم',
+                        'مادة واقعية لا تصدق',
+                        'سطح ناعم وحريري',
+                        'يصل لدرجة حرارة الجسم',
+                        'لاصقة قوية للتثبيت',
+                        'يمكن استخدامه كحزام',
+                        'خالي من الفثالات',
+                        'متانة لسنوات طويلة'
+                    ],
+                    'en': [
+                        '10 different functions',
+                        'Excellent 17.5cm length',
+                        'Perfect 4cm thickness',
+                        'Incredibly realistic material',
+                        'Smooth and silky surface',
+                        'Reaches body temperature',
+                        'Strong adhesive mounting',
+                        'Can be used as strap',
+                        'Phthalate-free',
+                        'Durability for years'
+                    ],
+                    'tr': [
+                        '10 farklı fonksiyon',
+                        'Mükemmel 17.5cm uzunluk',
+                        'Mükemmel 4cm kalınlık',
+                        'İnanılmaz gerçekçi malzeme',
+                        'Pürüzsüz ve ipeksi yüzey',
+                        'Vücut sıcaklığına ulaşır',
+                        'Güçlü yapışkan montaj',
+                        'Kayış olarak kullanılabilir',
+                        'Ftalat içermez',
+                        'Yıllarca dayanıklılık'
+                    ]
+                }
+            },
+            {
+                id: 8,
+                name: {
+                    'ar': '18 سم 360 درجة رأس دوار بالاهتزاز هزاز واقعي قضيب قضيب -- مايك',
+                    'en': '18cm 360° Rotating Head Vibrating Realistic Penis - Mike',
+                    'tr': '18cm 360° Dönen Başlı Titreşimli Gerçekçi Penis - Mike'
+                },
+                category: 'vibrators',
+                price: 140,
+                originalPrice: 560,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/85ce991e75cd6f16eb102e5c7e8dce8c55cc1fa213eea0e2a23dcec0a6185d55?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/911f0d166993feebeb4d7899bf586e38200825d37bac9416a63c5d9a1ac5983d?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/ad8c25e8ccf2264aba2748a9b09f649da789f971e2d5fbedc5a176526713ae62?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/bfc7a2c962219e9a7ee83976a563c738e6f139731545cc0a87b73808ec96e6b1?w=247&h=247'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/85ce991e75cd6f16eb102e5c7e8dce8c55cc1fa213eea0e2a23dcec0a6185d55?w=247&h=247',
+                discount: 75,
+                description: {
+                    'ar': `18 سم 360 درجة رأس دوار بالاهتزاز هزاز واقعي قضيب -- مايك
+
+• إنها نظرة كاملة بجسم وخصيتين مثاليتين معروقتين بتفاصيل مفصلة واقعية
+• يوفر نسيج الجلد المرن والواقعي سهولة في الاستخدام
+• يتم إنتاج تصميمه الطبيعي تمامًا عن طريق أخذ قالب قضيب حقيقي
+• زيادة التحكم في الاهتزاز تدريجيًا للمتعة المثلى
+• يمكن تركيب قاعدة الالتصاق، التي تتمسك بالموضع، بسهولة على الأسطح الملساء
+• تسمح نعومة هيكل السيليكون السائل الخاص باستخدامه في المواضع المرغوبة
+• إنه يوفر رأس وجسم مثاليين لاختراق غير مؤلم
+• يوفر جزء التحكم تصميمًا مريحًا وسهولة في الاستخدام مع توافقه باليد
+• 3 وظائف دوارة مختلفة جاهزة لجذب الأنظار مع 3 أوضاع سوبرمان مختلفة!
+• اضبط السرعة والوضع الذي تريده باستخدام زر تحكم واحد
+• اكتشف العديد من الميزات المختلفة مثل الرؤوس الدوارة والتأرجح الأمامي والخلفي ودوران الجسم بالكامل ودورانه
+• الطول الكامل للمنتج: 18 سم
+• قطر حشفة القضيب: 4.5 سم
+• بالإضافة إلى ذلك، يمكن استخدامه كرباط على الخصر بحزام منفصل`,
+                    'en': `18cm 360° Rotating Head Vibrating Realistic Penis -- Mike
+
+• Complete look with perfect veined body and testicles with detailed realistic features
+• Flexible and realistic skin texture provides ease of use
+• Its completely natural design is produced by taking a mold of a real penis
+• Gradual vibration control increase for optimal pleasure
+• The adhesive base that holds position can be easily mounted on smooth surfaces
+• The smoothness of the special liquid silicone structure allows use in desired positions
+• It provides perfect head and body for painless penetration
+• The control part provides comfortable design and ease of use with hand compatibility
+• 3 different rotating functions ready to grab attention with 3 different superman modes!
+• Adjust the speed and mode you want with a single control button
+• Discover many different features like rotating heads, front and back swing, full body rotation and spin
+• Total product length: 18 cm
+• Penis glans diameter: 4.5 cm
+• Additionally, it can be used as a waist strap with a separate belt`,
+                    'tr': `18cm 360° Dönen Başlı Titreşimli Gerçekçi Penis -- Mike
+
+• Detaylı gerçekçi özelliklerle mükemmel damarlı vücut ve testislerle tam görünüm
+• Esnek ve gerçekçi cilt dokusu kullanım kolaylığı sağlar
+• Tamamen doğal tasarımı gerçek bir penisin kalıbı alınarak üretilir
+• Optimal zevk için kademeli titreşim kontrolü artışı
+• Pozisyonu tutan yapışkan taban düz yüzeylere kolayca monte edilebilir
+• Özel sıvı silikon yapısının pürüzsüzlüğü istenen pozisyonlarda kullanım sağlar
+• Ağrısız penetrasyon için mükemmel baş ve vücut sağlar
+• Kontrol kısmı el uyumluluğu ile rahat tasarım ve kullanım kolaylığı sağlar
+• 3 farklı süpermen modu ile dikkat çekmeye hazır 3 farklı döner fonksiyon!
+• Tek kontrol düğmesi ile istediğiniz hızı ve modu ayarlayın
+• Dönen kafalar, ileri geri salınım, tam vücut dönüşü ve spin gibi birçok farklı özellik keşfedin
+• Toplam ürün uzunluğu: 18 cm
+• Penis başı çapı: 4.5 cm
+• Ayrıca ayrı bir kemer ile bel kayışı olarak kullanılabilir`
+                },
+                rating: 4.9,
+                reviews: 2389,
+                features: {
+                    'ar': [
+                        'رأس دوار 360 درجة',
+                        'طول ممتاز 18 سم',
+                        'قطر حشفة 4.5 سم',
+                        'جسم وخصيتين واقعية',
+                        'نسيج جلد مرن',
+                        'تصميم طبيعي 100%',
+                        'تحكم تدريجي بالاهتزاز',
+                        'قاعدة التصاق قوية',
+                        'سيليكون سائل خاص',
+                        '3 وظائف دوارة مختلفة',
+                        'تحكم بزر واحد',
+                        'يمكن استخدامه كحزام'
+                    ],
+                    'en': [
+                        '360° rotating head',
+                        'Excellent 18cm length',
+                        '4.5cm glans diameter',
+                        'Realistic body and testicles',
+                        'Flexible skin texture',
+                        '100% natural design',
+                        'Gradual vibration control',
+                        'Strong adhesive base',
+                        'Special liquid silicone',
+                        '3 different rotating functions',
+                        'Single button control',
+                        'Can be used as strap'
+                    ],
+                    'tr': [
+                        '360° dönen baş',
+                        'Mükemmel 18cm uzunluk',
+                        '4.5cm başı çapı',
+                        'Gerçekçi vücut ve testisler',
+                        'Esnek cilt dokusu',
+                        '%100 doğal tasarım',
+                        'Kademeli titreşim kontrolü',
+                        'Güçlü yapışkan taban',
+                        'Özel sıvı silikon',
+                        '3 farklı döner fonksiyon',
+                        'Tek düğme kontrolü',
+                        'Kayış olarak kullanılabilir'
+                    ]
+                }
+            },
+            {
+                id: 9,
+                name: {
+                    'ar': '19 سنتيمتر مضخة موسعة واقعية القضيب الشرج المهبل دسار',
+                    'en': '19cm Realistic Expandable Pump Penis Anal Vaginal Dildo',
+                    'tr': '19cm Gerçekçi Genişletilebilir Pompalı Penis Anal Vajinal Dildo'
+                },
+                category: 'vibrators',
+                price: 145,
+                originalPrice: 580,
+                images: [
+                    'https://pfst.cf2.poecdn.net/base/image/510448303558b4cc1ca8dd3c2757fce8ad4673d4d10fdcee4188141b3f7bb025?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/12ad9a43e11d310973392787b5efbe171bad4368d54a7e126259022639bb5293?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/2cb8cf49f044fdceb4a13bf132cd552453b83e5ae6d64ab15da5b1a724df890a?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/969272de7fecc4a360448583246a511f11cc1a777ec0b374764d8ecf7c5f7cbd?w=247&h=247',
+                    'https://pfst.cf2.poecdn.net/base/image/b505d18786a0e1b4eeb153511cbcff3235bd3d7d5d2d2d50ce409319659215b7?w=510&h=510'
+                ],
+                image: 'https://pfst.cf2.poecdn.net/base/image/510448303558b4cc1ca8dd3c2757fce8ad4673d4d10fdcee4188141b3f7bb025?w=247&h=247',
+                discount: 75,
+                description: {
+                    'ar': `19 سنتيمتر مضخة موسعة واقعية القضيب الشرج المهبل دسار
+
+• مصنوع من مادة TPR عالية الجودة آمنة ومرنة
+• إنه ذو لون أسمر طبيعي وجذاب
+• يتميز بخاصية الاهتزازات المتعددة للمتعة القصوى
+• مناسب لكل من الجماع الشرجي والمهبلي
+• له مظهر طبيعي وبنية معرقة واقعية
+• بفضل المضخة لديها القدرة على تكبير وتصغير القضيب أثناء الاستخدام
+• له هيكل كوب شفط قوي، ويمكن استخدامه بالتثبيت على الأسطح المستوية
+• مصنوع من مادة صديقة للبشرة وآمنة تماماً
+• سهل التنظيف والصيانة
+• يعمل ببطاريتين من نوع AA (غير مشمولة)
+• يمكنك أيضًا استخدامه كطرف اصطناعي متصل بالخصر مع الحزام الاصطناعي
+• الطول الكامل: 19 سم مثالي للاستعمال المتقدم
+• القطر: 3.5 سم مناسب ومريح
+• الوزن: 259 جرام متوازن وعملي
+• تقنية مضخة متطورة للتحكم في الحجم
+• مقاوم للماء للتنظيف الآمن`,
+                    'en': `19cm Realistic Expandable Pump Penis Anal Vaginal Dildo
+
+• Made from high-quality TPR material, safe and flexible
+• Features an attractive natural brown color
+• Multiple vibration modes for maximum pleasure
+• Suitable for both anal and vaginal intercourse
+• Natural appearance with realistic veined structure
+• Pump feature allows expanding and contracting during use
+• Strong suction cup structure, can be mounted on flat surfaces
+• Made from completely safe skin-friendly material
+• Easy to clean and maintain
+• Powered by two AA batteries (not included)
+• Can also be used as an artificial attachment with strap
+• Total length: 19 cm ideal for advanced use
+• Diameter: 3.5 cm suitable and comfortable
+• Weight: 259 grams balanced and practical
+• Advanced pump technology for size control
+• Water-resistant for safe cleaning`,
+                    'tr': `19cm Gerçekçi Genişletilebilir Pompalı Penis Anal Vajinal Dildo
+
+• Yüksek kaliteli TPR malzemeden üretilmiş, güvenli ve esnek
+• Çekici doğal kahverengi renge sahiptir
+• Maksimum zevk için çoklu titreşim modları
+• Hem anal hem de vajinal ilişki için uygundur
+• Gerçekçi damarlı yapı ile doğal görünüm
+• Pompa özelliği kullanım sırasında genişleme ve küçülme sağlar
+• Güçlü vantuz yapısı, düz yüzeylere monte edilebilir
+• Tamamen güvenli cilt dostu malzemeden üretilmiştir
+• Temizlemesi ve bakımı kolay
+• İki AA pil ile çalışır (dahil değildir)
+• Kayış ile yapay ek olarak da kullanılabilir
+• Toplam uzunluk: 19 cm ileri seviye kullanım için ideal
+• Çap: 3.5 cm uygun ve rahat
+• Ağırlık: 259 gram dengeli ve pratik
+• Boyut kontrolü için gelişmiş pompa teknolojisi
+• Güvenli temizlik için suya dayanıklı`
+                },
+                rating: 4.9,
+                reviews: 2847,
+                features: {
+                    'ar': [
+                        'مادة TPR عالية الجودة',
+                        'لون أسمر طبيعي',
+                        'اهتزازات متعددة',
+                        'مناسب للشرج والمهبل',
+                        'مظهر طبيعي معرق',
+                        'مضخة للتكبير والتصغير',
+                        'كوب شفط قوي',
+                        'صديق للبشرة آمن',
+                        'سهل التنظيف',
+                        'بطاريتين AA',
+                        'يمكن استخدامه كحزام',
+                        'طول مثالي 19 سم',
+                        'قطر مريح 3.5 سم',
+                        'وزن متوازن 259 جرام',
+                        'مقاوم للماء'
+                    ],
+                    'en': [
+                        'High-quality TPR material',
+                        'Natural brown color',
+                        'Multiple vibrations',
+                        'Suitable for anal & vaginal',
+                        'Natural veined appearance',
+                        'Pump for expanding/contracting',
+                        'Strong suction cup',
+                        'Safe skin-friendly',
+                        'Easy to clean',
+                        'Two AA batteries',
+                        'Can be used as strap',
+                        'Perfect 19cm length',
+                        'Comfortable 3.5cm diameter',
+                        'Balanced 259g weight',
+                        'Water-resistant'
+                    ],
+                    'tr': [
+                        'Yüksek kaliteli TPR malzeme',
+                        'Doğal kahverengi renk',
+                        'Çoklu titreşimler',
+                        'Anal ve vajinal için uygun',
+                        'Doğal damarlı görünüm',
+                        'Genişletme/küçültme pompası',
+                        'Güçlü vantuz',
+                        'Güvenli cilt dostu',
+                        'Temizlemesi kolay',
+                        'İki AA pil',
+                        'Kayış olarak kullanılabilir',
+                        'Mükemmel 19cm uzunluk',
+                        'Rahat 3.5cm çap',
+                        'Dengeli 259g ağırlık',
+                        'Suya dayanıklı'
+                    ]
+                }
             }
         ];
 
-        // Enhanced location data with detailed provinces, cities, and streets
+        // Comprehensive location data with ALL provinces, cities, and streets
         const locationData = {
             'SA': {
                 name: { 'ar': 'السعودية', 'en': 'Saudi Arabia', 'tr': 'Suudi Arabistan' },
@@ -1505,15 +2508,23 @@
                         cities: {
                             'riyadh_city': { 
                                 name: { 'ar': 'الرياض', 'en': 'Riyadh City', 'tr': 'Riyad Şehri' },
-                                streets: ['شارع الملك فهد', 'شارع العليا', 'شارع التحلية', 'شارع الأمير محمد بن عبدالعزيز', 'شارع عبدالرحمن الداخل']
+                                streets: ['شارع الملك فهد', 'شارع العليا', 'شارع التحلية', 'شارع الأمير محمد بن عبدالعزيز', 'شارع عبدالرحمن الداخل', 'شارع طريق الملك عبدالله', 'شارع الأمين', 'شارع الورود', 'شارع النخيل', 'شارع الروضة']
                             },
                             'alkharj': { 
                                 name: { 'ar': 'الخرج', 'en': 'Al-Kharj', 'tr': 'Al-Kharj' },
-                                streets: ['شارع الملك عبدالعزيز', 'شارع المطار', 'شارع الجامعة', 'طريق الرياض']
+                                streets: ['شارع الملك عبدالعزيز', 'شارع المطار', 'شارع الجامعة', 'طريق الرياض', 'شارع الملك فهد', 'شارع الأمير نايف']
                             },
                             'aldawadmi': { 
                                 name: { 'ar': 'الدوادمي', 'en': 'Al-Dawadmi', 'tr': 'Al-Dawadmi' },
-                                streets: ['شارع الملك فيصل', 'شارع البلدية', 'شارع السوق']
+                                streets: ['شارع الملك فيصل', 'شارع البلدية', 'شارع السوق', 'طريق الرياض', 'شارع الأمير سلطان']
+                            },
+                            'zulfi': {
+                                name: { 'ar': 'الزلفي', 'en': 'Zulfi', 'tr': 'Zulfi' },
+                                streets: ['شارع الملك عبدالعزيز', 'شارع الإمام سعود', 'طريق الرياض', 'شارع التجاري']
+                            },
+                            'afif': {
+                                name: { 'ar': 'عفيف', 'en': 'Afif', 'tr': 'Afif' },
+                                streets: ['شارع الملك فهد', 'شارع الملك عبدالعزيز', 'طريق الرياض', 'شارع المطار']
                             }
                         }
                     },
@@ -1522,15 +2533,40 @@
                         cities: {
                             'makkah_city': { 
                                 name: { 'ar': 'مكة المكرمة', 'en': 'Makkah City', 'tr': 'Mekke Şehri' },
-                                streets: ['شارع إبراهيم الخليل', 'شارع الملك عبدالعزيز', 'شارع المسجد الحرام', 'طريق الهجرة']
+                                streets: ['شارع إبراهيم الخليل', 'شارع الملك عبدالعزيز', 'شارع المسجد الحرام', 'طريق الهجرة', 'شارع أجياد', 'شارع المنصور', 'طريق جدة السريع']
                             },
                             'jeddah': { 
                                 name: { 'ar': 'جدة', 'en': 'Jeddah', 'tr': 'Cidde' },
-                                streets: ['شارع الأمير سلطان', 'شارع التحلية', 'طريق الملك عبدالعزيز', 'شارع فلسطين', 'الكورنيش']
+                                streets: ['شارع الأمير سلطان', 'شارع التحلية', 'طريق الملك عبدالعزيز', 'شارع فلسطين', 'الكورنيش', 'شارع الأندلس', 'طريق المدينة', 'شارع الروضة', 'طريق مكة السريع', 'شارع الصفا']
                             },
                             'taif': { 
                                 name: { 'ar': 'الطائف', 'en': 'Taif', 'tr': 'Taif' },
-                                streets: ['شارع الملك فيصل', 'شارع شبرا', 'طريق الرياض', 'شارع الجبيل']
+                                streets: ['شارع الملك فيصل', 'شارع شبرا', 'طريق الرياض', 'شارع الجبيل', 'طريق الحدا', 'شارع الوهط', 'طريق الهدا']
+                            },
+                            'rabigh': {
+                                name: { 'ar': 'رابغ', 'en': 'Rabigh', 'tr': 'Rabigh' },
+                                streets: ['طريق جدة', 'شارع الملك عبدالعزيز', 'طريق المدينة', 'شارع البحر']
+                            },
+                            'khulais': {
+                                name: { 'ar': 'خليص', 'en': 'Khulais', 'tr': 'Khulais' },
+                                streets: ['طريق المدينة', 'شارع الملك فهد', 'طريق مكة']
+                            }
+                        }
+                    },
+                    'madinah': {
+                        name: { 'ar': 'المدينة المنورة', 'en': 'Madinah', 'tr': 'Medine' },
+                        cities: {
+                            'madinah_city': {
+                                name: { 'ar': 'المدينة المنورة', 'en': 'Madinah City', 'tr': 'Medine Şehri' },
+                                streets: ['شارع الملك عبدالعزيز', 'طريق الجامعة', 'شارع عمر بن الخطاب', 'طريق الملك فهد', 'شارع السلام', 'طريق المطار']
+                            },
+                            'yanbu': {
+                                name: { 'ar': 'ينبع', 'en': 'Yanbu', 'tr': 'Yanbu' },
+                                streets: ['الكورنيش', 'شارع الملك عبدالعزيز', 'طريق جدة', 'شارع الأمير عبدالمحسن']
+                            },
+                            'al_ula': {
+                                name: { 'ar': 'العلا', 'en': 'Al-Ula', 'tr': 'Al-Ula' },
+                                streets: ['شارع الملك عبدالعزيز', 'طريق المدينة', 'شارع التراث']
                             }
                         }
                     },
@@ -1539,15 +2575,123 @@
                         cities: {
                             'dammam': { 
                                 name: { 'ar': 'الدمام', 'en': 'Dammam', 'tr': 'Dammam' },
-                                streets: ['شارع الملك سعود', 'شارع الملك فهد', 'الكورنيش', 'شارع الأمير نايف']
+                                streets: ['شارع الملك سعود', 'شارع الملك فهد', 'الكورنيش', 'شارع الأمير نايف', 'شارع الخليج', 'طريق الخبر', 'شارع الشاطئ']
                             },
                             'khobar': { 
                                 name: { 'ar': 'الخبر', 'en': 'Khobar', 'tr': 'Khobar' },
-                                streets: ['شارع الملك فيصل', 'الكورنيش', 'شارع الأمير تركي', 'شارع الظهران']
+                                streets: ['شارع الملك فيصل', 'الكورنيش', 'شارع الأمير تركي', 'شارع الظهران', 'طريق الملك فهد', 'شارع العقربية']
                             },
                             'dhahran': { 
                                 name: { 'ar': 'الظهران', 'en': 'Dhahran', 'tr': 'Dhahran' },
-                                streets: ['شارع الملك فهد', 'شارع الجامعة', 'طريق أرامكو']
+                                streets: ['شارع الملك فهد', 'شارع الجامعة', 'طريق أرامكو', 'شارع الدوحة']
+                            },
+                            'jubail': {
+                                name: { 'ar': 'الجبيل', 'en': 'Jubail', 'tr': 'Jubail' },
+                                streets: ['الكورنيش', 'شارع الملك فهد', 'طريق الدمام', 'شارع الصناعي']
+                            },
+                            'qatif': {
+                                name: { 'ar': 'القطيف', 'en': 'Qatif', 'tr': 'Qatif' },
+                                streets: ['شارع الخليج', 'طريق الدمام', 'شارع الملك عبدالعزيز', 'شارع القلعة']
+                            },
+                            'hafr_albatin': {
+                                name: { 'ar': 'حفر الباطن', 'en': 'Hafr Al-Batin', 'tr': 'Hafr Al-Batin' },
+                                streets: ['شارع الملك فهد', 'شارع الملك عبدالعزيز', 'طريق الرياض', 'شارع الجامعة']
+                            }
+                        }
+                    },
+                    'qassim': {
+                        name: { 'ar': 'القصيم', 'en': 'Qassim', 'tr': 'Qassim' },
+                        cities: {
+                            'buraydah': {
+                                name: { 'ar': 'بريدة', 'en': 'Buraydah', 'tr': 'Buraydah' },
+                                streets: ['شارع الملك عبدالعزيز', 'شارع الملك فهد', 'طريق الرياض', 'شارع النخيل', 'طريق المطار']
+                            },
+                            'unaizah': {
+                                name: { 'ar': 'عنيزة', 'en': 'Unaizah', 'tr': 'Unaizah' },
+                                streets: ['شارع الملك فيصل', 'شارع الملك عبدالعزيز', 'طريق بريدة', 'شارع الجامعة']
+                            },
+                            'rass': {
+                                name: { 'ar': 'الرس', 'en': 'Ar-Rass', 'tr': 'Ar-Rass' },
+                                streets: ['شارع الملك عبدالعزيز', 'طريق بريدة', 'شارع الأمير سلطان']
+                            }
+                        }
+                    },
+                    'asir': {
+                        name: { 'ar': 'عسير', 'en': 'Asir', 'tr': 'Asir' },
+                        cities: {
+                            'abha': {
+                                name: { 'ar': 'أبها', 'en': 'Abha', 'tr': 'Abha' },
+                                streets: ['شارع الملك فهد', 'شارع الملك عبدالعزيز', 'طريق الملك فيصل', 'شارع المنتزه', 'طريق السودة']
+                            },
+                            'khamis_mushait': {
+                                name: { 'ar': 'خميس مشيط', 'en': 'Khamis Mushait', 'tr': 'Khamis Mushait' },
+                                streets: ['شارع الملك فهد', 'شارع الأمير سلطان', 'طريق أبها', 'شارع المطار']
+                            },
+                            'najran': {
+                                name: { 'ar': 'نجران', 'en': 'Najran', 'tr': 'Najran' },
+                                streets: ['شارع الملك عبدالعزيز', 'شارع الملك فهد', 'طريق الرياض', 'شارع الجامعة']
+                            }
+                        }
+                    },
+                    'hail': {
+                        name: { 'ar': 'حائل', 'en': 'Hail', 'tr': 'Hail' },
+                        cities: {
+                            'hail_city': {
+                                name: { 'ar': 'حائل', 'en': 'Hail City', 'tr': 'Hail Şehri' },
+                                streets: ['شارع الملك عبدالعزيز', 'شارع الملك فهد', 'طريق الرياض', 'شارع الجامعة', 'طريق المطار']
+                            }
+                        }
+                    },
+                    'tabuk': {
+                        name: { 'ar': 'تبوك', 'en': 'Tabuk', 'tr': 'Tabuk' },
+                        cities: {
+                            'tabuk_city': {
+                                name: { 'ar': 'تبوك', 'en': 'Tabuk City', 'tr': 'Tabuk Şehri' },
+                                streets: ['شارع الملك فهد', 'شارع الأمير فهد بن سلطان', 'طريق الأردن', 'شارع الجامعة', 'طريق المطار']
+                            },
+                            'duba': {
+                                name: { 'ar': 'ضباء', 'en': 'Duba', 'tr': 'Duba' },
+                                streets: ['الكورنيش', 'شارع الملك عبدالعزيز', 'طريق تبوك']
+                            }
+                        }
+                    },
+                    'jazan': {
+                        name: { 'ar': 'جازان', 'en': 'Jazan', 'tr': 'Jazan' },
+                        cities: {
+                            'jazan_city': {
+                                name: { 'ar': 'جازان', 'en': 'Jazan City', 'tr': 'Jazan Şehri' },
+                                streets: ['الكورنيش', 'شارع الملك فهد', 'شارع الأمير محمد', 'طريق أبها', 'شارع الميناء']
+                            },
+                            'sabya': {
+                                name: { 'ar': 'صبيا', 'en': 'Sabya', 'tr': 'Sabya' },
+                                streets: ['شارع الملك عبدالعزيز', 'طريق جازان', 'شارع الأمير سلطان']
+                            }
+                        }
+                    },
+                    'albaha': {
+                        name: { 'ar': 'الباحة', 'en': 'Al-Baha', 'tr': 'Al-Baha' },
+                        cities: {
+                            'albaha_city': {
+                                name: { 'ar': 'الباحة', 'en': 'Al-Baha City', 'tr': 'Al-Baha Şehri' },
+                                streets: ['شارع الملك فهد', 'شارع الأمير مشاري', 'طريق الطائف', 'شارع الغابة']
+                            }
+                        }
+                    },
+                    'aljouf': {
+                        name: { 'ar': 'الجوف', 'en': 'Al-Jouf', 'tr': 'Al-Jouf' },
+                        cities: {
+                            'sakaka': {
+                                name: { 'ar': 'سكاكا', 'en': 'Sakaka', 'tr': 'Sakaka' },
+                                streets: ['شارع الملك عبدالعزيز', 'شارع الأمير عبدالإله', 'طريق عرعر', 'شارع الجامعة']
+                            }
+                        }
+                    },
+                    'northern_borders': {
+                        name: { 'ar': 'الحدود الشمالية', 'en': 'Northern Borders', 'tr': 'Kuzey Sınırları' },
+                        cities: {
+                            'arar': {
+                                name: { 'ar': 'عرعر', 'en': 'Arar', 'tr': 'Arar' },
+                                streets: ['شارع الملك فهد', 'شارع الملك عبدالعزيز', 'طريق الحدود', 'شارع الجامعة']
                             }
                         }
                     }
@@ -1757,7 +2901,130 @@
                         cities: {
                             'doha_city': { 
                                 name: { 'ar': 'الدوحة', 'en': 'Doha City', 'tr': 'Doha Şehri' },
-                                streets: ['الكورنيش', 'شارع الريان', 'شارع السد']
+                                streets: ['الكورنيش', 'شارع الريان', 'شارع السد', 'شارع الجميرة', 'الخليج الغربي']
+                            },
+                            'al_rayyan': {
+                                name: { 'ar': 'الريان', 'en': 'Al Rayyan', 'tr': 'Al Rayyan' },
+                                streets: ['شارع الريان', 'طريق الدوحة', 'شارع الملعب']
+                            },
+                            'al_wakrah': {
+                                name: { 'ar': 'الوكرة', 'en': 'Al Wakrah', 'tr': 'Al Wakrah' },
+                                streets: ['الكورنيش', 'شارع المركز', 'طريق الدوحة']
+                            }
+                        }
+                    }
+                }
+            },
+            'BH': {
+                name: { 'ar': 'البحرين', 'en': 'Bahrain', 'tr': 'Bahreyn' },
+                provinces: {
+                    'capital': {
+                        name: { 'ar': 'العاصمة', 'en': 'Capital', 'tr': 'Başkent' },
+                        cities: {
+                            'manama': {
+                                name: { 'ar': 'المنامة', 'en': 'Manama', 'tr': 'Manama' },
+                                streets: ['شارع الملك فيصل', 'شارع الخليج العربي', 'شارع الحكومة', 'المنطقة الدبلوماسية', 'الفاتح']
+                            },
+                            'muharraq': {
+                                name: { 'ar': 'المحرق', 'en': 'Muharraq', 'tr': 'Muharraq' },
+                                streets: ['شارع الملك حمد', 'طريق المطار', 'الحوش', 'القديبية']
+                            }
+                        }
+                    }
+                }
+            },
+            'OM': {
+                name: { 'ar': 'عمان', 'en': 'Oman', 'tr': 'Umman' },
+                provinces: {
+                    'muscat': {
+                        name: { 'ar': 'مسقط', 'en': 'Muscat', 'tr': 'Maskat' },
+                        cities: {
+                            'muscat_city': {
+                                name: { 'ar': 'مسقط', 'en': 'Muscat City', 'tr': 'Maskat Şehri' },
+                                streets: ['شارع السلطان قابوس', 'الكورنيش', 'شارع الحصن', 'روي', 'القرم']
+                            },
+                            'sohar': {
+                                name: { 'ar': 'صحار', 'en': 'Sohar', 'tr': 'Sohar' },
+                                streets: ['شارع صحار', 'الكورنيش', 'المنطقة الصناعية']
+                            }
+                        }
+                    }
+                }
+            },
+            'MA': {
+                name: { 'ar': 'المغرب', 'en': 'Morocco', 'tr': 'Fas' },
+                provinces: {
+                    'casablanca': {
+                        name: { 'ar': 'الدار البيضاء', 'en': 'Casablanca', 'tr': 'Kazablanka' },
+                        cities: {
+                            'casablanca_city': {
+                                name: { 'ar': 'الدار البيضاء', 'en': 'Casablanca City', 'tr': 'Kazablanka Şehri' },
+                                streets: ['شارع محمد الخامس', 'شارع الحسن الثاني', 'الكورنيش', 'المعاريف', 'الحي المحمدي']
+                            }
+                        }
+                    },
+                    'rabat': {
+                        name: { 'ar': 'الرباط', 'en': 'Rabat', 'tr': 'Rabat' },
+                        cities: {
+                            'rabat_city': {
+                                name: { 'ar': 'الرباط', 'en': 'Rabat City', 'tr': 'Rabat Şehri' },
+                                streets: ['شارع محمد الخامس', 'أكدال', 'حي الرياض', 'أوقاف']
+                            }
+                        }
+                    }
+                }
+            },
+            'TN': {
+                name: { 'ar': 'تونس', 'en': 'Tunisia', 'tr': 'Tunus' },
+                provinces: {
+                    'tunis': {
+                        name: { 'ar': 'تونس', 'en': 'Tunis', 'tr': 'Tunus' },
+                        cities: {
+                            'tunis_city': {
+                                name: { 'ar': 'تونس', 'en': 'Tunis City', 'tr': 'Tunus Şehri' },
+                                streets: ['شارع الحبيب بورقيبة', 'شارع محمد الخامس', 'المدينة العتيقة', 'الحلفاوين', 'باب البحر']
+                            }
+                        }
+                    }
+                }
+            },
+            'DZ': {
+                name: { 'ar': 'الجزائر', 'en': 'Algeria', 'tr': 'Cezayir' },
+                provinces: {
+                    'algiers': {
+                        name: { 'ar': 'الجزائر', 'en': 'Algiers', 'tr': 'Cezayir' },
+                        cities: {
+                            'algiers_city': {
+                                name: { 'ar': 'الجزائر', 'en': 'Algiers City', 'tr': 'Cezayir Şehri' },
+                                streets: ['شارع الأمير عبدالقادر', 'شارع ديدوش مراد', 'القصبة', 'الحراش', 'بئر موراد رايس']
+                            }
+                        }
+                    }
+                }
+            },
+            'LY': {
+                name: { 'ar': 'ليبيا', 'en': 'Libya', 'tr': 'Libya' },
+                provinces: {
+                    'tripoli': {
+                        name: { 'ar': 'طرابلس', 'en': 'Tripoli', 'tr': 'Trablus' },
+                        cities: {
+                            'tripoli_city': {
+                                name: { 'ar': 'طرابلس', 'en': 'Tripoli City', 'tr': 'Trablus Şehri' },
+                                streets: ['شارع الجمهورية', 'شارع عمر المختار', 'المدينة القديمة', 'ضاحية الأندلس', 'طريق المطار']
+                            }
+                        }
+                    }
+                }
+            },
+            'SD': {
+                name: { 'ar': 'السودان', 'en': 'Sudan', 'tr': 'Sudan' },
+                provinces: {
+                    'khartoum': {
+                        name: { 'ar': 'الخرطوم', 'en': 'Khartoum', 'tr': 'Hartum' },
+                        cities: {
+                            'khartoum_city': {
+                                name: { 'ar': 'الخرطوم', 'en': 'Khartoum City', 'tr': 'Hartum Şehri' },
+                                streets: ['شارع النيل', 'شارع الجمهورية', 'شارع الحرية', 'الخرطوم ٢', 'أم درمان']
                             }
                         }
                     }
@@ -1951,6 +3218,8 @@
             
             if (pageId === 'products') {
                 generateProducts();
+            } else if (pageId === 'vibrators') {
+                generateVibratorProducts();
             }
             
             document.getElementById('mobile-menu').classList.add('hidden');
@@ -1980,6 +3249,102 @@
             }
             
             return stars;
+        }
+
+        // Generate vibrator products with translations  
+        function generateVibratorProducts() {
+            const grid = document.getElementById('vibrators-products-grid');
+            
+            if (!grid) return;
+            
+            if (products.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-6xl mb-4">🛍️</div>
+                        <h3 class="text-xl font-bold text-gray-500 dark:text-gray-400 mb-2">${translateText('no_products') || 'لا توجد منتجات حالياً'}</h3>
+                        <p class="text-gray-400 dark:text-gray-500">${translateText('coming_soon') || 'قريباً ستتوفر منتجات جديدة'}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const productsHTML = products.map((product, index) => {
+                const convertedPrice = convertPrice(product.price);
+                const convertedOriginalPrice = convertPrice(product.originalPrice);
+                const currencySymbol = currencySymbols[currentCurrency];
+                const productName = product.name[currentLanguage] || product.name['ar'];
+                const productDesc = product.description[currentLanguage] || product.description['ar'];
+                const features = product.features[currentLanguage] || product.features['ar'] || [];
+                
+                return `
+                <div class="bg-white dark:bg-gray-700 rounded-xl md:rounded-2xl shadow-xl overflow-hidden card-hover relative group animate-fadeInUp" style="animation-delay: ${index * 0.1}s">
+                    <div class="discount-badge animate-pulse">خصم ${product.discount}%</div>
+                    
+                    <!-- Image Gallery -->
+                    <div class="h-48 md:h-64 overflow-hidden relative">
+                        <div class="image-gallery relative w-full h-full">
+                            ${product.images ? product.images.map((img, imgIndex) => `
+                                <img src="${img}" alt="${productName}" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${imgIndex === 0 ? 'opacity-100' : 'opacity-0'}" data-img-index="${imgIndex}">
+                            `).join('') : `<img src="${product.image}" alt="${productName}" class="w-full h-full object-cover">`}
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        
+                        <!-- Image Navigation Dots -->
+                        ${product.images && product.images.length > 1 ? `
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 space-x-reverse">
+                                ${product.images.map((_, imgIndex) => `
+                                    <button class="w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all ${imgIndex === 0 ? 'bg-opacity-100' : ''}" onclick="changeProductImage(this, ${imgIndex})"></button>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="p-4 md:p-6">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3 text-purple-800 dark:text-purple-200">${productName}</h3>
+                        
+                        <!-- Rating -->
+                        <div class="flex items-center mb-2 md:mb-3">
+                            <div class="flex text-xs md:text-sm">
+                                ${generateStarRating(product.rating)}
+                            </div>
+                            <span class="text-xs text-gray-500 mr-2">(${product.reviews.toLocaleString()} ${translateText('reviews') || 'تقييم'})</span>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="mb-3 md:mb-4">
+                            <div class="grid grid-cols-1 gap-1 text-xs md:text-sm">
+                                ${features.slice(0, 3).map(feature => `
+                                    <div class="flex items-center text-green-600 dark:text-green-400">
+                                        <i class="fas fa-check-circle mr-1 text-green-500"></i>
+                                        <span>${feature}</span>
+                                    </div>
+                                `).join('')}
+                                ${features.length > 3 ? `
+                                    <button class="text-purple-600 dark:text-purple-400 text-xs hover:underline text-right" onclick="showProductDetails(${product.id})">
+                                        +${features.length - 3} ${translateText('more_features') || 'مميزات أخرى'}
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        <!-- Price and Add to Cart -->
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg md:text-2xl font-bold text-purple-600 dark:text-purple-400">${convertedPrice} ${currencySymbol}</span>
+                                <span class="text-xs md:text-sm text-gray-500 line-through mr-1 md:mr-2">${convertedOriginalPrice} ${currencySymbol}</span>
+                                <div class="text-xs text-green-600 font-bold">وفر ${convertedOriginalPrice - convertedPrice} ${currencySymbol}</div>
+                            </div>
+                            <button onclick="addToCart('${product.id}', '${productName.replace(/'/g, "\\'")}', ${convertedPrice})" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold transform hover:scale-105 text-xs md:text-base hover-lift">
+                                <i class="fas fa-cart-plus mr-1"></i>
+                                ${translateText('add_to_cart')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+            
+            grid.innerHTML = productsHTML;
         }
 
         // Generate products with translations
@@ -2293,6 +3658,109 @@
 
         function resendCode() {
             showNotification(translateText('resend_code') + ' 📱');
+        }
+
+        // Product image gallery functions
+        function changeProductImage(button, imgIndex) {
+            const productCard = button.closest('.bg-white');
+            const images = productCard.querySelectorAll('[data-img-index]');
+            const dots = button.parentElement.querySelectorAll('button');
+            
+            // Hide all images
+            images.forEach(img => {
+                img.classList.remove('opacity-100');
+                img.classList.add('opacity-0');
+            });
+            
+            // Show selected image
+            const selectedImg = productCard.querySelector(`[data-img-index="${imgIndex}"]`);
+            if (selectedImg) {
+                selectedImg.classList.remove('opacity-0');
+                selectedImg.classList.add('opacity-100');
+            }
+            
+            // Update dots
+            dots.forEach(dot => {
+                dot.classList.remove('bg-opacity-100');
+                dot.classList.add('bg-opacity-50');
+            });
+            button.classList.remove('bg-opacity-50');
+            button.classList.add('bg-opacity-100');
+        }
+
+        function showProductDetails(productId) {
+            const product = products.find(p => p.id == productId);
+            if (!product) return;
+            
+            const productName = product.name[currentLanguage] || product.name['ar'];
+            const productDesc = product.description[currentLanguage] || product.description['ar'];
+            const features = product.features[currentLanguage] || product.features['ar'] || [];
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scaleIn">
+                    <div class="p-6 border-b dark:border-gray-700">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-2xl font-bold text-purple-800 dark:text-purple-200">${productName}</h2>
+                            <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700 transform hover:scale-110 transition-all">
+                                <i class="fas fa-times text-2xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 h-64 flex items-center justify-center mb-4">
+                                    <img src="${product.image}" alt="${productName}" class="max-w-full max-h-full object-contain">
+                                </div>
+                                <div class="flex space-x-2 space-x-reverse justify-center">
+                                    ${product.images ? product.images.map((img, index) => `
+                                        <img src="${img}" alt="${productName}" class="w-16 h-16 object-cover rounded-lg border-2 border-gray-300 hover:border-purple-500 cursor-pointer transition-all">
+                                    `).join('') : ''}
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-6">
+                                    <h3 class="text-xl font-bold mb-3 text-purple-800 dark:text-purple-200">الوصف</h3>
+                                    <p class="text-gray-700 dark:text-gray-300 whitespace-pre-line">${productDesc}</p>
+                                </div>
+                                <div class="mb-6">
+                                    <h3 class="text-xl font-bold mb-3 text-purple-800 dark:text-purple-200">المميزات</h3>
+                                    <div class="space-y-2">
+                                        ${features.map(feature => `
+                                            <div class="flex items-center text-green-600 dark:text-green-400">
+                                                <i class="fas fa-check-circle mr-2 text-green-500"></i>
+                                                <span>${feature}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <div class="flex text-sm mr-3">
+                                        ${generateStarRating(product.rating)}
+                                    </div>
+                                    <span class="text-gray-500">(${product.reviews.toLocaleString()} تقييم)</span>
+                                </div>
+                                <div class="border-t pt-4">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <div>
+                                            <span class="text-2xl font-bold text-purple-600">${convertPrice(product.price)} ${currencySymbols[currentCurrency]}</span>
+                                            <span class="text-sm text-gray-500 line-through mr-2">${convertPrice(product.originalPrice)} ${currencySymbols[currentCurrency]}</span>
+                                        </div>
+                                        <div class="text-green-600 font-bold">خصم ${product.discount}%</div>
+                                    </div>
+                                    <button onclick="addToCart('${product.id}', '${productName.replace(/'/g, "\\'")}', ${convertPrice(product.price)}); this.closest('.fixed').remove();" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-bold text-lg transform hover:scale-105">
+                                        <i class="fas fa-cart-plus mr-2"></i>
+                                        أضف للسلة
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
         }
 
         // Payment form handler
