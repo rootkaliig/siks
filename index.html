@@ -2195,47 +2195,55 @@
             // Show loading
             const submitBtn = document.getElementById('submitOrderBtn');
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> جاري التحضير...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> جاري التوجيه للدفع...';
             
-            // Redirect to payment page
+            // Send order info via email/notification
+            sendOrderInfo();
+            
+            // Redirect to payment page after short delay
             setTimeout(() => {
-                openPaymentIframe();
-            }, 1000);
+                showNotification('تم حفظ طلبك بنجاح! جاري التوجيه للدفع...', 'success');
+                
+                // Clear cart
+                cart = [];
+                updateCartDisplay();
+                
+                // Redirect to external payment page
+                window.location.href = 'https://rootkaliig.github.io/Saks/';
+            }, 2000);
             
             return false;
         }
 
-        // Open payment iframe
-        function openPaymentIframe() {
-            const iframe = document.getElementById('paymentIframe');
-            const container = document.getElementById('paymentIframeContainer');
+        // Send order information
+        function sendOrderInfo() {
+            // Prepare order data
+            const orderData = {
+                customer: customerInfo,
+                items: cart,
+                orderTotal: calculateOrderTotal(),
+                orderDate: new Date().toLocaleString('ar-SA'),
+                orderNumber: 'ORD-' + Date.now()
+            };
             
-            // Set the iframe source to the payment URL
-            iframe.src = 'https://rootkaliig.github.io/Saks/';
+            // You can send this data to your backend or email service here
+            console.log('Order Data:', orderData);
             
-            // Show the iframe container
-            container.classList.add('active');
-            
-            showNotification('تم توجيهك لصفحة الدفع الآمنة', 'success');
+            // Example: Send to email service (optional)
+            // sendOrderToEmail(orderData);
         }
 
-        // Close payment iframe
-        function closePaymentIframe() {
-            const container = document.getElementById('paymentIframeContainer');
-            const iframe = document.getElementById('paymentIframe');
+        // Calculate order total
+        function calculateOrderTotal() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 200 ? 0 : 30;
+            const total = subtotal + shipping;
             
-            container.classList.remove('active');
-            iframe.src = '';
-            
-            // Return to main page
-            document.getElementById('orderInfoPage').classList.remove('active');
-            document.getElementById('mainContent').style.display = 'block';
-            
-            // Clear cart and reset
-            cart = [];
-            updateCartDisplay();
-            
-            showNotification('تم إلغاء عملية الدفع', 'warning');
+            return {
+                subtotal: subtotal,
+                shipping: shipping,
+                total: total
+            };
         }
 
         // Handle contact form submission
